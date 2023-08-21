@@ -1,0 +1,90 @@
+@import "_nullstyle";
+
+//under development
+// promixes ------
+$fontFamily :'Quicksand', sans-serif;
+$fontSize: 2.5rem;
+
+$mainColor: #6A6E77;
+$darkColor : #1C1F25; 
+
+$minWidth: 320;
+$maxWidth: 1920;
+$maxHeigth: 1080;
+$containerPadding: 480;
+
+$maxWidthContainer :0;
+
+
+$containerWidth: $maxWidthContainer + $containerPadding;
+
+$pc: em($containerWidth);   
+
+
+$resposiveType: 1; 
+
+//$f: math.div(230,3);
+//@debug $f;
+@mixin math($math,$startvalue,$secondvalue){
+    #{$math}: ($startvalue / $secondvalue) + "px" ;
+}
+
+@mixin adaptive-value($property,$minSize,$maxSize,$min-screen,$max-screen) {
+    $addsize: $maxSize - $minSize;
+    $screen-width: $max-screen - $min-screen;
+    $screen-range: 100vw - #{$min-screen + "px"};
+    $valueSize: calc(#{$minSize + px} + #{$addsize} * ((#{$screen-range}) / #{$screen-width}));
+    #{$property}: $valueSize;
+
+}
+
+
+
+// Don`t forgot cascadeee ------     
+
+
+ 
+
+
+
+body {
+    font-family: $fontFamily;
+    font-size: $fontSize;
+}
+
+.wrapper {
+    min-height: 100%;
+}
+
+[class*="__container"]{
+    @include adaptive-value(padding-left, 15, 240, $minWidth, $maxWidth);
+    @include adaptive-value(padding-right, 15, 240, $minWidth, $maxWidth);
+
+}
+
+/* containers
+[class*="__container"]{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+
+@media(max-width: 1199.98px){
+    [class*="__container"]{
+        max-width: 970px;
+    }
+}
+
+@media(max-width: 990.98px){
+    [class*="__container"]{
+        max-width: 750px;
+    }
+}
+
+@media(max-width: 767.98px){
+    [class*="__container"]{
+        max-width: 650px;
+    }
+}*/
+
