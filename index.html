@@ -13,45 +13,55 @@
 <body>
     <div class="wrapper">
         <header class="header">
-            <div class="header__navigation navigation-header">
-                <div class="header__logo ">
-                    <img src="img/icons/logo.png" alt="">
-                </div>
-                <div class="header__location location">
-                    <div class="location__body">
-                        <div class="location__icon">
-                            <img src="img/icons/location.svg" alt="">
-                        </div>
-                        <div class="location__text">
-    
+            <div class="header__container nav-header">
+                <div class="nav-header-left">
+                    <div class="header__logo">
+                        <img src="img/icons/logo.png" alt="">
+                    </div>
+                    <div class="header__location location">
+                        <div class="location__body">
+                            <div class="location__icon">
+                                <img src="img/icons/location.svg" alt="">
+                            </div>
+                            <div class="location__text">
+                                <span>Deliver to</span>
+                                <span>Ukraine</span> 
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="header__search search">
-                    <input class="search__input" type="text">
-                    <button class="search__btn">
-                        <img src="img/icons/search-icon.svg" alt="">
-                    </button>
+                <div class="nav-header-centr">
+                    <form class="header__search search">
+                        <input class="search__input" type="text">
+                        <button class="search__btn">
+                            <img src="img/icons/search-icon.svg" alt="">
+                        </button>
+                    </form>
                 </div>
-
-                <nav class="header__links">
-                    <a href="orders.html" class="header__link">
-                        <span>Returns</span>
-                        <span>& Orders</span>
-                    </a>
-                    <a href="checkout.html" class="header__link link">
-                       <div class="link__sprite">
-                            <div class="link__counter">0</div>
-                            <img src="img/icons/corsine.svg" alt="">
-                       </div>
-                       <div class="link__text">Cart</div>
-                    </a>
-                </nav>
-
+                <div class="nav-header-right">
+                    <nav class="header__links">
+                        <a href="orders.html" class="header__link">
+                            <span class="link__text link__text-light ">Returns</span>
+                            <span class="link__text">& Orders</span>
+                        </a>
+                        <a href="checkout.html" class="header__link link">
+                           <div class="link__sprite">
+                                <div class="link__counter">0</div>
+                                <img src="img/icons/corsine.svg" alt="">
+                           </div>
+                           <div class="link__text">Cart</div>
+                        </a>
+                    </nav>
+                </div>
+                <div class="header__burger">
+                    <span></span>
+                </div>
             </div>
-            
-
         </header>
+        <main class="page">
+           
+        </main>
+        <footer class="footer"></footer>
        
     </div>
    
