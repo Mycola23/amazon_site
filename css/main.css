@@ -80,7 +80,14 @@ body {
 }
 
 .wrapper {
-  min-height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  min-height: 100vh;
 }
 
 [class*="main__container"] {
@@ -353,6 +360,9 @@ body {
 .page {
   padding: 60px 0 0 0;
   margin-bottom: 30px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
 }
 
 .cards {
@@ -410,12 +420,21 @@ body {
 }
 
 .card__text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   font-size: 19px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   margin-bottom: 10px;
   min-height: 45px;
+  -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+          hyphens: auto;
 }
 
 .card__rating {
@@ -425,9 +444,9 @@ body {
   -webkit-column-gap: 2px;
           column-gap: 2px;
   margin-bottom: 10px;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
 }
 
 .card__rating .rating__stars {
@@ -438,6 +457,18 @@ body {
       -ms-flex-pack: justify;
           justify-content: space-between;
   margin-right: 5px;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  font-size: 1.25rem;
+}
+
+.card__rating .rating__stars li {
+  list-style: none;
+}
+
+.card__rating .rating__stars li:first-child {
+  margin-right: 5px;
 }
 
 .card__rating .rating__stars img {
@@ -447,7 +478,8 @@ body {
 .card__rating .rating__votes {
   color: #017cb6;
   cursor: pointer;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
+  font-weight: 600;
 }
 
 .card__price {
@@ -458,9 +490,6 @@ body {
 }
 
 .card__quality {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 1 30%;
-          flex: 0 1 30%;
   width: 30%;
   outline: none;
   color: #212121;
@@ -534,7 +563,6 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-bottom: 10px;
   background-color: #232F3E;
 }
 

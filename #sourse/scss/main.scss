@@ -54,7 +54,9 @@ body {
 }
 
 .wrapper {
-    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     
 }
 
@@ -290,6 +292,7 @@ body {
 .page {
     padding: 60px 0 0 0;
     margin-bottom: 30px;
+    flex: 1 1 auto;
 }
 .main {
 
@@ -335,32 +338,47 @@ body {
     }
 
     &__text {
+        display: flex;
+        
+        align-items: center;
         font-size: 19px;
         font-style: normal;
         font-weight: 400;
         line-height: normal;
         margin-bottom: 10px;
         min-height: 45px;
-       // overflow: hidden;
+        hyphens: auto;
+
+        
     }
 
-    &__rating {
+    &__rating {           // todo випадаючий список 
         display: flex;
         column-gap: 2px;
         margin-bottom: 10px;
-        align-items: center;
+        align-items: flex-end;
         .rating__stars{
             display: flex;
             justify-content:space-between;
             margin-right: 5px;
+            align-items: flex-end;
+            font-size: 1.25rem;
+            li{
+                list-style: none;
+            }
+            li:first-child{
+                margin-right: 5px;
+            }
             img{
                 height: 25px;
             }
         }
         .rating__votes{
-            color: #017cb6;
+
+            color: #017cb6; //#017cb6
             cursor: pointer;
-            font-size: 1.1rem;
+            font-size: 1.3rem;
+            font-weight: 600;
         }
 
     }
@@ -373,7 +391,7 @@ body {
     }
 
     &__quality{
-        flex: 0 1 30%;
+        //flex: 0 1 30%;
         width: 30%;
         outline: none;
         color: rgb(33, 33, 33);
@@ -437,7 +455,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 10px;
     background-color: #232F3E;
     &__btn {
         width: 100%;

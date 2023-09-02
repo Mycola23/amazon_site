@@ -1,48 +1,55 @@
 "use strict";
+//top
 const searchInput = document.querySelector('.search__input');
 const burgerMenu = document.querySelector('.header__burger');
 const menu = document.querySelector('.nav-header-right');
-const page = document.querySelector('.page')
+//main
+const page = document.querySelector('.page');
+const mainContainer = document.querySelector('.main__container')
 const messagesAdd = document.querySelectorAll('.card__message');
-const cards =document.querySelector('.cards')
-const bactToTop =document.querySelector('.footer__btn')
+const cards =document.querySelector('.cards');
+//bottom
+const bactToTop =document.querySelector('.footer__btn');
+
+    //* Don`t forget repair my code and learn  writing tests for js
+
 document.addEventListener('click', (e)=>{
     if(e.target.closest('.search__input')){
-        searchInput.parentElement.classList.add('__active')
+        searchInput.parentElement.classList.add('__active');
     }else{
-        searchInput.parentElement.classList.remove('__active')
-    }
+        searchInput.parentElement.classList.remove('__active');
+    };
 
    
-})
+});
 burgerMenu.addEventListener('click', ()=>{
     burgerMenu.classList.toggle('__active');
     menu.classList.toggle('__active');
 
-})
+});
 
 bactToTop.addEventListener('click',()=>{
     window.scrollTo({
         top: 0,
         left: 0,
-        behavior: "smooth"
+        behavior: "smooth",
       });
-})
+});
 
 
 page.addEventListener('click',function(e){
-    if(e.target.closest('.card__btn')){
-        console.log(e.target.previousElementSibling)
-        e.target.previousElementSibling.classList.add('__active');
+    let target = e.target
+    if(target.closest('.card__btn')){
+        console.log(e.target.previousElementSibling);
+        target.previousElementSibling.lastElementChild.classList.add('__active');
         setTimeout(()=>{
-           e.target.previousElementSibling.classList.remove('__active')
+            target.previousElementSibling.lastElementChild.classList.remove('__active');
         },1.3*1000)
     }
-})
+});
 
 
 // main page
-
 
 const products = [
     {
@@ -101,11 +108,14 @@ const products = [
     },
     
 
-]
+];
 
+let productsHtml = '';
+const item = document.createElement('div');
+item.className ='cards';
 
 products.forEach((product)=>{
-    const productHTML =  ` 
+    productsHtml += ` 
         <div class="card">
             <div class="card__img">
                 <img src=${product.img} alt="">
@@ -116,10 +126,15 @@ products.forEach((product)=>{
                 </div>
                 <div class="card__rating rating">
                     <div class="rating__stars">
-                        
+                        <li class="rating__star">
+                            ${product.rating.stars}
+                        </li>
+                        <li class="rating__star">
+                            <img src="img/icons/star.svg" alt="">
+                        </li>
                     </div>
                     <div class="rating__votes">
-                    ${product.rating.count}
+                        ${product.rating.count}
                     </div>
                 </div>
                 <div class="card__price">$${product.priceCents/100}</div>
@@ -137,8 +152,14 @@ products.forEach((product)=>{
             </div>
             <button class="card__btn"> Add to list</button>
         </div>`
-        const item = document.createElement('div')
-        item.innerHTML = productHTML
-        cards.append(item)
-})
+    
+});
+if(productsHtml){
+    item.innerHTML = productsHtml;
+    mainContainer.append(item);
+}
+
+
+
+
 
