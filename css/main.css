@@ -369,8 +369,8 @@ body {
   padding-top: 15px;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (minmax(200px, 1fr))[auto-fit];
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  -ms-grid-columns: (minmax(250px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   -webkit-column-gap: 8px;
           column-gap: 8px;
   row-gap: 10px;
@@ -378,7 +378,7 @@ body {
 
 .card {
   width: 100%;
-  height: 100%;
+  max-height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -392,17 +392,29 @@ body {
 }
 
 .card__img {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  /* 234/659 */
+  height: 50%;
   margin-bottom: 20px;
 }
 
 .card__img img {
+  /*
+            position: absolute;//
+            top: 0;//
+            left: 0;//
+            width: 100%;//
+            height: 100%;//
+            padding-bottom: 100%;//*/
   -o-object-position: center;
      object-position: center;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 5px;
   width: 100%;
-  min-height: 300px;
+  height: 100%;
 }
 
 .card__content {
@@ -414,9 +426,13 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
   margin-bottom: 10px;
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 auto;
-          flex: 1 1 auto;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 25%;
+          flex: 0 1 25%;
+  /* 155/659 */
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
 .card__text {
@@ -533,6 +549,10 @@ body {
 }
 
 .card__btn {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 6%;
+          flex: 0 1 6%;
+  /* 43/659 */
   width: 100%;
   padding: 8px;
   border-radius: 50px;

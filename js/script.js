@@ -51,7 +51,7 @@ page.addEventListener('click',function(e){
 
 // main page
 
-const products = [
+/*const products = [
     {
         img: "https://images.unsplash.com/photo-1595861021888-e8192a7f774e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
         name: 'Basketball ball',
@@ -109,6 +109,7 @@ const products = [
     
 
 ];
+*/
 
 let productsHtml = '';
 const item = document.createElement('div');
