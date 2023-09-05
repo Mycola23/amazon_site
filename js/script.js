@@ -3,6 +3,7 @@
 const searchInput = document.querySelector('.search__input');
 const burgerMenu = document.querySelector('.header__burger');
 const menu = document.querySelector('.nav-header-right');
+const counter = document.querySelector('.link__counter');
 //main
 const page = document.querySelector('.page');
 const mainContainer = document.querySelector('.main__container')
@@ -99,19 +100,24 @@ page.addEventListener('click',function(e){
         cart.forEach((item)=>{
             if(productId === item.productId){ // chehk if array cart has the same element if yes => save it and quantity++ , else just add this product to cart
                 savedId = item;
-            }
-            
+            }  
         });
         if(savedId){
-            savedId.quanity++;
+            savedId.quantity++;
         }else{
             cart.push({
                 productName: productName,
                 productId: productId,
-                quanity: 1,
+                quantity: 1,
             });
         }
     //--------------------------------------------------------------------
+        let cartQuantity = 0;
+        cart.forEach(item => {
+            cartQuantity += item.quantity;
+        });
+        counter.innerHTML = `${cartQuantity}`;
+        console.log(cartQuantity)
         console.log(cart);
         setTimeout(()=>{
             target.previousElementSibling.lastElementChild.classList.remove('__active');

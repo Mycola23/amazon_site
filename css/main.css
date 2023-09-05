@@ -343,11 +343,13 @@ body {
 
 .link__counter {
   position: absolute;
-  top: 5px;
-  left: 20px;
+  top: 0px;
+  left: calc(50% + 2px);
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
   font-weight: 700;
   color: #FF9900;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .link__text {
