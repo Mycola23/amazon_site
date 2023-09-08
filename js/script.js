@@ -1,6 +1,6 @@
 "use strict";
 // import
-import {cart} from '../data/cart.js';
+import {cart, addToCart} from '../data/cart.js';
 import {products} from '../data/data.js';
 
 
@@ -92,39 +92,29 @@ if(productsHtml){
     mainContainer.append(item);
 }
 
+
+function updateCartQuantity(){
+    let cartQuantity =  0 ; // todo local storage   work that code don`t repeat number двічі
+    cart.forEach(item => {
+        cartQuantity += item.quantity;
+    });
+    counter.innerHTML = `${cartQuantity}`;
+    if(cartQuantity > 0){
+        localStorage.setItem('cartQuantity', cartQuantity);     
+    }
+
+}
+
 page.addEventListener('click',function(e){
     let target = e.target
     if(target.closest('.card__btn')){
         target.previousElementSibling.lastElementChild.classList.add('__active');
         const productName = target.dataset.productName;
         const productId = target.dataset.productId;
-        //console.log(target.dataset)
-    // check id ------------------------------------------------- 
-        let savedId ;
-        cart.forEach((item)=>{
-            if(productId === item.productId){ // chehk if array cart has the same element if yes => save it and quantity++ , else just add this product to cart
-                savedId = item;
-            }  
-        });
-        if(savedId){
-            savedId.quantity++;
-        }else{
-            cart.push({
-                productName: productName,
-                productId: productId,
-                quantity: 1,
-            });
-        }
+        addToCart(productName,productId);
+        updateCartQuantity();
     //--------------------------------------------------------------------
-        let cartQuantity =  0 ; // todo local storage   work that code don`t repeat number двічі
-        cart.forEach(item => {
-            cartQuantity += item.quantity;
-        });
-        counter.innerHTML = `${cartQuantity}`;
-        if(cartQuantity > 0){
-            localStorage.setItem('cartQuantity', cartQuantity);     
-        }
-
+        
         
         //localStorage.setItem('cartQuantity', JSON.stringify(cartQuantity));
         setTimeout(()=>{
