@@ -1,4 +1,9 @@
 "use strict";
+// import
+import {cart} from '../data/cart.js';
+import {products} from '../data/data.js';
+
+
 //top
 const searchInput = document.querySelector('.search__input');
 const burgerMenu = document.querySelector('.header__burger');
@@ -8,8 +13,7 @@ const counter = document.querySelector('.link__counter');
 const page = document.querySelector('.page');
 const mainContainer = document.querySelector('.main__container')
 const messagesAdd = document.querySelectorAll('.card__message');
-const cards =document.querySelector('.cards');
-
+const cards = document.querySelector('.cards');
 //bottom
 const bactToTop =document.querySelector('.footer__btn');
 
@@ -94,7 +98,7 @@ page.addEventListener('click',function(e){
         target.previousElementSibling.lastElementChild.classList.add('__active');
         const productName = target.dataset.productName;
         const productId = target.dataset.productId;
-        console.log(target.dataset)
+        //console.log(target.dataset)
     // check id ------------------------------------------------- 
         let savedId ;
         cart.forEach((item)=>{
@@ -112,13 +116,17 @@ page.addEventListener('click',function(e){
             });
         }
     //--------------------------------------------------------------------
-        let cartQuantity = 0;
+        let cartQuantity =  0 ; // todo local storage   work that code don`t repeat number двічі
         cart.forEach(item => {
             cartQuantity += item.quantity;
         });
         counter.innerHTML = `${cartQuantity}`;
-        console.log(cartQuantity)
-        console.log(cart);
+        if(cartQuantity > 0){
+            localStorage.setItem('cartQuantity', cartQuantity);     
+        }
+
+        
+        //localStorage.setItem('cartQuantity', JSON.stringify(cartQuantity));
         setTimeout(()=>{
             target.previousElementSibling.lastElementChild.classList.remove('__active');
         },1.3*1000)
