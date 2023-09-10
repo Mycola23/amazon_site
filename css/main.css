@@ -700,6 +700,10 @@ body {
   text-decoration: underline;
 }
 
+.header-checkout {
+  padding: 10px 0;
+}
+
 @media (max-width: 767.777px) {
   .header {
     height: 110px;
