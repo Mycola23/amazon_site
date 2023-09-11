@@ -24,7 +24,7 @@ document.addEventListener('click', (e)=>{
     if(e.target.closest('.search__input')){
         searchInput.parentElement.classList.add('__active');
     }else{
-        searchInput.parentElement.classList.remove('__active');
+        searchInput.parentElement.classList.remove('__active'); // todo ще одну проверку на кокой єто странице 
     };
 
    
@@ -94,14 +94,17 @@ if(productsHtml){
 
 
 function updateCartQuantity(){
-    let cartQuantity =  0 ; // todo local storage   work that code don`t repeat number двічі
+    let cartQuantity =  0 // todo local storage   work that code don`t repeat number двічі
     cart.forEach(item => {
         cartQuantity += item.quantity;
     });
     counter.innerHTML = `${cartQuantity}`;
-    if(cartQuantity > 0){
-        localStorage.setItem('cartQuantity', cartQuantity);     
+    if(cartQuantity > 100){
+        counter.style.top = '-5px';
+        counter.style.left = 'calc(50% + 7px)';    
     }
+    //localStorage.setItem('cartQuantity', cartQuantity); 
+
 
 }
 
