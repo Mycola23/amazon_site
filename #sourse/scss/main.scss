@@ -594,8 +594,8 @@ body {
    
     &__container {
         min-height: 50vh;
-        @include adaptive-value(padding-left, 15, 150, $minWidth, $maxWidth);
-        @include adaptive-value(padding-right, 15, 150, $minWidth, $maxWidth);
+        @include adaptive-value(padding-left, 15, 100, $minWidth, $maxWidth);
+        @include adaptive-value(padding-right, 15, 100, $minWidth, $maxWidth);
     }
 }
 .checkout {
@@ -607,17 +607,19 @@ body {
     }
 
     &__content {
-        display: flex;
+        display: grid;
+        grid-template: 1fr/ 1fr 28.5%;
         justify-content: space-between;
         align-items: center;
+        @include adaptive-value(font-size, 14, 18, $minWidth, $maxWidth);
     }
 
     &__order {
-        flex: 1 1 auto;
+        
     }
 
     &__order-payment {
-        flex: 0 1 35%; /* 350/1100 */
+       
     }
 }
 .order {
@@ -640,16 +642,18 @@ body {
     &__delivery-date {
         color: rgb(0, 113, 133);
         font-weight: 700;
-        font-size: 19px;
         margin-top: 5px;
         margin-bottom: 22px;
     }
 
     &__content {
         display: grid;
-        grid-template: 1fr / 30% 1fr 30% 1fr 30% ;
+        grid-template: 1fr / 30% 1fr 30% 1fr 33% ;
         align-items: center;
+        // vertical box for max-width : 1024px
+        
     }
+   
 
     &__img {
        
@@ -668,42 +672,56 @@ body {
         display: flex;
         flex-direction: column;
         grid-column: 3/4;
-        font-size: 20px;
         font-weight: 500;
+        margin-right: 15px;
     }
 
     &__name {
-        font-size: 25px;
+        @include adaptive-value(font-size, 20, 25, $minWidth, $maxWidth);
         flex: 0 1 33.33%;
+        max-width: 100%;
+        line-clamp: 2;
+        overflow: hidden;
         margin-bottom: 8px;
         color: #0F1111;
     }
 
     &__price {
-        flex: 0 1 33.33%;
+        flex: 0 1 20%;
         font-weight: 700;
         line-height: 24px;
         margin-bottom: 5px;
+        color: #B12704;
     }
 
     &__quantity {
-        flex: 0 1 33.33%;
+        flex: 0 1 43.33%;
         display: flex;
         align-items: center;
+        justify-content: space-between;
+        text-align: center;
         flex-wrap: wrap;
+        span{
+            margin: 0 3px ;
+        }
+
+        
         input{
             display: none;
         }
     }
 
     &__btn {
-        margin-left: 15px;
+        @include adaptive-value(font-size, 16, 18, $minWidth, $maxWidth);
+        //margin-left: 15px;
         background: transparent;
         color: rgb(0, 113, 133);
-        font-size: 16px;
+        font-weight: 650;
+        line-height: 24px;
         &_up {
-           
+           margin-right: 10px;
         }
+
 
         &_del {
            
@@ -717,7 +735,6 @@ body {
 .delivery-options {
 
     &__title {
-        font-size: 18px;
         font-weight: 700;
         margin-bottom: 10px;
     }
@@ -740,8 +757,8 @@ body {
     &__date {
         color: rgb(0, 113, 133);
         font-weight: 600;
-        font-size: 18px;
-        margin-bottom: 5px
+        margin-bottom: 5px;
+        @include adaptive-value(line-height, 18, 24, $minWidth, $maxWidth);
     }
 
     &__price {
@@ -750,26 +767,68 @@ body {
     }
 }
 .order-payment { // todo it to final version
-
+    align-self: flex-start;
+    margin-left: 15px;
+    padding: 18px 18px 5px;
+    border-radius: 3px;
+    border: 2px solid #E7E7E7;
     &__info {
+        margin-bottom: 20px;
     }
 
     &__title {
+        font-weight: 700;
+        margin-bottom: 12px;
     }
 
     &__row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        div:first-child{
+            margin-right: 10px;
+        }
+        &:last-child{
+            border-top: 2px  solid #E7E7E7;
+            padding-top: 18px;
+            color: #B12704;
+            font-weight: 650;
+           
+        }
     }
 
     &__money {
     }
 
     &__use-service {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        input{
+            cursor: pointer;
+            display: inline-block;
+            height: 20px;
+            width: 20px;
+            margin-left: 10px;
+        }
     }
 
     &__btn {
+        width: 100%;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        border-radius: 8px;
+        background-color: rgb(247, 202, 0);
+        border: 1px solid rgb(242, 194, 0);
+        text-align: center;
+        margin-bottom: 20px;
+        cursor: pointer;
+        box-shadow: 0 2px 5px rgba(213, 217, 217, 0.5);
     }
 }
 .use-service {
+
 
     &__text {
     }
@@ -779,10 +838,64 @@ body {
 }
 
 
+@media(max-width: 1024px){  
+    
+    .checkout{
+        &__content{
+            grid-template: auto 1fr / 1fr;
+            row-gap: 25px;
+        }
+
+        &__order-payment{
+            grid-row: 1/2;
+            margin-left: 0;
+            
+        }
+    }
+
+    
+    .cart{
+        &__content{
+            align-items: start;
+            grid-template: 1fr minmax(80px, 85px) minmax(120px, 200px) /1fr;
+            grid-template-columns: 1fr;
+            row-gap: 25px;
+        }
+ 
+        & .cart__delivery-options{
+            grid-column:auto;
+        }
+
+        &__info{
+            
+            grid-column:auto;
+            flex: 0 1 auto ;
+            margin-right: 0;
+            *{
+                flex: 0 1 auto;
+            }
+        }
+
+        &__quantity{
+            justify-content: start;
+            *{
+                margin-left: 10px;
+            }
+            span{
+                margin-left: 10px;
+            }
+        }
+    }
+
+}
+
+    
+    
 
 
 // 
 @media(max-width:767.777px){
+    
     .header{
         height: 160px;
         &__container{
@@ -875,6 +988,15 @@ body {
                 
                 min-width: 60px;
             }
+        }
+    }
+    .header-checkout{
+        height: 80px;
+        .nav-header-centr{
+            display: none;
+        }
+        .header__burger{
+            display: none;
         }
     }
     .header__burger.__active{
