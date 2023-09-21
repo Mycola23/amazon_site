@@ -1,7 +1,8 @@
 "use strict";
 
-export const cart = [];
-export function addToCart(productName,productId){
+export const cart = [
+];
+export function addToCart(productId){
     // check id ------------------------------------------------- 
     let savedId ;
     cart.forEach((item)=>{
@@ -13,7 +14,6 @@ export function addToCart(productName,productId){
         savedId.quantity++;
     }else{
         cart.push({
-            productName: productName,
             productId: productId,
             quantity: 1,
         });

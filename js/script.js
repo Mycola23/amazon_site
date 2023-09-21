@@ -2,6 +2,8 @@
 // import
 import {cart, addToCart} from '../data/cart.js';
 import {products} from '../data/data.js';
+import {addToOrder,contentBox} from './checkout.js'; 
+import {formatMoneys} from './utils/money.js'
 
 
 //top
@@ -9,6 +11,8 @@ const searchInput = document.querySelector('.search__input');
 const burgerMenu = document.querySelector('.header__burger');
 const menu = document.querySelector('.nav-header-right');
 const counter = document.querySelector('.link__counter');
+const linkCart = document.querySelector('.link-cart');
+//const cartBtn = document.querySelector('.link-cart');
 //main
 const page = document.querySelector('.page');
 const mainContainer = document.querySelector('.main__container')
@@ -70,7 +74,7 @@ products.forEach((product)=>{
                         ${product.rating.count}
                     </div>
                 </div>
-                <div class="card__price">$${(product.priceCents/100).toFixed(2)}</div>
+                <div class="card__price">$${formatMoneys(product.priceCents)}</div>
                 <select class="card__quality">
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -112,10 +116,13 @@ page.addEventListener('click',function(e){
     let target = e.target
     if(target.closest('.card__btn')){
         target.previousElementSibling.lastElementChild.classList.add('__active');
-        const productName = target.dataset.productName;
+        //const productName = target.dataset.productName;
         const productId = target.dataset.productId;
-        addToCart(productName,productId);
+        addToCart(productId);
         updateCartQuantity();
+        addToOrder();  // needs update
+        localStorage.setItem('cart',JSON.stringify(cart)); // record cart to local storage
+        console.log(JSON.parse(localStorage.getItem('cart'))) 
     //--------------------------------------------------------------------
         
         
@@ -146,3 +153,9 @@ bactToTop.addEventListener('click',()=>{
 
 
 
+// tests
+
+
+linkCart.addEventListener('click',()=>{
+    linkCart.classList.toggle('__active')
+})

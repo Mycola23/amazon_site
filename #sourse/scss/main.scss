@@ -681,7 +681,7 @@ body {
         flex: 0 1 33.33%;
         max-width: 100%;
         line-clamp: 2;
-        overflow: hidden;
+        //overflow: hidden;
         margin-bottom: 8px;
         color: #0F1111;
     }
@@ -698,11 +698,10 @@ body {
         flex: 0 1 43.33%;
         display: flex;
         align-items: center;
-        justify-content: space-between;
         text-align: center;
         flex-wrap: wrap;
-        span{
-            margin: 0 3px ;
+        span:nth-child(2){
+            margin: 0px 10px 0;
         }
 
         
@@ -719,12 +718,12 @@ body {
         font-weight: 650;
         line-height: 24px;
         &_up {
-           margin-right: 10px;
+           
         }
 
 
         &_del {
-           
+            margin-left: 10px;
         }
     }
 
@@ -841,6 +840,7 @@ body {
 @media(max-width: 1024px){  
     
     .checkout{
+    
         &__content{
             grid-template: auto 1fr / 1fr;
             row-gap: 25px;
@@ -882,6 +882,7 @@ body {
                 margin-left: 10px;
             }
             span{
+                //justify-items: flex-start;
                 margin-left: 10px;
             }
         }
@@ -905,7 +906,7 @@ body {
             
             .nav-header-left,.nav-header-centr{
                 flex: 1 1 auto;
-                width: 75%;
+                width: auto;
                 margin-right: 0;
             }
             .nav-header-left{
@@ -998,7 +999,12 @@ body {
         .header__burger{
             display: none;
         }
+        
+        .nav-header-left{
+            width: auto;
+        }
     }
+    
     .header__burger.__active{
             
         span{
@@ -1019,8 +1025,8 @@ body {
     .page{
         padding-top: 160px;
     }
-}
 
+}
 @media(max-width: 375px){
     .location{
         display: none;

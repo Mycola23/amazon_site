@@ -9,6 +9,7 @@ export const products = [
       },
       priceCents: 5035,
     },
+    //Men's Full-Zip Hooded Fleece Sweatshirt
     {
       id: "e47638ce-6aa0-4b85-b27f-e1d07eb671d1",
       img: "https://images.unsplash.com/photo-1485965120184-e220f721d03e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
@@ -703,7 +704,7 @@ export const products = [
     },
     {
       id: "bc2847e9-5323-403f-b7cf-57fde044a955",
-      img:    "https://media.istockphoto.com/id/1200902086/photo/mockup-black-blank-hoodie-on-a-young-guy-for-design-presentation.webp?b=1&s=170667a&w=0&k=20&c=yq7EkqVe2PPlLUiuCjLz4zsAEQPIe9KZcp7jMD4Fz5c=",
+      img: "https://media.istockphoto.com/id/1200902086/photo/mockup-black-blank-hoodie-on-a-young-guy-for-design-presentation.webp?b=1&s=170667a&w=0&k=20&c=yq7EkqVe2PPlLUiuCjLz4zsAEQPIe9KZcp7jMD4Fz5c=",
       name: "Men's Full-Zip Hooded Fleece Sweatshirt",
       rating: {
         stars: 4.5,
