@@ -114,7 +114,8 @@ cart.forEach((elem) => {
         }
     });
     itemHTML += `
-    <div class="order__cart cart">
+    <div class="order__cart cart 
+      cart-id-${matchingProduct.id}">
         <div class="cart__delivery-date">Delivery date:<span> Tuesday,September 26</span></div>
         <div class="cart__content">
             <div class="cart__img">
@@ -204,7 +205,9 @@ function UpdateCart(button) {
         }
     } else if (button.classList.contains("cart__btn_del")) {
         removeFromCart(productId);
-        console.log(cart);
+        const item = document.querySelector(`.cart-id-${productId}`);
+        item.remove();
+        console.log(item);
     }
     //todo full functional of  firstbtn    &   second reaction on btn del
 }
