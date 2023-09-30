@@ -1,6 +1,6 @@
 "use strict";
 
-export let cart = [
+export let cart = JSON.parse(localStorage.getItem("cart")) || [
     {
         productId: "e47638ce-6aa0-4b85-b27f-e1d07eb671d1",
         quantity: 1,
@@ -31,6 +31,7 @@ export function addToCart(productId) {
             quantity: 1,
         });
     }
+    saveToStorage();
 }
 
 export function removeFromCart(productId) {
@@ -40,6 +41,10 @@ export function removeFromCart(productId) {
             newCart.push(item);
         }
     });
-
     cart = newCart;
+    saveToStorage();
+}
+
+function saveToStorage() {
+    localStorage.setItem("cart", JSON.stringify(cart)); // record cart to local storage
 }

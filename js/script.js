@@ -66,9 +66,7 @@ products.forEach((product) => {
                         ${product.rating.count}
                     </div>
                 </div>
-                <div class="card__price">$${formatMoneys(
-                    product.priceCents
-                )}</div>
+                <div class="card__price">$${formatMoneys(product.priceCents)}</div>
                 <select class="card__quality">
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -81,9 +79,9 @@ products.forEach((product) => {
                     <span>Added</span>
                 </div>
             </div>
-            <button class="card__btn" data-product-name ="${
-                product.name
-            }" data-product-id ="${product.id}"-> Add to list</button>
+            <button class="card__btn" data-product-name ="${product.name}" data-product-id ="${
+        product.id
+    }"-> Add to list</button>
         </div>`;
 });
 if (productsHtml) {
@@ -107,23 +105,17 @@ function updateCartQuantity() {
 page.addEventListener("click", function (e) {
     let target = e.target;
     if (target.closest(".card__btn")) {
-        target.previousElementSibling.lastElementChild.classList.add(
-            "__active"
-        );
+        target.previousElementSibling.lastElementChild.classList.add("__active");
         //const productName = target.dataset.productName;
         const productId = target.dataset.productId;
         addToCart(productId);
         updateCartQuantity();
         //addToOrder();  // needs update
-        localStorage.setItem("cart", JSON.stringify(cart)); // record cart to local storage
-        console.log(JSON.parse(localStorage.getItem("cart")));
+
         //--------------------------------------------------------------------
 
-        //localStorage.setItem('cartQuantity', JSON.stringify(cartQuantity));
         setTimeout(() => {
-            target.previousElementSibling.lastElementChild.classList.remove(
-                "__active"
-            );
+            target.previousElementSibling.lastElementChild.classList.remove("__active");
         }, 1.3 * 1000);
     }
 });
