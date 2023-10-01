@@ -1,5 +1,5 @@
 "use strict";
-import { cart, removeFromCart } from "../data/cart.js";
+import { cart, removeFromCart, updateQuantity } from "../data/cart.js";
 import { products } from "../data/data.js";
 import { formatMoneys } from "./utils/money.js";
 export let contentBox = document.querySelector(".checkout__content");
@@ -127,7 +127,7 @@ cart.forEach((elem) => {
                 <div class="cart__quantity">
                     <span>Quantity:</span>
                     <span class="quantity-label">${elem.quantity}</span>
-                    <input class = 'cart__quantity-change' type="text">
+                    <input class = 'cart__quantity-change' type="number" value="1">
                     <div class="cart__btn-box">
                         <button data-product-id='${
                             matchingProduct.id
@@ -191,19 +191,28 @@ cart.forEach((elem) => {
 
 function UpdateCart(button) {
     let productId = button.dataset.productId;
+
+    // for upd btn
+    let updateInput = button.parentElement.previousElementSibling;
+    let quantityNumber = button.parentElement.previousElementSibling.previousElementSibling;
     console.log(productId);
     if (button.classList.contains("cart__btn_up")) {
         if (button.innerText === "Save") {
+            let newQuantity = Number(updateInput.value);
+            updateQuantity(productId, newQuantity);
+            quantityNumber.innerText = `${newQuantity}`;
+            updateInput.classList.remove("__active");
+            quantityNumber.classList.remove("__hidden");
             button.innerHTML = "Update";
+            console.log(cart);
         } else {
-            let updateInput = button.parentElement.previousElementSibling;
-            let quantityNumber = button.parentElement.previousElementSibling.previousElementSibling;
             updateInput.classList.add("__active");
             quantityNumber.classList.add("__hidden");
             console.log(button);
             button.innerHTML = "Save";
         }
     } else if (button.classList.contains("cart__btn_del")) {
+        // for del btn
         removeFromCart(productId);
         const item = document.querySelector(`.cart-id-${productId}`);
         item.remove();
@@ -214,6 +223,7 @@ function UpdateCart(button) {
 
 cartItems.addEventListener("click", function (e) {
     let target = e.target;
+    console.log(target); // for experemnts   //todo functional for delivery option
     if (target.closest(".cart__btn")) {
         UpdateCart(target);
     }

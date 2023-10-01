@@ -1,150 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
-    <title>Amazon</title>
-    <link rel="stylesheet" href="css/main.css">
-</head>
-<body>
-    <div class="wrapper">
-        <header class="header header-checkout">
-            <div class="header__container nav-header">
-                <div class="nav-header-left">
-                    <div class="header__logo">
-                        <a href="index.html">
-                            <img src="img/icons/logo.png" alt="">
-                        </a>
-                    </div>
-                    <div class="header__location location">
-                        <div class="location__body">
-                            <div class="location__icon">
-                                <img src="img/icons/location.svg" alt="">
-                            </div>
-                            <div class="location__text">
-                                <span>Deliver to</span>
-                                <span>Ukraine</span> 
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+        <title>Amazon</title>
+        <link rel="stylesheet" href="css/main.css" />
+    </head>
+    <body>
+        <div class="wrapper">
+            <header class="header header-checkout">
+                <div class="header__container nav-header">
+                    <div class="nav-header-left">
+                        <div class="header__logo">
+                            <a href="index.html">
+                                <img src="img/icons/logo.png" alt="" />
+                            </a>
+                        </div>
+                        <div class="header__location location">
+                            <div class="location__body">
+                                <div class="location__icon">
+                                    <img src="img/icons/location.svg" alt="" />
+                                </div>
+                                <div class="location__text">
+                                    <span>Deliver to</span>
+                                    <span>Ukraine</span>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="nav-header-centr"></div>
+                    <div class="nav-header-right">
+                        <nav class="header__links">
+                            <a href="orders.html" class="header__link">
+                                <span class="link__text link__text-light">Returns</span>
+                                <span class="link__text">& Orders</span>
+                            </a>
+                        </nav>
+                    </div>
+                    <div class="header__burger">
+                        <span></span>
+                    </div>
                 </div>
-                <div class="nav-header-centr">
-                   
-                </div>
-                <div class="nav-header-right">
-                    <nav class="header__links">
-                        <a href="orders.html" class="header__link">
-                            <span class="link__text link__text-light ">Returns</span>
-                            <span class="link__text">& Orders</span>
-                        </a>
-                    </nav>
-                </div>
-                <div class="header__burger">
-                    <span></span>
-                </div>
-            </div>
-        </header>
-        <main class="page">
-            <div class="checkout__container">
-                <h2 class="checkout__title">Review your order</h2>
-                <div class="checkout__content">
-                    <div class="checkout__order-payment order-payment">
-                        <div class="order-payment__info">
-                            <h3 class="order-payment__title">Order Summary</h3>
-                            <div class="order-payment__row">
-                                <div >items(0)</div>
-                                <div class="order-payment__money">0</div>
+            </header>
+            <main class="page">
+                <div class="checkout__container">
+                    <h2 class="checkout__title">Review your order</h2>
+                    <div class="checkout__content">
+                        <div class="checkout__order-payment order-payment">
+                            <div class="order-payment__info">
+                                <h3 class="order-payment__title">Order Summary</h3>
+                                <div class="order-payment__row">
+                                    <div>items(0)</div>
+                                    <div class="order-payment__money">0</div>
+                                </div>
+                                <div class="order-payment__row">
+                                    <div>Shipping & handling:</div>
+                                    <div class="order-payment__money">0</div>
+                                </div>
+                                <div class="order-payment__row">
+                                    <div>Total before tax:</div>
+                                    <div class="order-payment__money">0</div>
+                                </div>
+                                <div class="order-payment__row">
+                                    <div>Estimated tax (10%):</div>
+                                    <div class="order-payment__money">0</div>
+                                </div>
+                                <div class="order-payment__row">
+                                    <div>Order total</div>
+                                    <div class="order-payment__money">0</div>
+                                </div>
                             </div>
-                            <div class="order-payment__row">
-                                <div >Shipping & handling:</div>
-                                <div class="order-payment__money">0</div>
+                            <div class="order-payment__use-service use-service">
+                                <span class="use-service__text">Use PayPal</span>
+                                <input type="checkbox" class="use-service__check" />
                             </div>
-                            <div class="order-payment__row">
-                                <div >Total before tax:</div>
-                                <div class="order-payment__money">0</div>
-                            </div>
-                            <div class="order-payment__row">
-                                <div >Estimated tax (10%):</div>
-                                <div class="order-payment__money">0</div>
-                            </div>
-                            <div class="order-payment__row">
-                                <div >Order total</div>
-                                <div class="order-payment__money">0</div>
-                            </div>
+                            <div class="order-payment__btn">Place your order</div>
                         </div>
-                        <div class="order-payment__use-service use-service">
-                            <span class="use-service__text">Use PayPal</span>
-                            <input type="checkbox" class="use-service__check">
+                    </div>
+                </div>
+            </main>
+            <!-- Footer-->
+            <footer class="footer">
+                <button class="footer__btn">Back to top</button>
+                <div class="footer__content">
+                    <div class="footer__items">
+                        <div class="footer__item item">
+                            <h3 class="item__title">Get to Know Us</h3>
+                            <ul class="item__links">
+                                <li class="item__link"><a href="#">Careers</a></li>
+                                <li class="item__link"><a href="#">Blog</a></li>
+                                <li class="item__link"><a href="#">About Amazon</a></li>
+                                <li class="item__link"><a href="#">Investor Relations</a></li>
+                                <li class="item__link"><a href="#">Amazon Devices</a></li>
+                            </ul>
                         </div>
-                        <div class="order-payment__btn">Place your order</div>
+                        <div class="footer__item item">
+                            <h3 class="item__title">Make Money with Us</h3>
+                            <ul class="item__links">
+                                <li class="item__link"><a href="#">Sell products on Amazon</a></li>
+                                <li class="item__link"><a href="#">Become an Affiliate</a></li>
+                                <li class="item__link"><a href="#">Advertise Your Products</a></li>
+                                <li class="item__link"><a href="#">Self-Publish with Us</a></li>
+                                <li class="item__link"><a href="#">Host an Amazon Hub</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer__item item">
+                            <h3 class="item__title">Amazon Payment Products</h3>
+                            <ul class="item__links">
+                                <li class="item__link"><a href="#">Amazon Business Card</a></li>
+                                <li class="item__link"><a href="#">Shop with Points</a></li>
+                                <li class="item__link"><a href="#"></a>Reload Your Balance</li>
+                                <li class="item__link">
+                                    <a href="#">Amazon Currency Converter</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="footer__item item">
+                            <h3 class="item__title">Let Us Help You</h3>
+                            <ul class="item__links">
+                                <li class="item__link"><a href="#">Amazon and COVID-19</a></li>
+                                <li class="item__link"><a href="#"></a>Your Account</li>
+                                <li class="item__link"><a href="#"></a>Your Orders</li>
+                                <li class="item__link">
+                                    <a href="#"></a>Shipping Rates & Policies
+                                </li>
+                                <li class="item__link"><a href="#"></a>Returns & Replacements</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="footer__logo_box">
+                        <div class="footer__logo">
+                            <img src="img/icons/logo.png" alt="logo" />
+                        </div>
+                    </div>
+                    <div class="footer__text">
+                        <span>Conditions of Use</span>
+                        <span>Your Ads</span>
+                        <span>Privacy Choices</span>
+                        <br />
+                        <span>© 1996-2023, Amazon.com, Inc. or its affiliates</span>
                     </div>
                 </div>
-            </div>
-        </main>
-        <!-- Footer-->
-        <footer class="footer">
-            <button class="footer__btn">Back to top</button>
-            <div class="footer__content">
-                <div class="footer__items">
-                    <div class="footer__item item">
-                        <h3 class="item__title">Get to Know Us</h3>
-                        <ul class="item__links">
-                            <li class="item__link"><a href="#">Careers</a></li>
-                            <li class="item__link"><a href="#">Blog</a></li>
-                            <li class="item__link"><a href="#">About Amazon</a></li>
-                            <li class="item__link"><a href="#">Investor Relations</a></li>
-                            <li class="item__link"><a href="#">Amazon Devices</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer__item item">
-                        <h3 class="item__title">Make Money with Us</h3>
-                        <ul class="item__links">
-                            <li class="item__link"><a href="#">Sell products on Amazon</a></li>
-                            <li class="item__link"><a href="#">Become an Affiliate</a></li>
-                            <li class="item__link"><a href="#">Advertise Your Products</a></li>
-                            <li class="item__link"><a href="#">Self-Publish with Us</a></li>
-                            <li class="item__link"><a href="#">Host an Amazon Hub</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer__item item">
-                        <h3 class="item__title">Amazon Payment Products</h3>
-                        <ul class="item__links">
-                            <li class="item__link"><a href="#">Amazon Business Card</a></li>
-                            <li class="item__link"><a href="#">Shop with Points</a></li>
-                            <li class="item__link"><a href="#"></a>Reload Your Balance</li>
-                            <li class="item__link"><a href="#">Amazon Currency Converter</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer__item item">
-                        <h3 class="item__title">Let Us Help You</h3>
-                        <ul class="item__links">
-                            <li class="item__link"><a href="#">Amazon and COVID-19</a></li>
-                            <li class="item__link"><a href="#"></a>Your Account</li>
-                            <li class="item__link"><a href="#"></a>Your Orders</li>
-                            <li class="item__link"><a href="#"></a>Shipping Rates & Policies</li>
-                            <li class="item__link"><a href="#"></a>Returns & Replacements</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="footer__logo_box">
-                    <div class="footer__logo">
-                        <img src="img/icons/logo.png" alt="logo">
-                    </div>
-                </div>
-                <div class="footer__text">
-                    <span>Conditions of Use</span>
-                    <span>Your Ads</span>
-                    <span>Privacy Choices</span>
-                    <br>
-                    <span>© 1996-2023, Amazon.com, Inc. or its affiliates</span>
-                </div>
-            </div>
-        </footer>
-    </div>
-   <script type="module" src="js/checkout.js"></script>
-</body>
+            </footer>
+        </div>
+        <script type="module" src="js/checkout.js"></script>
+    </body>
 </html>

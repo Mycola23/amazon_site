@@ -48,3 +48,12 @@ export function removeFromCart(productId) {
 function saveToStorage() {
     localStorage.setItem("cart", JSON.stringify(cart)); // record cart to local storage
 }
+
+export function updateQuantity(productId, number) {
+    cart.forEach((item) => {
+        if (item.productId === productId) {
+            item.quantity = number;
+        }
+    });
+    saveToStorage();
+}
