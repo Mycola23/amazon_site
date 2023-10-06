@@ -9,7 +9,7 @@ import { formatMoneys } from "./utils/money.js";
 const searchInput = document.querySelector(".search__input");
 const burgerMenu = document.querySelector(".header__burger");
 const menu = document.querySelector(".nav-header-right");
-const counter = document.querySelector(".link__counter");
+export const counter = document.querySelector(".link__counter");
 const linkCart = document.querySelector(".link-cart");
 //const cartBtn = document.querySelector('.link-cart');
 //main
@@ -36,6 +36,8 @@ burgerMenu.addEventListener("click", () => {
     burgerMenu.classList.toggle("__active");
     menu.classList.toggle("__active");
 });
+
+counter.innerHTML = `${JSON.parse(localStorage.getItem("cart-quantity")) || 0}`; // todo create file with function save quantity of cart щоб обійти перевірку файлу scripts.js
 
 // main page
 
@@ -89,17 +91,18 @@ if (productsHtml) {
     mainContainer.append(item);
 }
 
-function updateCartQuantity() {
-    let cartQuantity = 0; // todo local storage   work that code don`t repeat number двічі
+export function updateCartQuantity() {
+    let cartQuantity = 0; //JSON.parse(localStorage.getItem("cart-quantity"))
+    // todo local storage   work that code don`t repeat number двічі
     cart.forEach((item) => {
         cartQuantity += item.quantity;
     });
-    counter.innerHTML = `${cartQuantity}`;
     if (cartQuantity > 100) {
         counter.style.top = "-5px";
         counter.style.left = "calc(50% + 7px)";
     }
-    //localStorage.setItem('cartQuantity', cartQuantity);
+    localStorage.setItem("cart-quantity", JSON.stringify(cartQuantity));
+    counter.innerHTML = `${JSON.parse(localStorage.getItem("cart-quantity"))}`;
 }
 
 page.addEventListener("click", function (e) {

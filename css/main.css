@@ -851,6 +851,7 @@ body {
 
 .cart__quantity .quantity-label.__hidden {
   opacity: 0;
+  display: none;
 }
 
 .cart__quantity input {
@@ -858,10 +859,18 @@ body {
 }
 
 .cart__quantity input.__active {
+  text-align: center;
   display: block;
   width: 50%;
-  padding: 5px;
-  background: #46434071;
+  margin-left: 10px;
+  padding: 6px;
+  border-radius: 20px;
+  background: #f2c200;
+  color: #000;
+  font-weight: 700;
+  font-size: calc(14px + 4 * ((100vw - 320px) / 1120));
+  line-height: calc(18px + 2 * ((100vw - 320px) / 1120));
+  cursor: pointer;
 }
 
 .cart__btn {

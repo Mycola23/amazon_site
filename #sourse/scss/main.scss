@@ -646,11 +646,13 @@ body {
         align-items: center;
         text-align: center;
         flex-wrap: wrap;
+
         .quantity-label {
             margin: 0px 10px 0;
         }
         .quantity-label.__hidden {
             opacity: 0;
+            display: none;
         }
 
         input {
@@ -658,10 +660,18 @@ body {
             //opacity: 0;
         }
         input.__active {
+            text-align: center;
             display: block;
             width: 50%;
-            padding: 5px;
-            background: #46434071;
+            margin-left: 10px;
+            padding: 6px;
+            border-radius: 20px;
+            background: #f2c200;
+            color: #000;
+            font-weight: 700;
+            @include adaptive-value(font-size, 14, 18, $minWidth, $maxWidth);
+            @include adaptive-value(line-height, 18, 20, $minWidth, $maxWidth);
+            cursor: pointer;
         }
     }
 

@@ -2,6 +2,7 @@
 import { cart, removeFromCart, updateQuantity } from "../data/cart.js";
 import { products } from "../data/data.js";
 import { formatMoneys } from "./utils/money.js";
+//import { counter, updateCartQuantity } from "./script.js";
 export let contentBox = document.querySelector(".checkout__content");
 
 let cartItems = document.createElement("div");
@@ -188,6 +189,37 @@ cart.forEach((elem) => {
     //console.log(cartItems);
     contentBox.prepend(cartItems); // todo когда мі на гл странице , других страниц не существует по етому мі получаем null in contentBox we need to deal with it
 });
+//------ functional for update btn
+function functionalOfUpdate(updateInput, quantityNumber, button) {
+    updateInput.classList.add("__active");
+    quantityNumber.classList.add("__hidden");
+    console.log(button);
+    button.innerHTML = "Save";
+}
+function functionalOfSave(updateInput, quantityNumber, button, productId) {
+    // todo if newQuantity = 0 , we`ll delete this card of product from cart
+    let newQuantity = Number(updateInput.value);
+    if (newQuantity === 0) {
+        functionalOfDelete(productId);
+    } else {
+        updateQuantity(productId, newQuantity);
+        quantityNumber.innerText = `${newQuantity}`;
+        updateInput.classList.remove("__active");
+        quantityNumber.classList.remove("__hidden");
+        button.innerHTML = "Update";
+    }
+}
+//----------------------------------------
+
+//----- functional for del btn
+function functionalOfDelete(productId) {
+    removeFromCart(productId);
+    const item = document.querySelector(`.cart-id-${productId}`);
+    item.remove();
+    console.log(item);
+}
+
+//----------------------------------
 
 function UpdateCart(button) {
     let productId = button.dataset.productId;
@@ -196,28 +228,22 @@ function UpdateCart(button) {
     let updateInput = button.parentElement.previousElementSibling;
     let quantityNumber = button.parentElement.previousElementSibling.previousElementSibling;
     console.log(productId);
+    cartItems.addEventListener("keydown", function (e) {
+        if (e.key === "Enter") {
+            functionalOfSave(updateInput, quantityNumber, button, productId);
+        }
+    });
     if (button.classList.contains("cart__btn_up")) {
         if (button.innerText === "Save") {
-            let newQuantity = Number(updateInput.value);
-            updateQuantity(productId, newQuantity);
-            quantityNumber.innerText = `${newQuantity}`;
-            updateInput.classList.remove("__active");
-            quantityNumber.classList.remove("__hidden");
-            button.innerHTML = "Update";
-            console.log(cart);
+            functionalOfSave(updateInput, quantityNumber, button, productId);
         } else {
-            updateInput.classList.add("__active");
-            quantityNumber.classList.add("__hidden");
-            console.log(button);
-            button.innerHTML = "Save";
+            functionalOfUpdate(updateInput, quantityNumber, button);
         }
     } else if (button.classList.contains("cart__btn_del")) {
         // for del btn
-        removeFromCart(productId);
-        const item = document.querySelector(`.cart-id-${productId}`);
-        item.remove();
-        console.log(item);
+        functionalOfDelete(productId);
     }
+    //updateCartQuantity();
     //todo full functional of  firstbtn    &   second reaction on btn del
 }
 
