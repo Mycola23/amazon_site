@@ -104,6 +104,11 @@ console.log(cartItems);
 });*/
 
 // Experements   (тобто ми відкатилися до старої версії // return to old version of website )
+const DeleveriPrices = {
+    1: 0,
+    2: 4.99,
+    3: 7.99,
+};
 cart.forEach((elem) => {
     const productId = elem.productId;
     let matchingProduct;
@@ -130,54 +135,44 @@ cart.forEach((elem) => {
                     <span class="quantity-label">${elem.quantity}</span>
                     <input class = 'cart__quantity-change' type="number" value="1">
                     <div class="cart__btn-box">
-                        <button data-product-id='${
-                            matchingProduct.id
-                        }' class="cart__btn cart__btn_up">Update</button>
-                        <button data-product-id='${
-                            matchingProduct.id
-                        }' class="cart__btn cart__btn_del">Delete</button>
+                        <button data-product-id='${matchingProduct.id}' class="cart__btn cart__btn_up">Update</button>
+                        <button data-product-id='${matchingProduct.id}' class="cart__btn cart__btn_del">Delete</button>
                     </div>
                 </div>
             </div>
             <div class="cart__delivery-options delivery-options">
                 <h3 class="delivery-options__title">Choose a delivery option</h3>
                 <div class="delivery-option">
-                    <input type="radio" class="delivery-option__check" name="delivery-option-${
-                        matchingProduct.id
-                    }">
-                    <div>
+                    <input type="radio" class="delivery-option__check" name="delivery-option-${matchingProduct.id}" value="${DeleveriPrices[1]}" id = "delivery-option-${matchingProduct.id}-${DeleveriPrices[1]}">
+                    <div class ='delivery-option__content'>
                         <div class="delivery-option__date">
                             Saturday, September 30
                         </div>
-                        <div class="delivery-option__price">
+                        <label for="delivery-option-${matchingProduct.id}-${DeleveriPrices[1]}" class="delivery-option__price">
                             Free - Shipping
-                        </div>
+                        </label>
                     </div>
                 </div>
                 <div class="delivery-option">
-                    <input type="radio" class="delivery-option__check"  name="delivery-option-${
-                        matchingProduct.id
-                    }">
-                    <div>
-                        <div class="delivery-option__date">  
-                            Tuesday, September 26
-                        </div>
-                        <div class="delivery-option__price">
-                            $4.99 - Shipping
-                        </div>
-                    </div>
-                </div>
-                <div class="delivery-option">
-                    <input type="radio" class="delivery-option__check"  name="delivery-option-${
-                        matchingProduct.id
-                    }">
-                    <div>
+                    <input type="radio" class="delivery-option__check" name="delivery-option-${matchingProduct.id}" value="${DeleveriPrices[2]}" id = "delivery-option-${matchingProduct.id}-${DeleveriPrices[2]}">
+                    <div class ='delivery-option__content'>
                         <div class="delivery-option__date">
                             Thursday, September 28
                         </div>
-                        <div class="delivery-option__price">
-                            $7.99 - Shipping
+                        <label for="delivery-option-${matchingProduct.id}-${DeleveriPrices[2]}" class="delivery-option__price">
+                            $4.99 - Shipping
+                        </label>
+                    </div>
+                </div>
+                <div class="delivery-option">
+                    <input type="radio" class="delivery-option__check" name="delivery-option-${matchingProduct.id}" value="${DeleveriPrices[3]}" id = "delivery-option-${matchingProduct.id}-${DeleveriPrices[3]}">
+                    <div class ='delivery-option__content'>
+                        <div class="delivery-option__date">
+                            Tuesday, September 26 
                         </div>
+                        <label for="delivery-option-${matchingProduct.id}-${DeleveriPrices[3]}" class="delivery-option__price">
+                            $7.99 - Shipping
+                        </label>
                     </div>
                 </div>
             </div>
@@ -244,7 +239,6 @@ function UpdateCart(button) {
         functionalOfDelete(productId);
     }
     //updateCartQuantity();
-    //todo full functional of  firstbtn    &   second reaction on btn del
 }
 
 cartItems.addEventListener("click", function (e) {
