@@ -917,7 +917,7 @@ body {
   margin-bottom: 15px;
 }
 
-.delivery-option div {
+.delivery-option__content {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
@@ -1058,7 +1058,7 @@ body {
     margin-left: 10px;
   }
   .cart__quantity span {
-    margin-left: 10px;
+    margin-left: 0px;
   }
 }
 

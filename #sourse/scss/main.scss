@@ -708,12 +708,10 @@ body {
 .delivery-option {
     display: flex;
     margin-bottom: 15px;
-    & div {
+
+    &__content {
         align-self: center;
         margin-left: 8px;
-    }
-
-    &__check {
     }
 
     &__date {
@@ -721,6 +719,9 @@ body {
         font-weight: 600;
         margin-bottom: 5px;
         @include adaptive-value(line-height, 18, 24, $minWidth, $maxWidth);
+    }
+
+    &__check {
     }
 
     &__price {
@@ -839,7 +840,7 @@ body {
             }
             span {
                 //justify-items: flex-start;
-                margin-left: 10px;
+                margin-left: 0px;
             }
         }
     }
