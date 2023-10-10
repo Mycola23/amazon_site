@@ -2,7 +2,7 @@
 import { cart, removeFromCart, updateQuantity } from "../data/cart.js";
 import { products } from "../data/data.js";
 import { formatMoneys } from "./utils/money.js";
-//import { counter, updateCartQuantity } from "./script.js";
+
 export let contentBox = document.querySelector(".checkout__content");
 
 let cartItems = document.createElement("div");
@@ -238,7 +238,7 @@ function UpdateCart(button) {
         // for del btn
         functionalOfDelete(productId);
     }
-    //updateCartQuantity();
+    UpdateCartQuantityFromCheckout(cart);
 }
 
 cartItems.addEventListener("click", function (e) {
@@ -248,3 +248,38 @@ cartItems.addEventListener("click", function (e) {
         UpdateCart(target);
     }
 });
+
+function UpdateCartQuantityFromCheckout(cart) {
+    let cartQuantity = 0;
+    cart.forEach((item) => {
+        cartQuantity += item.quantity;
+    });
+    localStorage.setItem("cart-quantity", JSON.stringify(cartQuantity));
+}
+
+function showOrder(params) {
+    let orderHtml = `
+    
+    <h3 class="order-payment__title">Order Summary</h3>
+    <div class="order-payment__row">
+        <div>items()</div>
+        <div class="order-payment__money">0</div>
+    </div>
+    <div class="order-payment__row">
+        <div>Shipping & handling:</div>
+        <div class="order-payment__money">0</div>
+    </div>
+    <div class="order-payment__row">
+        <div>Total before tax:</div>
+        <div class="order-payment__money">0</div>
+    </div>
+    <div class="order-payment__row">
+        <div>Estimated tax (10%):</div>
+        <div class="order-payment__money">0</div>
+    </div>
+    <div class="order-payment__row">
+        <div>Order total</div>
+        <div class="order-payment__money">0</div>
+    </div>
+    `;
+}

@@ -81,9 +81,7 @@ products.forEach((product) => {
                     <span>Added</span>
                 </div>
             </div>
-            <button class="card__btn" data-product-name ="${product.name}" data-product-id ="${
-        product.id
-    }"-> Add to list</button>
+            <button class="card__btn" data-product-name ="${product.name}" data-product-id ="${product.id}"-> Add to list</button>
         </div>`;
 });
 if (productsHtml) {
@@ -91,7 +89,7 @@ if (productsHtml) {
     mainContainer.append(item);
 }
 
-export function updateCartQuantity() {
+function updateCartQuantity() {
     let cartQuantity = 0; //JSON.parse(localStorage.getItem("cart-quantity"))
     // todo local storage   work that code don`t repeat number двічі
     cart.forEach((item) => {
