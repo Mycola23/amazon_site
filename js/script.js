@@ -81,7 +81,7 @@ products.forEach((product) => {
                     <span>Added</span>
                 </div>
             </div>
-            <button class="card__btn" data-product-name ="${product.name}" data-product-id ="${product.id}"-> Add to list</button>
+            <button class="card__btn" data-product-name ="${product.name}" data-product-id ="${product.id}" data-product-price = "${product.priceCents}"> Add to list</button>
         </div>`;
 });
 if (productsHtml) {
@@ -109,7 +109,8 @@ page.addEventListener("click", function (e) {
         target.previousElementSibling.lastElementChild.classList.add("__active");
         //const productName = target.dataset.productName;
         const productId = target.dataset.productId;
-        addToCart(productId);
+        const productprice = target.dataset.productPrice;
+        addToCart(productId, productprice);
         updateCartQuantity();
         //addToOrder();  // needs update
 

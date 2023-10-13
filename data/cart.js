@@ -14,7 +14,7 @@ export let cart = JSON.parse(localStorage.getItem("cart")) || [
         quantity: 3,
     },
 ];
-export function addToCart(productId) {
+export function addToCart(productId, productPrice) {
     // check id -------------------------------------------------
     let savedId;
     cart.forEach((item) => {
@@ -29,6 +29,7 @@ export function addToCart(productId) {
         cart.push({
             productId: productId,
             quantity: 1,
+            price: productPrice,
         });
     }
     saveToStorage();
@@ -45,7 +46,7 @@ export function removeFromCart(productId) {
     saveToStorage();
 }
 
-function saveToStorage() {
+export function saveToStorage() {
     localStorage.setItem("cart", JSON.stringify(cart)); // record cart to local storage
 }
 
