@@ -137,3 +137,18 @@ back.addEventListener("click", () => {
 linkCart.addEventListener("click", () => {
     linkCart.classList.toggle("__active");
 });
+
+// lazy loading
+
+const cardsOnPage = document.querySelectorAll(".card");
+
+const observer = new IntersectionObserver((entries) => {
+    // IntersectionObserver - спостерігач перехресть чи перехрещюється видимий простір(в даному випадку екран спостерігача) з контентом
+    entries.forEach((entry) => {
+        entry.target.classList.toggle("show", entry.isIntersecting);
+    });
+    console.log(entries);
+});
+cardsOnPage.forEach((card) => {
+    observer.observe(card);
+});

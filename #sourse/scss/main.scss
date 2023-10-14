@@ -290,6 +290,7 @@ body {
     background: #14192018; //#c5c8c950;
     padding: 15px 15px 15px 10px;
     border-radius: 5px;
+    opacity: 0;
 
     &__img {
         flex: 1 1 auto; /* 234/659 */
@@ -426,7 +427,9 @@ body {
         color: rgb(255, 216, 20);
     }
 }
-
+.card.show {
+    opacity: 1;
+}
 // footer
 
 .footer {
