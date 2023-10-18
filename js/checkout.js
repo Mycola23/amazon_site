@@ -146,15 +146,18 @@ function UpdateCart(button) {
         functionalOfDelete(productId);
     }
     UpdateCartQuantityFromCheckout(cart);
+    countOrderSum(cart);
 }
 //----------------------------------
 cartItems.addEventListener("click", function (e) {
     let target = e.target;
-    console.log(target); // for experemnts   //todo functional for delivery option
+    console.log(target);
+    // for experemnts   //todo functional for delivery option
     if (target.closest(".cart__btn")) {
         UpdateCart(target);
     } else if (target.closest(".delivery-option__check")) {
         addDeliveryPrice(target);
+        countOrderSum(cart);
     }
 });
 
@@ -178,7 +181,22 @@ function addDeliveryPrice(deliveryOption) {
         }
     });
     saveToStorage();
-    console.log(cart);
+}
+
+function countOrderSum(cart) {
+    let totalSum = 0;
+    const tax = 10;
+    let totalSumBeforeTax = 0;
+    let shippingSum = 0;
+
+    cart.forEach((product) => {
+        let productQuantity = Number(product.quantity);
+        let productPrice = Number(product.price);
+        shippingSum += Number(product["delivery-price"]);
+        totalSumBeforeTax += productQuantity * productPrice;
+    });
+    totalSum = totalSumBeforeTax * (tax / 100) + totalSumBeforeTax; //todo start function FormatMoney when we`ll change html
+    console.log(totalSumBeforeTax, shippingSum, totalSum);
 }
 
 function showOrder(params) {
