@@ -9,7 +9,7 @@ let cartItems = document.createElement("div");
 cartItems.className = `checkout__order order`;
 let itemHTML = "";
 
-console.log(cartItems);
+const orderPayment = document.querySelector(".order-payment__info");
 
 // Experements   (тобто ми відкатилися до старої версії // return to old version of website )
 const DeleveriPrices = {
@@ -51,7 +51,7 @@ cart.forEach((elem) => {
             <div class="cart__delivery-options delivery-options">
                 <h3 class="delivery-options__title">Choose a delivery option</h3>
                 <div class="delivery-option">
-                    <input type="radio" class="delivery-option__check" name="delivery-option-${matchingProduct.id}" value="${DeleveriPrices[1]}" id = "delivery-option-${matchingProduct.id}-${DeleveriPrices[1]}">
+                    <input type="radio" class="delivery-option__check" checked name="delivery-option-${matchingProduct.id}" value="${DeleveriPrices[1]}" id = "delivery-option-${matchingProduct.id}-${DeleveriPrices[1]}">
                     <div class ='delivery-option__content'>
                         <div class="delivery-option__date">
                             Saturday, September 30
@@ -146,18 +146,16 @@ function UpdateCart(button) {
         functionalOfDelete(productId);
     }
     UpdateCartQuantityFromCheckout(cart);
-    countOrderSum(cart);
+    showOrder(cart);
 }
 //----------------------------------
 cartItems.addEventListener("click", function (e) {
     let target = e.target;
     console.log(target);
-    // for experemnts   //todo functional for delivery option
     if (target.closest(".cart__btn")) {
         UpdateCart(target);
     } else if (target.closest(".delivery-option__check")) {
         addDeliveryPrice(target);
-        countOrderSum(cart);
     }
 });
 
@@ -181,47 +179,65 @@ function addDeliveryPrice(deliveryOption) {
         }
     });
     saveToStorage();
+    showOrder(cart);
 }
 
 function countOrderSum(cart) {
-    let totalSum = 0;
     const tax = 10;
-    let totalSumBeforeTax = 0;
+    let totalSum = 0;
+    let sumPrices = 0;
     let shippingSum = 0;
-
+    let totalSumBeforeTax = 0;
+    let orderTax = 0;
     cart.forEach((product) => {
         let productQuantity = Number(product.quantity);
         let productPrice = Number(product.price);
+        console.log(shippingSum);
         shippingSum += Number(product["delivery-price"]);
-        totalSumBeforeTax += productQuantity * productPrice;
+        console.log(shippingSum);
+        sumPrices += productQuantity * productPrice;
     });
-    totalSum = totalSumBeforeTax * (tax / 100) + totalSumBeforeTax; //todo start function FormatMoney when we`ll change html
-    console.log(totalSumBeforeTax, shippingSum, totalSum);
+
+    orderTax = sumPrices * (tax / 100);
+    totalSum = orderTax + sumPrices + shippingSum;
+    totalSumBeforeTax = totalSum - orderTax;
+    //Agjgj               //todo start function FormatMoney when we`ll change html
+    return { totalSum, sumPrices, shippingSum, totalSumBeforeTax, orderTax };
 }
 
-function showOrder(params) {
+function showOrder(cart) {
+    // todo in work version of program
+
+    const numbers = countOrderSum(cart);
+    console.log(numbers);
     let orderHtml = `
-    
-    <h3 class="order-payment__title">Order Summary</h3>
-    <div class="order-payment__row">
-        <div>items()</div>
-        <div class="order-payment__money">0</div>
-    </div>
-    <div class="order-payment__row">
-        <div>Shipping & handling:</div>
-        <div class="order-payment__money">0</div>
-    </div>
-    <div class="order-payment__row">
-        <div>Total before tax:</div>
-        <div class="order-payment__money">0</div>
-    </div>
-    <div class="order-payment__row">
-        <div>Estimated tax (10%):</div>
-        <div class="order-payment__money">0</div>
-    </div>
-    <div class="order-payment__row">
-        <div>Order total</div>
-        <div class="order-payment__money">0</div>
-    </div>
-    `;
+            <h3 class="order-payment__title">Order Summary</h3>
+            <div class="order-payment__row">
+                <div>items(${JSON.parse(localStorage.getItem("cart-quantity"))})</div>
+                <div class="order-payment__money">$${formatMoneys(numbers.sumPrices)}</div>
+            </div>
+            <div class="order-payment__row">
+                <div>Shipping & handling:</div>
+                <div class="order-payment__money">$${formatMoneys(numbers.shippingSum)}</div>
+            </div>
+            <div class="order-payment__row">
+                <div>Total before tax:</div>
+                <div class="order-payment__money">$${formatMoneys(numbers.totalSumBeforeTax)}</div>
+            </div>
+            <div class="order-payment__row">
+                <div>Estimated tax (10%):</div>
+                <div class="order-payment__money">$${formatMoneys(numbers.orderTax)}</div>
+            </div>
+            <div class="order-payment__row">
+                <div>Order total</div>
+                <div class="order-payment__money">$${formatMoneys(numbers.totalSum)}</div>
+            </div>
+        `;
+
+    let orderPaymentContainer = document.createElement("div");
+    //orderPaymentContainer.innerHTML = orderHtml;
+    orderPayment.innerHTML = orderHtml;
+    console.log(orderPayment);
 }
+
+// todo зразу повинно показувати результат немовби користувач вибрав безкоштовну доставку,
