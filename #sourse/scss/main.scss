@@ -947,6 +947,11 @@ body {
                 min-width: 60px;
             }
         }
+
+        &__link:first-child,
+        &__link:last-child {
+            flex: 0 1 auto;
+        }
     }
     .header-checkout {
         height: 80px;

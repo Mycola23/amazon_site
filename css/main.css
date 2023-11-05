@@ -1184,6 +1184,11 @@ body {
   .header .search__input {
     min-width: 60px;
   }
+  .header__link:first-child, .header__link:last-child {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 1 auto;
+            flex: 0 1 auto;
+  }
   .header-checkout {
     height: 80px;
   }
