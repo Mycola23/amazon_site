@@ -104,6 +104,7 @@ function functionalOfUpdate(updateInput, quantityNumber, button) {
 function functionalOfSave(updateInput, quantityNumber, button, productId) {
     // todo if newQuantity = 0 , we`ll delete this card of product from cart
     let newQuantity = Number(updateInput.value);
+    console.log(newQuantity);
     if (newQuantity === 0) {
         functionalOfDelete(productId);
     } else {
@@ -133,6 +134,8 @@ function UpdateCart(button) {
     cartItems.addEventListener("keydown", function (e) {
         if (e.key === "Enter") {
             functionalOfSave(updateInput, quantityNumber, button, productId);
+            UpdateCartQuantityFromCheckout(cart);
+            showOrder(cart);
         }
     });
     if (button.classList.contains("cart__btn_up")) {
@@ -239,5 +242,8 @@ function showOrder(cart) {
     orderPayment.innerHTML = orderHtml;
     console.log(orderPayment);
 }
+showOrder(cart);
+//*complete  зразу після завантаження сторінки повинно показувати результат немовби користувач вибрав безкооставку,
 
-// todo зразу повинно показувати результат немовби користувач вибрав безкоштовну доставку,
+//* not nessessory
+// todo  checkout must save user`s activiti to localStotorage and then use it to load all complete page
