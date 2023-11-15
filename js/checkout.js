@@ -39,8 +39,10 @@ cart.forEach((elem) => {
                 <div class="cart__name">${matchingProduct.name}</div>
                 <div class="cart__price">$${formatMoneys(matchingProduct.priceCents)}</div>
                 <div class="cart__quantity">
-                    <span>Quantity:</span>
-                    <span class="quantity-label">${elem.quantity}</span>
+                    <div class ='cart__quantity-box'>
+                        <span>Quantity:</span>
+                        <span class="quantity-label">${elem.quantity}</span>
+                    </div>
                     <input class = 'cart__quantity-change' type="number" value="1">
                     <div class="cart__btn-box">
                         <button data-product-id='${matchingProduct.id}' class="cart__btn cart__btn_up">Update</button>
@@ -129,8 +131,8 @@ function UpdateCart(button) {
 
     // for upd btn
     let updateInput = button.parentElement.previousElementSibling;
-    let quantityNumber = button.parentElement.previousElementSibling.previousElementSibling;
-    console.log(productId);
+    let quantityNumber = button.parentElement.previousElementSibling.previousElementSibling.lastElementChild; //  quantitynumber block
+    console.log(quantityNumber);
     cartItems.addEventListener("keydown", function (e) {
         if (e.key === "Enter") {
             functionalOfSave(updateInput, quantityNumber, button, productId);
@@ -247,3 +249,4 @@ showOrder(cart);
 
 //* not nessessory
 // todo  checkout must save user`s activiti to localStotorage and then use it to load all complete page
+// todo if cart = 0 {quantity of products} => show block with (message over button and has text = ' Your cart is empty',button that is a link on main page, has text = ' Go Shopping!'
