@@ -2,7 +2,8 @@
 import { cart, removeFromCart, updateQuantity, saveToStorage } from "../data/cart.js";
 import { products } from "../data/data.js";
 import { formatMoneys } from "./utils/money.js";
-
+import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
+import { deliveryOptions } from "../data/deliveryOptions.js";
 export let contentBox = document.querySelector(".checkout__content");
 
 let cartItems = document.createElement("div");
@@ -17,8 +18,8 @@ const DeleveriPrices = {
     2: 499,
     3: 799,
 };
-cart.forEach((elem) => {
-    const productId = elem.productId;
+cart.forEach((cartItem) => {
+    const productId = cartItem.productId;
     let matchingProduct;
     products.forEach((product) => {
         if (productId === product.id) {
@@ -41,7 +42,7 @@ cart.forEach((elem) => {
                 <div class="cart__quantity">
                     <div class ='cart__quantity-box'>
                         <span>Quantity:</span>
-                        <span class="quantity-label">${elem.quantity}</span>
+                        <span class="quantity-label">${cartItem.quantity}</span>
                     </div>
                     <input class = 'cart__quantity-change' type="number" value="1">
                     <div class="cart__btn-box">
@@ -52,39 +53,7 @@ cart.forEach((elem) => {
             </div>
             <div class="cart__delivery-options delivery-options">
                 <h3 class="delivery-options__title">Choose a delivery option</h3>
-                <div class="delivery-option">
-                    <input type="radio" class="delivery-option__check" checked name="delivery-option-${matchingProduct.id}" value="${DeleveriPrices[1]}" id = "delivery-option-${matchingProduct.id}-${DeleveriPrices[1]}">
-                    <div class ='delivery-option__content'>
-                        <div class="delivery-option__date">
-                            Saturday, September 30
-                        </div>
-                        <label for="delivery-option-${matchingProduct.id}-${DeleveriPrices[1]}" class="delivery-option__price">
-                            Free - Shipping
-                        </label>
-                    </div>
-                </div>
-                <div class="delivery-option">
-                    <input type="radio" class="delivery-option__check" name="delivery-option-${matchingProduct.id}" value="${DeleveriPrices[2]}" id = "delivery-option-${matchingProduct.id}-${DeleveriPrices[2]}">
-                    <div class ='delivery-option__content'>
-                        <div class="delivery-option__date">
-                            Thursday, September 28
-                        </div>
-                        <label for="delivery-option-${matchingProduct.id}-${DeleveriPrices[2]}" class="delivery-option__price">
-                            $4.99 - Shipping
-                        </label>
-                    </div>
-                </div>
-                <div class="delivery-option">
-                    <input type="radio" class="delivery-option__check" name="delivery-option-${matchingProduct.id}" value="${DeleveriPrices[3]}" id = "delivery-option-${matchingProduct.id}-${DeleveriPrices[3]}">
-                    <div class ='delivery-option__content'>
-                        <div class="delivery-option__date">
-                            Tuesday, September 26 
-                        </div>
-                        <label for="delivery-option-${matchingProduct.id}-${DeleveriPrices[3]}" class="delivery-option__price">
-                            $7.99 - Shipping
-                        </label>
-                    </div>
-                </div>
+                ${deliveryOptionsHTML(matchingProduct, cartItem)}
             </div>
         </div>
     </div>
@@ -94,19 +63,46 @@ cart.forEach((elem) => {
     //console.log(cartItems);
     contentBox.prepend(cartItems); // todo когда мі на гл странице , других страниц не существует по етому мі получаем null in contentBox we need to deal with it
 });
+// functional of delivery options
+
+function deliveryOptionsHTML(matchingProduct, cartItem) {
+    let html = ``;
+
+    deliveryOptions.forEach((deliveryOption) => {
+        const today = dayjs();
+        const deliveryDate = today.add(deliveryOption.deliveryDays, "days");
+        const dateString = deliveryDate.format("dddd, MMMM D");
+        const priceString = deliveryOption.priceCents === 0 ? "Free" : `$${formatMoneys(deliveryOption.priceCents)} -`;
+        const isChecked = deliveryOption.id === cartItem.deliveryOptionId ? "checked" : "";
+        //console.log(priceString); //todo it works
+        html += `   <div class="delivery-option">
+                <input type="radio" ${isChecked ? "checked" : ""}  class="delivery-option__check" checked name="delivery-option-${matchingProduct.id}" value="${DeleveriPrices[1]}" id = "delivery-option-${matchingProduct.id}-${DeleveriPrices[1]}">
+                <div class ='delivery-option__content'>
+                    <div class="delivery-option__date">
+                        ${dateString}
+                    </div>
+                    <label for="delivery-option-${matchingProduct.id}-${DeleveriPrices[1]}" class="delivery-option__price">
+                        ${priceString} Shipping
+                    </label>
+                </div>
+            </div>
+        `;
+    });
+    return html;
+}
 
 //* -- functional of Update cart
 //------ functional for update btn
 function functionalOfUpdate(updateInput, quantityNumber, button) {
     updateInput.classList.add("__active");
     quantityNumber.classList.add("__hidden");
-    console.log(button);
+    //console.log(button);
     button.innerHTML = "Save";
 }
 function functionalOfSave(updateInput, quantityNumber, button, productId) {
-    // todo if newQuantity = 0 , we`ll delete this card of product from cart
+    //*complete if newQuantity = 0 , we`ll delete this card of product from cart
     let newQuantity = Number(updateInput.value);
-    console.log(newQuantity);
+    //console.log(newQuantity);
     if (newQuantity === 0) {
         functionalOfDelete(productId);
     } else {
@@ -123,7 +119,7 @@ function functionalOfDelete(productId) {
     removeFromCart(productId);
     const item = document.querySelector(`.cart-id-${productId}`);
     item.remove();
-    console.log(item);
+    //console.log(item);
 }
 
 function UpdateCart(button) {
@@ -132,7 +128,7 @@ function UpdateCart(button) {
     // for upd btn
     let updateInput = button.parentElement.previousElementSibling;
     let quantityNumber = button.parentElement.previousElementSibling.previousElementSibling.lastElementChild; //  quantitynumber block
-    console.log(quantityNumber);
+    //console.log(quantityNumber);
     cartItems.addEventListener("keydown", function (e) {
         if (e.key === "Enter") {
             functionalOfSave(updateInput, quantityNumber, button, productId);
@@ -156,7 +152,8 @@ function UpdateCart(button) {
 //----------------------------------
 cartItems.addEventListener("click", function (e) {
     let target = e.target;
-    console.log(target);
+    //console.log(cart);
+    //console.log(target);
     if (target.closest(".cart__btn")) {
         UpdateCart(target);
     } else if (target.closest(".delivery-option__check")) {
@@ -172,7 +169,7 @@ function UpdateCartQuantityFromCheckout(cart) {
     localStorage.setItem("cart-quantity", JSON.stringify(cartQuantity));
 }
 
-// Delivety options
+// Delivety options // not works
 
 function addDeliveryPrice(deliveryOption) {
     let deliveryPrice = deliveryOption.value;
@@ -191,15 +188,16 @@ function countOrderSum(cart) {
     const tax = 10;
     let totalSum = 0;
     let sumPrices = 0;
-    let shippingSum = 0;
+    let shippingSum = 0; //* it works
     let totalSumBeforeTax = 0;
     let orderTax = 0;
     cart.forEach((product) => {
+        console.log(product);
         let productQuantity = Number(product.quantity);
         let productPrice = Number(product.price);
-        console.log(shippingSum);
         shippingSum += Number(product["delivery-price"]);
         console.log(shippingSum);
+        console.log(Number(product["delivery-price"]));
         sumPrices += productQuantity * productPrice;
     });
 
@@ -250,3 +248,43 @@ showOrder(cart);
 //* not nessessory
 // todo  checkout must save user`s activiti to localStotorage and then use it to load all complete page
 // todo if cart = 0 {quantity of products} => show block with (message over button and has text = ' Your cart is empty',button that is a link on main page, has text = ' Go Shopping!'
+
+/*
+ <div class="cart__delivery-options delivery-options">
+                <h3 class="delivery-options__title">Choose a delivery option</h3>
+                <div class="delivery-option">
+                    <input type="radio" class="delivery-option__check" checked name="delivery-option-${matchingProduct.id}" value="${DeleveriPrices[1]}" id = "delivery-option-${matchingProduct.id}-${DeleveriPrices[1]}">
+                    <div class ='delivery-option__content'>
+                        <div class="delivery-option__date">
+                            Saturday, September 30
+                        </div>
+                        <label for="delivery-option-${matchingProduct.id}-${DeleveriPrices[1]}" class="delivery-option__price">
+                            Free - Shipping
+                        </label>
+                    </div>
+                </div>
+                <div class="delivery-option">
+                    <input type="radio" class="delivery-option__check" name="delivery-option-${matchingProduct.id}" value="${DeleveriPrices[2]}" id = "delivery-option-${matchingProduct.id}-${DeleveriPrices[2]}">
+                    <div class ='delivery-option__content'>
+                        <div class="delivery-option__date">
+                            Thursday, September 28
+                        </div>
+                        <label for="delivery-option-${matchingProduct.id}-${DeleveriPrices[2]}" class="delivery-option__price">
+                            $4.99 - Shipping
+                        </label>
+                    </div>
+                </div>
+                <div class="delivery-option">
+                    <input type="radio" class="delivery-option__check" name="delivery-option-${matchingProduct.id}" value="${DeleveriPrices[3]}" id = "delivery-option-${matchingProduct.id}-${DeleveriPrices[3]}">
+                    <div class ='delivery-option__content'>
+                        <div class="delivery-option__date">
+                            Tuesday, September 26 
+                        </div>
+                        <label for="delivery-option-${matchingProduct.id}-${DeleveriPrices[3]}" class="delivery-option__price">
+                            $7.99 - Shipping
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+*/
