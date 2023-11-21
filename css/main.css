@@ -863,16 +863,16 @@ body {
   display: none;
 }
 
-.cart__quantity input {
+.cart__quantity-change {
   display: none;
+  margin-bottom: 10px;
 }
 
-.cart__quantity input.__active {
+.cart__quantity-change.__active {
   text-align: center;
   display: block;
   width: 50%;
   margin-left: 10px;
-  margin-bottom: 15px;
   padding: 6px;
   border-radius: 20px;
   background: #f2c200;
@@ -884,7 +884,7 @@ body {
 }
 
 .cart__quantity-box {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .cart__btn {
@@ -1063,12 +1063,16 @@ body {
   .cart__quantity span {
     margin-left: 0px;
   }
-  .cart__quantity input {
+  .cart__quantity-change {
     width: auto;
     margin-bottom: 0;
   }
   .cart__quantity-box {
     margin-bottom: 0;
+  }
+  .cart__btn-box {
+    margin-left: 10px;
+    margin-top: 0;
   }
 }
 

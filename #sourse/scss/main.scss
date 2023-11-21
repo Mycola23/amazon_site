@@ -663,16 +663,15 @@ body {
             display: none;
         }
 
-        input {
+        &-change {
             display: none;
-            //opacity: 0;
+            margin-bottom: 10px;
         }
-        input.__active {
+        &-change.__active {
             text-align: center;
             display: block;
             width: 50%;
             margin-left: 10px;
-            margin-bottom: 15px;
             padding: 6px;
             border-radius: 20px;
             background: #f2c200;
@@ -683,7 +682,9 @@ body {
             cursor: pointer;
         }
         &-box {
-            margin-bottom: 15px;
+            margin-bottom: 10px;
+        }
+        &-box {
         }
     }
 
@@ -848,13 +849,17 @@ body {
                 //justify-items: flex-start;
                 margin-left: 0px;
             }
-            input {
+            &-change {
                 width: auto;
                 margin-bottom: 0;
             }
             &-box {
                 margin-bottom: 0;
             }
+        }
+        &__btn-box {
+            margin-left: 10px;
+            margin-top: 0;
         }
     }
 }
@@ -988,9 +993,6 @@ body {
     .cart {
         &__info {
             margin-bottom: 5px;
-        }
-        &__quantity-box {
-            //margin-bottom: 15px;
         }
     }
 }
