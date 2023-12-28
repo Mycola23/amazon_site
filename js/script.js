@@ -18,7 +18,7 @@ const mainContainer = document.querySelector(".main__container");
 const messagesAdd = document.querySelectorAll(".card__message");
 const cards = document.querySelector(".cards");
 //bottom
-const back = document.querySelector(".footer__btn");
+const back = document.querySelector(".footer__btn"); // maybe not need us
 
 //* Don`t forget repair my code and learn  writing tests for js
 
@@ -124,13 +124,21 @@ page.addEventListener("click", function (e) {
 
 /// bottom
 
-back.addEventListener("click", () => {
+/*back.addEventListener("click", () => {
     window.scrollTo({
         top: 0,
         left: 0,
         behavior: "smooth",
     });
-});
+});*/
+
+function backToTop() {
+    window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+    });
+}
 
 // tests
 

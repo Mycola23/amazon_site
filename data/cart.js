@@ -65,3 +65,15 @@ export function updateQuantity(productId, number) {
     });
     saveToStorage();
 }
+
+export function updateDeliveryOption(productId, deliveryOptionId) {
+    let savedId;
+    cart.forEach((item) => {
+        if (productId === item.productId) {
+            // chehk if array cart has the same element if yes => save it and quantity++ , else just add this product to cart
+            savedId = item;
+        }
+    });
+    savedId.deliveryOptionId = deliveryOptionId;
+    saveToStorage();
+}

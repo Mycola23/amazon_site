@@ -665,7 +665,6 @@ body {
 
         &-change {
             display: none;
-            margin-bottom: 10px;
         }
         &-change.__active {
             text-align: center;
@@ -680,9 +679,6 @@ body {
             @include adaptive-value(font-size, 14, 18, $minWidth, $maxWidth);
             @include adaptive-value(line-height, 18, 20, $minWidth, $maxWidth);
             cursor: pointer;
-        }
-        &-box {
-            margin-bottom: 10px;
         }
         &-box {
         }
@@ -700,6 +696,11 @@ body {
 
         &_del {
             margin-left: 10px;
+        }
+        &-box {
+            @media (max-width: 1500px) {
+                margin-top: 10px;
+            }
         }
     }
     &__btn:hover {

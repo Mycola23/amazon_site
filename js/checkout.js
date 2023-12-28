@@ -1,5 +1,5 @@
 "use strict";
-import { cart, removeFromCart, updateQuantity, saveToStorage } from "../data/cart.js";
+import { cart, removeFromCart, updateQuantity, saveToStorage, updateDeliveryOption } from "../data/cart.js";
 import { products } from "../data/data.js";
 import { formatMoneys } from "./utils/money.js";
 import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
@@ -13,11 +13,7 @@ let itemHTML = "";
 const orderPayment = document.querySelector(".order-payment__info");
 
 // Experements   (тобто ми відкатилися до старої версії // return to old version of website )
-const DeleveriPrices = {
-    1: 0,
-    2: 499,
-    3: 799,
-};
+
 cart.forEach((cartItem) => {
     const productId = cartItem.productId;
     let matchingProduct;
@@ -28,10 +24,22 @@ cart.forEach((cartItem) => {
             //console.log(matchingProduct);
         }
     });
+    //------------------------------ calculate the product date delivery
+    const deliveryOptionId = cartItem.deliveryOptionId;
+    let deliveryOption;
+    deliveryOptions.forEach((option) => {
+        if (option.id === deliveryOptionId) {
+            deliveryOption = option;
+        }
+    });
+    const today = dayjs();
+    const deliveryDate = today.add(deliveryOption.deliveryDays, "days");
+    const dateString = deliveryDate.format("dddd, MMMM D");
+    //----------------------------------
     itemHTML += `
     <div class="order__cart cart 
       cart-id-${matchingProduct.id}">
-        <div class="cart__delivery-date">Delivery date:<span> Tuesday,September 26</span></div>
+        <div class="cart__delivery-date">Delivery date:<span> ${dateString}</span></div>
         <div class="cart__content">
             <div class="cart__img">
                 <img src="${matchingProduct.img}" alt="#">
@@ -73,21 +81,34 @@ function deliveryOptionsHTML(matchingProduct, cartItem) {
         const deliveryDate = today.add(deliveryOption.deliveryDays, "days");
         const dateString = deliveryDate.format("dddd, MMMM D");
         const priceString = deliveryOption.priceCents === 0 ? "Free" : `$${formatMoneys(deliveryOption.priceCents)} -`;
-        const isChecked = deliveryOption.id === cartItem.deliveryOptionId ? "checked" : "";
+        /*let attributeChecked;
+        if (isChecked) {
+            attributeChecked = "checked";
+        } else {
+            attributeChecked = "";
+        }*/
+        // todo add to input  ${cartItem.deliveryOptionId === deliveryOption.id ? 'checked' : ''}
+        /*  const element = document.getElementById('your-element-id');                        // Replace 'your-element-id' with the actual ID of your element
+            element.checked = false; 
+            
+            ${cartItem.deliveryOptionId === deliveryOption.id ? "checked" : ""}  //* i`ve restored this functional - yess  -\ * .. * /
+            ${attributeChecked}
+        */
+        console.log(cartItem);
         //console.log(priceString); //todo it works
-        html += `   <div class="delivery-option">
-                <input type="radio" ${isChecked ? "checked" : ""}  class="delivery-option__check" checked name="delivery-option-${matchingProduct.id}" value="${DeleveriPrices[1]}" id = "delivery-option-${matchingProduct.id}-${DeleveriPrices[1]}">
-                <div class ='delivery-option__content'>
-                    <div class="delivery-option__date">
-                        ${dateString}
+        html += `<div class="delivery-option" >
+                    <input type="radio" ${cartItem.deliveryOptionId === deliveryOption.id ? "checked" : ""}  class="delivery-option__check" name="delivery-option-${matchingProduct.id}" data-product-id = '${matchingProduct.id}' data-delivery-option-id = '${deliveryOption.id}' >
+                    <div class ='delivery-option__content'>
+                        <div class="delivery-option__date">
+                            ${dateString}
+                        </div>
+                        <div class="delivery-option__price"> 
+                            ${priceString} Shipping
+                        </div>
                     </div>
-                    <label for="delivery-option-${matchingProduct.id}-${DeleveriPrices[1]}" class="delivery-option__price">
-                        ${priceString} Shipping
-                    </label>
                 </div>
-            </div>
-        `;
-    });
+            `;
+    }); //for="delivery-option-${matchingProduct.id}-${DeleveriPrices[1]}  id = "delivery-option-${matchingProduct.id}-${DeleveriPrices[1]}
     return html;
 }
 
@@ -157,7 +178,13 @@ cartItems.addEventListener("click", function (e) {
     if (target.closest(".cart__btn")) {
         UpdateCart(target);
     } else if (target.closest(".delivery-option__check")) {
-        addDeliveryPrice(target);
+        //addDeliveryPrice(target);
+        console.log(target.dataset);
+        const { productId, deliveryOptionId } = target.dataset;
+        console.log(productId, deliveryOptionId);
+        updateDeliveryOption(productId, deliveryOptionId);
+        console.log(target);
+        console.log(JSON.parse(localStorage.getItem("cart")));
     }
 });
 
@@ -174,10 +201,10 @@ function UpdateCartQuantityFromCheckout(cart) {
 function addDeliveryPrice(deliveryOption) {
     let deliveryPrice = deliveryOption.value;
     let product_Id = deliveryOption.name.replace("delivery-option-", "");
-    cart.forEach((elm) => {
-        const productId = elm.productId;
+    cart.forEach((item) => {
+        const productId = item.productId;
         if (productId === product_Id) {
-            elm["delivery-price"] = deliveryPrice;
+            item["delivery-price"] = deliveryPrice;
         }
     });
     saveToStorage();
@@ -192,12 +219,12 @@ function countOrderSum(cart) {
     let totalSumBeforeTax = 0;
     let orderTax = 0;
     cart.forEach((product) => {
-        console.log(product);
+        //console.log(product);
         let productQuantity = Number(product.quantity);
         let productPrice = Number(product.price);
         shippingSum += Number(product["delivery-price"]);
-        console.log(shippingSum);
-        console.log(Number(product["delivery-price"]));
+        //console.log(shippingSum);
+        //console.log(Number(product["delivery-price"]));
         sumPrices += productQuantity * productPrice;
     });
 
@@ -212,7 +239,7 @@ function showOrder(cart) {
     // todo in work version of program
 
     const numbers = countOrderSum(cart);
-    console.log(numbers);
+    //console.log(numbers);
     let orderHtml = `
             <h3 class="order-payment__title">Order Summary</h3>
             <div class="order-payment__row">
@@ -240,9 +267,12 @@ function showOrder(cart) {
     let orderPaymentContainer = document.createElement("div");
     //orderPaymentContainer.innerHTML = orderHtml;
     orderPayment.innerHTML = orderHtml;
-    console.log(orderPayment);
+    //console.log(orderPayment);
 }
 showOrder(cart);
+
+// bottom
+
 //*complete  зразу після завантаження сторінки повинно показувати результат немовби користувач вибрав безкооставку,
 
 //* not nessessory

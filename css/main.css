@@ -865,7 +865,6 @@ body {
 
 .cart__quantity-change {
   display: none;
-  margin-bottom: 10px;
 }
 
 .cart__quantity-change.__active {
@@ -883,10 +882,6 @@ body {
   cursor: pointer;
 }
 
-.cart__quantity-box {
-  margin-bottom: 10px;
-}
-
 .cart__btn {
   font-size: calc(16px + 2 * ((100vw - 320px) / 1120));
   background: transparent;
@@ -897,6 +892,12 @@ body {
 
 .cart__btn_del {
   margin-left: 10px;
+}
+
+@media (max-width: 1500px) {
+  .cart__btn-box {
+    margin-top: 10px;
+  }
 }
 
 .cart__btn:hover {
