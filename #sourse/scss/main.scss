@@ -261,7 +261,7 @@ body {
         font-weight: 700;
         color: #ff9900;
         @include adaptive-value(font-size, 16, 20, $minWidth, $maxWidth);
-    }
+    } // todo don`t  forget to add active class on counter when cart.quantity = 100 , top: -2px; left: calc(50% + 10px);
 
     &__text {
         @include adaptive-value(font-size, 14, 18, $minWidth, $maxWidth);
