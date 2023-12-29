@@ -1,23 +1,61 @@
 "use strict";
 import { cart, removeFromCart, updateQuantity, saveToStorage, updateDeliveryOption } from "../../data/cart.js";
-import { products } from "../../data/data.js";
+import { products, getProduct } from "../../data/data.js";
 import { formatMoneys } from "../utils/money.js";
 import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
-import { deliveryOptions } from "../../data/deliveryOptions.js";
+import { deliveryOptions, getDeliveryOption } from "../../data/deliveryOptions.js";
 
-function addDeliveryPrice(deliveryOption) {
-    let deliveryPrice = deliveryOption.value;
-    let product_Id = deliveryOption.name.replace("delivery-option-", "");
-    cart.forEach((item) => {
-        const productId = item.productId;
-        if (productId === product_Id) {
-            item["delivery-price"] = deliveryPrice;
-        }
+const orderPayment = document.querySelector(".order-payment__info");
+
+export function renderPaymentSummary() {
+    let productPriceCents = 0;
+    let shippingPriceCents = 0;
+
+    cart.forEach((cartItem) => {
+        // calc productPriceCents
+        const product = getProduct(cartItem.productId);
+        productPriceCents += Number(cartItem.quantity) * Number(product.priceCents);
+
+        // calc shippingPriceCents
+        const deliveryOption = getDeliveryOption(cartItem.deliveryOptionId);
+        shippingPriceCents += deliveryOption.priceCents;
     });
-    saveToStorage();
-    showOrder(cart);
-}
 
+    const totalBeforeTaxCents = productPriceCents + shippingPriceCents;
+    const taxCents = totalBeforeTaxCents * 0.1;
+    const totalCents = totalBeforeTaxCents + taxCents;
+    console.log(productPriceCents, shippingPriceCents);
+
+    const paymentSummaryHtml = `
+            <h3 class="order-payment__title">Order Summary</h3>
+            <div class="order-payment__row">
+                <div>items(${JSON.parse(localStorage.getItem("cart-quantity"))})</div>
+                <div class="order-payment__money">$${formatMoneys(productPriceCents)}</div>
+            </div>
+            <div class="order-payment__row">
+                <div>Shipping & handling:</div>
+                <div class="order-payment__money">$${formatMoneys(shippingPriceCents)}</div>
+            </div>
+            <div class="order-payment__row">
+                <div>Total before tax:</div>
+                <div class="order-payment__money">$${formatMoneys(totalBeforeTaxCents)}</div>
+            </div>
+            <div class="order-payment__row">
+                <div>Estimated tax (10%):</div>
+                <div class="order-payment__money">$${formatMoneys(taxCents)}</div>
+            </div>
+            <div class="order-payment__row">
+                <div>Order total</div>
+                <div class="order-payment__money">$${formatMoneys(totalCents)}</div>
+            </div>
+        `;
+
+    let orderPaymentContainer = document.createElement("div");
+    orderPaymentContainer.innerHTML = paymentSummaryHtml;
+    orderPayment.innerHTML = paymentSummaryHtml;
+    //console.log(orderPayment);
+}
+/* old not work code of renderPaymentSummary
 function countOrderSum(cart) {
     const tax = 10;
     let totalSum = 0;
@@ -39,41 +77,5 @@ function countOrderSum(cart) {
     totalSum = orderTax + sumPrices + shippingSum;
     totalSumBeforeTax = totalSum - orderTax;
     //Agjgj               //todo start function FormatMoney when we`ll change html
-    return { totalSum, sumPrices, shippingSum, totalSumBeforeTax, orderTax };
-}
-
-function showOrder(cart) {
-    // todo in work version of program
-
-    const numbers = countOrderSum(cart);
-    //console.log(numbers);
-    let orderHtml = `
-            <h3 class="order-payment__title">Order Summary</h3>
-            <div class="order-payment__row">
-                <div>items(${JSON.parse(localStorage.getItem("cart-quantity"))})</div>
-                <div class="order-payment__money">$${formatMoneys(numbers.sumPrices)}</div>
-            </div>
-            <div class="order-payment__row">
-                <div>Shipping & handling:</div>
-                <div class="order-payment__money">$${formatMoneys(numbers.shippingSum)}</div>
-            </div>
-            <div class="order-payment__row">
-                <div>Total before tax:</div>
-                <div class="order-payment__money">$${formatMoneys(numbers.totalSumBeforeTax)}</div>
-            </div>
-            <div class="order-payment__row">
-                <div>Estimated tax (10%):</div>
-                <div class="order-payment__money">$${formatMoneys(numbers.orderTax)}</div>
-            </div>
-            <div class="order-payment__row">
-                <div>Order total</div>
-                <div class="order-payment__money">$${formatMoneys(numbers.totalSum)}</div>
-            </div>
-        `;
-
-    let orderPaymentContainer = document.createElement("div");
-    //orderPaymentContainer.innerHTML = orderHtml;
-    orderPayment.innerHTML = orderHtml;
-    //console.log(orderPayment);
-}
-showOrder(cart);
+    // return { totalSum, sumPrices, shippingSum, totalSumBeforeTax, orderTax };
+}*/

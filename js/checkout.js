@@ -1,8 +1,10 @@
 "use strict";
 
 import { renderOrderSummary } from "./checkout/orderSummary.js";
+import { renderPaymentSummary } from "./checkout/paymentSummary.js";
 
 renderOrderSummary();
+renderPaymentSummary();
 /* MVC = model view controller first we get data, next we use this data to display it to user,
   next we use controllers like addEventListeners to change our data and again show it to user
 */

@@ -1,5 +1,3 @@
-export function formatMoneys(priceCents){
-   return  (priceCents / 100).toFixed(2);
-  
-
+export function formatMoneys(priceCents) {
+    return (Math.round(priceCents) / 100).toFixed(2);
 }
