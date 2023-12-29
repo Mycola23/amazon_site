@@ -145,7 +145,7 @@ export function renderOrderSummary() {
             if (e.key === "Enter") {
                 functionalOfSave(updateInput, quantityNumber, button, productId);
                 UpdateCartQuantityFromCheckout(cart);
-                showOrder(cart);
+                renderPaymentSummary();
             }
         });
         if (button.classList.contains("cart__btn_up")) {
