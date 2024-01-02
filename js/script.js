@@ -27,7 +27,7 @@ document.addEventListener("click", (e) => {
     if (e.target.closest(".search__input")) {
         searchInput.parentElement.classList.add("__active");
     } else if (e.target.closest(".footer__btn")) {
-        backToTop();
+        backToTop(); // можна винести у окремий файл і тоді б можно було використовувати по всьому сайту
     } else {
         searchInput.parentElement.classList.remove("__active"); // todo ще одну проверку на кокой єто странице
     }
@@ -45,50 +45,52 @@ let productsHtml = "";
 const item = document.createElement("div");
 item.className = "cards";
 
-products.forEach((product) => {
-    productsHtml += ` 
-        <div class="card">
-            <div class="card__img">
-                <img src=${product.img} alt="">
-            </div>
-            <div class="card__content">
-                <div class="card__text">
-                    ${product.name}
+function renderProductsHtml() {
+    products.forEach((product) => {
+        productsHtml += ` 
+            <div class="card">
+                <div class="card__img">
+                    <img src=${product.img} alt="">
                 </div>
-                <div class="card__rating rating">
-                    <div class="rating__stars">
-                        <li class="rating__star">
-                            ${product.rating.stars}
-                        </li>
-                        <li class="rating__star">
-                            <img src="img/icons/star.svg" alt="">
-                        </li>
+                <div class="card__content">
+                    <div class="card__text">
+                        ${product.name}
                     </div>
-                    <div class="rating__votes">
-                        ${product.rating.count}
+                    <div class="card__rating rating">
+                        <div class="rating__stars">
+                            <li class="rating__star">
+                                ${product.rating.stars}
+                            </li>
+                            <li class="rating__star">
+                                <img src="img/icons/star.svg" alt="">
+                            </li>
+                        </div>
+                        <div class="rating__votes">
+                            ${product.rating.count}
+                        </div>
+                    </div>
+                    <div class="card__price">$${formatMoneys(product.priceCents)}</div>
+                    <select class="card__quality">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                    <div class="card__message">
+                        <img src="img/icons/complete.svg" alt="">
+                        <span>Added</span>
                     </div>
                 </div>
-                <div class="card__price">$${formatMoneys(product.priceCents)}</div>
-                <select class="card__quality">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-                <div class="card__message">
-                    <img src="img/icons/complete.svg" alt="">
-                    <span>Added</span>
-                </div>
-            </div>
-            <button class="card__btn" data-product-name ="${product.name}" data-product-id ="${product.id}" data-product-price = "${product.priceCents}"> Add to list</button>
-        </div>`;
-});
-if (productsHtml) {
-    item.innerHTML = productsHtml;
-    mainContainer.append(item);
+                <button class="card__btn" data-product-name ="${product.name}" data-product-id ="${product.id}" data-product-price = "${product.priceCents}"> Add to list</button>
+            </div>`;
+    });
+    if (productsHtml) {
+        item.innerHTML = productsHtml;
+        mainContainer.append(item);
+    }
 }
-
+renderProductsHtml();
 function updateCartQuantity() {
     let cartQuantity = 0; //JSON.parse(localStorage.getItem("cart-quantity"))
     // todo local storage   work that code don`t repeat number двічі
@@ -159,7 +161,7 @@ const observer = new IntersectionObserver(
                 observer.unobserve(entry.target);
             }
         });
-        console.log(entries);
+        //console.log(entries);
     },
     {
         rootMargin: "0px",
