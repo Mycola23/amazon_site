@@ -893,8 +893,8 @@ body {
         &__burger {
             transition: all 0.3s ease 0s;
             position: absolute;
-            top: 20px;
-            right: 10px;
+            top: 23%;
+            right: 15px;
             display: block;
             width: 30px;
             height: 20px;
@@ -921,7 +921,7 @@ body {
                 width: 100%;
             }
             &::after {
-                bottom: -1px;
+                bottom: 1px;
             }
             &::before {
                 top: 0px;
