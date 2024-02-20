@@ -176,6 +176,7 @@ export function renderOrderSummary() {
             updateDeliveryOption(productId, deliveryOptionId);
             console.log(target);
             renderPaymentSummary();
+            renderOrderSummary();
             console.log(JSON.parse(localStorage.getItem("cart")));
         }
     });
