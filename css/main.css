@@ -1109,7 +1109,7 @@ body {
     -webkit-transition: all 0.3s ease 0s;
     transition: all 0.3s ease 0s;
     position: absolute;
-    top: 23%;
+    top: 20%;
     right: 15px;
     display: block;
     width: 30px;
@@ -1148,7 +1148,7 @@ body {
     width: 100%;
   }
   .header__burger::after {
-    bottom: 1px;
+    bottom: 0px;
   }
   .header__burger::before {
     top: 0px;
