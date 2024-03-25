@@ -20,10 +20,12 @@ const page = document.querySelector(".page");
 const mainContainer = document.querySelector(".main__container");
 const messagesAdd = document.querySelectorAll(".card__message");
 const cards = document.querySelector(".cards");
+let startPageEvents = null;
 //bottom
 const back = document.querySelector(".footer__btn"); // maybe not need us
 
 //* Don`t forget repair my code and learn  writing tests for js
+renderProductsHtml(products);
 function renderProductsHtml(products) {
     // top
     document.addEventListener("click", (e) => {
@@ -34,7 +36,7 @@ function renderProductsHtml(products) {
         } else if (e.target.closest(".search__btn")) {
             console.log(e.target);
             e.preventDefault();
-            searchingItem(searchInput);
+            searchingItem(searchInput, startPageEvents);
         } else {
             searchInput.parentElement.classList.remove("__active"); // todo ще одну проверку на кокой єто странице
         }
@@ -91,7 +93,6 @@ function renderProductsHtml(products) {
     //if (productsHtml) {
     item.innerHTML = productsHtml;
     mainContainer.append(item);
-    // }
 
     function updateCartQuantity() {
         let cartQuantity = 0; //JSON.parse(localStorage.getItem("cart-quantity"))
@@ -107,7 +108,8 @@ function renderProductsHtml(products) {
         counter.innerHTML = `${JSON.parse(localStorage.getItem("cart-quantity"))}`;
     }
 
-    page.addEventListener("click", function (e) {
+    // page events
+    startPageEvents = function (e) {
         let target = e.target;
         if (target.closest(".card__btn")) {
             target.previousElementSibling.lastElementChild.classList.add("__active");
@@ -124,7 +126,9 @@ function renderProductsHtml(products) {
                 target.previousElementSibling.lastElementChild.classList.remove("__active");
             }, 1.3 * 1000);
         }
-    });
+    };
+
+    page.addEventListener("click", startPageEvents);
 
     /// bottom
 
@@ -172,23 +176,23 @@ function renderProductsHtml(products) {
     cardsOnPage.forEach((card) => {
         observer.observe(card);
     });
-
-    function searchingItem(item) {
-        let newProductsList = [];
-        const searchingItem = item.value;
-
-        products.forEach((product) => {
-            if (product.name.toLowerCase().includes(searchingItem.toLowerCase())) {
-                console.log(product.name.toLowerCase());
-                newProductsList.push(product);
-            }
-        });
-        renderProductsHtml(newProductsList); // повинно лише перезавантажити сторінку  і перегенурувати HTML а воно визиває всю
-
-        console.log(searchingItem);
-        console.log(newProductsList);
-
-        // todo cycle foreach for products аюи порівняти наше слово з зі словом із списком
-    }
 }
-renderProductsHtml(products); // todo переробити це таким чином щоб лише змінювалися список продуктів а не вся сторінка
+
+// todo переробити це таким чином щоб лише змінювалися список продуктів а не вся сторінка
+function searchingItem(item, removefunc) {
+    let newProductsList = [];
+    let searchingItem = item.value;
+
+    products.forEach((product) => {
+        if (product.name.toLowerCase().includes(searchingItem.toLowerCase())) {
+            console.log(product.name.toLowerCase());
+            newProductsList.push(product);
+        }
+    });
+    page.removeEventListener("click", removefunc);
+    renderProductsHtml(newProductsList); // повинно лише перезавантажити сторінку  і перегенурувати HTML а воно визиває всю
+    console.log(searchingItem);
+    console.log(newProductsList);
+
+    // todo cycle foreach for products аюи порівняти наше слово з зі словом із списком
+}

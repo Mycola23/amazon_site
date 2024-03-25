@@ -88,7 +88,9 @@ export function renderOrderSummary() {
             //console.log(cartItem);
             //console.log(priceString); //todo it works
             html += `<div class="delivery-option" >
-                        <input type="radio" ${cartItem.deliveryOptionId === deliveryOption.id ? "checked" : ""}  class="delivery-option__check" name="delivery-option-${matchingProduct.id}" data-product-id = '${matchingProduct.id}' data-delivery-option-id = '${deliveryOption.id}' >
+                        <input type="radio" ${cartItem.deliveryOptionId === deliveryOption.id ? "checked" : ""}  class="delivery-option__check" name="delivery-option-${matchingProduct.id}" data-product-id = '${
+                matchingProduct.id
+            }' data-delivery-option-id = '${deliveryOption.id}' >
                         <div class ='delivery-option__content'>
                             <div class="delivery-option__date">
                                 ${dateString}
