@@ -5,14 +5,14 @@ import { formatMoneys } from "../utils/money.js";
 import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
 import { deliveryOptions, getDeliveryOption } from "../../data/deliveryOptions.js";
 import { renderPaymentSummary } from "../checkout/paymentSummary.js";
-export let contentBox = document.querySelector(".checkout__content");
+let contentBox = document.querySelector(".checkout__content");
 
 let cartItems = document.createElement("div");
 cartItems.className = `checkout__order order`;
 
 const orderPayment = document.querySelector(".order-payment__info");
 
-export function renderOrderSummary() {
+export function renderOrderSummary(test) {
     let itemHTML = "";
     cart.forEach((cartItem) => {
         const productId = cartItem.productId;
@@ -39,7 +39,7 @@ export function renderOrderSummary() {
                         <div class="cart__name">${matchingProduct.name}</div>
                         <div class="cart__price">$${formatMoneys(matchingProduct.priceCents)}</div>
                         <div class="cart__quantity">
-                            <div class ='cart__quantity-box'>
+                            <div class ='cart__quantity-box jstest-product-quantity-${matchingProduct.id}'>
                                 <span>Quantity:</span>
                                 <span class="quantity-label">${cartItem.quantity}</span>
                             </div>
@@ -57,10 +57,15 @@ export function renderOrderSummary() {
                 </div>
             </div>
         `;
-
-        cartItems.innerHTML = itemHTML;
-        //console.log(cartItems);
-        contentBox.prepend(cartItems); // todo когда мі на гл странице , других страниц не существует по етому мі получаем null in contentBox we need to deal with it
+        if (test === 1) {
+            document.querySelector(".checkout__content").innerHTML = itemHTML;
+        } else {
+            cartItems.innerHTML = itemHTML;
+            console.log(cartItems);
+            console.log(contentBox);
+            contentBox.prepend(cartItems);
+        }
+        // todo когда мі на гл странице , других страниц не существует по етому мі получаем null in contentBox we need to deal with it
     });
     // functional of delivery options
 
