@@ -3,7 +3,7 @@ import { cart, loadFromStorage } from "../../../data/cart.js";
 describe("test suite : renderOrderSummary", () => {
     it("displays the cart", () => {
         document.querySelector(".js-test-container").innerHTML = `
-            <div class ="checkout__content"></div>
+            <div class ="checkout__order order"></div>
         `;
         spyOn(localStorage, "setItem");
         spyOn(localStorage, "getItem").and.callFake(() => {
