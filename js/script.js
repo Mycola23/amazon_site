@@ -31,7 +31,6 @@ function renderProductsHtml(products) {
     document.addEventListener("click", (e) => {
         if (e.target.closest(".search__input")) {
             searchInput.parentElement.classList.add("__active");
-            localStorage.clear();
         } else if (e.target.closest(".footer__btn")) {
             backToTop(); // можна винести у окремий файл і тоді б можно було використовувати по всьому сайту
         } else if (e.target.closest(".search__btn")) {
