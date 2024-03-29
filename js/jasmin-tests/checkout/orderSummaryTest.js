@@ -1,7 +1,7 @@
 import { renderOrderSummary } from "../../../js/checkout/orderSummary.js";
 import { cart, loadFromStorage } from "../../../data/cart.js";
 describe("test suite : renderOrderSummary", () => {
-    it("displays the car", () => {
+    it("displays the cart", () => {
         document.querySelector(".js-test-container").innerHTML = `
             <div class ="checkout__content"></div>
         `;

@@ -193,3 +193,8 @@ export function renderOrderSummary() {
 
     // Delivety options // not works
 }
+// it`s just for test
+let foggy = 1;
+if (foggy === 1) {
+    return foggy++;
+}
