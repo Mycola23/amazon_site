@@ -198,5 +198,3 @@ export function renderOrderSummary(test) {
 
     // Delivety options // not works
 }
-let foggy;
-1;
