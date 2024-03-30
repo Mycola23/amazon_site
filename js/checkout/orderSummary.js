@@ -46,7 +46,7 @@ export function renderOrderSummary(test) {
                             <input class = 'cart__quantity-change' type="number" value="1">
                             <div class="cart__btn-box">
                                 <button data-product-id='${matchingProduct.id}' class="cart__btn cart__btn_up">Update</button>
-                                <button data-product-id='${matchingProduct.id}' class="cart__btn cart__btn_del">Delete</button>
+                                <button data-product-id='${matchingProduct.id}' class="cart__btn cart__btn_del jstest-btn-delete-${matchingProduct.id}">Delete</button>
                             </div>
                         </div>
                     </div>
@@ -199,3 +199,4 @@ export function renderOrderSummary(test) {
     // Delivety options // not works
 }
 let foggy;
+1;
