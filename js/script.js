@@ -32,7 +32,8 @@ function renderProductsHtml(products) {
         if (e.target.closest(".search__input")) {
             searchInput.parentElement.classList.add("__active");
         } else if (e.target.closest(".footer__btn")) {
-            backToTop(); // можна винести у окремий файл і тоді б можно було використовувати по всьому сайту
+            backToTop();
+            localStorage.clear()// можна винести у окремий файл і тоді б можно було використовувати по всьому сайту
         } else if (e.target.closest(".search__btn")) {
             console.log(e.target);
             e.preventDefault();
