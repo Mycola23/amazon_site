@@ -25,6 +25,15 @@ let startPageEvents = null;
 const back = document.querySelector(".footer__btn"); // maybe not need us
 
 //* Don`t forget repair my code and learn  writing tests for js
+
+//---------  add eventlistener to Burgermenu --------------------------
+burgerMenu.addEventListener("click", () => {
+    burgerMenu.classList.toggle("__active");
+    menu.classList.toggle("__active");
+});
+//--------------------------------------------------------
+
+// renderProductsHtml
 renderProductsHtml(products);
 function renderProductsHtml(products) {
     // top
@@ -40,10 +49,6 @@ function renderProductsHtml(products) {
         } else {
             searchInput.parentElement.classList.remove("__active"); // todo ще одну проверку на кокой єто странице
         }
-    });
-    burgerMenu.addEventListener("click", () => {
-        burgerMenu.classList.toggle("__active");
-        menu.classList.toggle("__active");
     });
 
     counter.innerHTML = `${JSON.parse(localStorage.getItem("cart-quantity")) || 0}`; // todo create file with function save quantity of cart щоб обійти перевірку файлу scripts.js
@@ -179,6 +184,7 @@ function renderProductsHtml(products) {
 }
 
 // todo переробити це таким чином щоб лише змінювалися список продуктів а не вся сторінка
+// ------- searchingItem ----------------------------
 function searchingItem(item, removefunc) {
     let newProductsList = [];
     let searchingItem = item.value;
