@@ -7,12 +7,13 @@ import { deliveryOptions, getDeliveryOption } from "../../data/deliveryOptions.j
 import { renderPaymentSummary } from "../checkout/paymentSummary.js";
 let contentBox = document.querySelector(".checkout__content");
 
+const orderPayment = document.querySelector(".order-payment__info");
 let cartItems = document.createElement("div");
 cartItems.className = `checkout__order order`;
-
-const orderPayment = document.querySelector(".order-payment__info");
-
 export function renderOrderSummary(test) {
+    //-------------------------------   only for test        ------------------------------------------------------
+
+    // ----------------------------------------------------------------------------------------------------------------------------
     let itemHTML = "";
     cart.forEach((cartItem) => {
         const productId = cartItem.productId;
@@ -58,7 +59,7 @@ export function renderOrderSummary(test) {
             </div>
         `;
         if (test === 1) {
-            document.querySelector(".checkout__content").innerHTML = itemHTML;
+            document.querySelector(".checkout__order").innerHTML = itemHTML;
         } else {
             cartItems.innerHTML = itemHTML;
             console.log(cartItems);
@@ -146,7 +147,7 @@ export function renderOrderSummary(test) {
 
         // for upd btn
         let updateInput = button.parentElement.previousElementSibling;
-        let quantityNumber = button.parentElement.previousElementSibling.previousElementSibling.lastElementChild; //  quantitynumber block
+        let quantityNumber = button.parentElement.previousElementSibling.previousElementSibling.lastElementChild; //  quantitynumber block //todo change this code om more independent
         //console.log(quantityNumber);
         cartItems.addEventListener("keydown", function (e) {
             if (e.key === "Enter") {
@@ -166,27 +167,55 @@ export function renderOrderSummary(test) {
             functionalOfDelete(productId);
         }
         UpdateCartQuantityFromCheckout(cart);
-        renderPaymentSummary();
+        if (test === 1) {
+            renderPaymentSummary(1);
+        } else {
+            renderPaymentSummary();
+        }
     }
     //----------------------------------
-    cartItems.addEventListener("click", function (e) {
-        let target = e.target;
-        //console.log(cart);
-        //console.log(target);
-        if (target.closest(".cart__btn")) {
-            UpdateCart(target);
-        } else if (target.closest(".delivery-option__check")) {
-            //addDeliveryPrice(target);
-            //console.log(target.dataset);
-            const { productId, deliveryOptionId } = target.dataset;
-            //console.log(productId, deliveryOptionId);
-            updateDeliveryOption(productId, deliveryOptionId);
-            console.log(target);
-            renderPaymentSummary();
-            renderOrderSummary();
-            console.log(JSON.parse(localStorage.getItem("cart")));
-        }
-    });
+
+    if (test === 1) {
+        let testCartItems = document.querySelector(".checkout__order");
+        testCartItems.addEventListener("click", function (e) {
+            let target = e.target;
+            //console.log(cart);
+            //console.log(target);
+            if (target.closest(".cart__btn")) {
+                let test = 1;
+                UpdateCart(target);
+            } else if (target.closest(".delivery-option__check")) {
+                //addDeliveryPrice(target);
+                //console.log(target.dataset);                                             // only for test
+                const { productId, deliveryOptionId } = target.dataset; // todo  це практично працює, залишилось щоб одна помилка не вискакувала і все
+                //console.log(productId, deliveryOptionId);
+                updateDeliveryOption(productId, deliveryOptionId);
+                console.log(target);
+                renderPaymentSummary(); // todo оця штук енція ламає мені весь тест,зараза така
+                renderOrderSummary();
+                console.log(JSON.parse(localStorage.getItem("cart")));
+            }
+        });
+    } else {
+        cartItems.addEventListener("click", function (e) {
+            let target = e.target;
+            //console.log(cart);
+            //console.log(target);
+            if (target.closest(".cart__btn")) {
+                UpdateCart(target);
+            } else if (target.closest(".delivery-option__check")) {
+                //addDeliveryPrice(target);
+                //console.log(target.dataset);
+                const { productId, deliveryOptionId } = target.dataset;
+                //console.log(productId, deliveryOptionId);
+                updateDeliveryOption(productId, deliveryOptionId);
+                console.log(target);
+                renderPaymentSummary(1);
+                renderOrderSummary();
+                console.log(JSON.parse(localStorage.getItem("cart")));
+            }
+        });
+    }
 
     function UpdateCartQuantityFromCheckout(cart) {
         let cartQuantity = 0;

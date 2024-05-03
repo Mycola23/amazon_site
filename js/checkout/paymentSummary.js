@@ -7,7 +7,7 @@ import { deliveryOptions, getDeliveryOption } from "../../data/deliveryOptions.j
 
 const orderPayment = document.querySelector(".order-payment__info");
 
-export function renderPaymentSummary() {
+export function renderPaymentSummary(test) {
     let productPriceCents = 0;
     let shippingPriceCents = 0;
 
@@ -49,10 +49,14 @@ export function renderPaymentSummary() {
                 <div class="order-payment__money">$${formatMoneys(totalCents)}</div>
             </div>
         `;
+    if (test === 1) {
+        document.querySelector(".order-payment__info").innerHTML = paymentSummaryHtml;
+    } else {
+        //let orderPaymentContainer = document.createElement("div");
+        //orderPaymentContainer.innerHTML = paymentSummaryHtml;      // ? нащо мені ті строчки коду, з'ясувати
+        orderPayment.innerHTML = paymentSummaryHtml;
+    }
 
-    let orderPaymentContainer = document.createElement("div");
-    orderPaymentContainer.innerHTML = paymentSummaryHtml;
-    orderPayment.innerHTML = paymentSummaryHtml;
     //console.log(orderPayment);
 }
 /* old not work code of renderPaymentSummary
