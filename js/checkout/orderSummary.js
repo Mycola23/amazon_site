@@ -66,7 +66,7 @@ export function renderOrderSummary(test) {
             console.log(contentBox);
             contentBox.prepend(cartItems);
         }
-        // todo когда мі на гл странице , других страниц не существует по етому мі получаем null in contentBox we need to deal with it
+        //*complete коли ми на глав сторінці , інших не існує ==>   ми отримуємо null in contentBox we need to deal with it
     });
     // functional of delivery options
 
@@ -84,7 +84,7 @@ export function renderOrderSummary(test) {
             } else {
                 attributeChecked = "";
             }*/
-            // todo add to input  ${cartItem.deliveryOptionId === deliveryOption.id ? 'checked' : ''}
+            // *complete add to input  ${cartItem.deliveryOptionId === deliveryOption.id ? 'checked' : ''}
             /*  const element = document.getElementById('your-element-id');                        // Replace 'your-element-id' with the actual ID of your element
                 element.checked = false; 
                 
@@ -92,7 +92,7 @@ export function renderOrderSummary(test) {
                 ${attributeChecked}
             */
             //console.log(cartItem);
-            //console.log(priceString); //todo it works
+            //console.log(priceString); //*complete it works
             html += `<div class="delivery-option" >
                         <input type="radio" ${cartItem.deliveryOptionId === deliveryOption.id ? "checked" : ""}  class="delivery-option__check" name="delivery-option-${matchingProduct.id}" data-product-id = '${
                 matchingProduct.id
@@ -147,7 +147,7 @@ export function renderOrderSummary(test) {
 
         // for upd btn
         let updateInput = button.parentElement.previousElementSibling;
-        let quantityNumber = button.parentElement.previousElementSibling.previousElementSibling.lastElementChild; //  quantitynumber block //todo change this code om more independent
+        let quantityNumber = button.parentElement.previousElementSibling.previousElementSibling.lastElementChild; //  quantitynumber block // todo change this code om more independent
         //console.log(quantityNumber);
         cartItems.addEventListener("keydown", function (e) {
             if (e.key === "Enter") {
@@ -187,11 +187,11 @@ export function renderOrderSummary(test) {
             } else if (target.closest(".delivery-option__check")) {
                 //addDeliveryPrice(target);
                 //console.log(target.dataset);                                             // only for test
-                const { productId, deliveryOptionId } = target.dataset; // todo  це практично працює, залишилось щоб одна помилка не вискакувала і все
+                const { productId, deliveryOptionId } = target.dataset; //*complete  це практично працює, залишилось щоб одна помилка не вискакувала і все
                 //console.log(productId, deliveryOptionId);
                 updateDeliveryOption(productId, deliveryOptionId);
                 console.log(target);
-                renderPaymentSummary(); // todo оця штук енція ламає мені весь тест,зараза така
+                renderPaymentSummary(); //*complete оця штук енція ламає мені весь тест,зараза така
                 renderOrderSummary();
                 console.log(JSON.parse(localStorage.getItem("cart")));
             }
