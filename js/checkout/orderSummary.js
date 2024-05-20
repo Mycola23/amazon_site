@@ -37,7 +37,7 @@ export function renderOrderSummary(test) {
                         <img src="${matchingProduct.img}" alt="#">
                     </div>
                     <div class="cart__info">
-                        <div class="cart__name">${matchingProduct.name}</div>
+                        <div class="cart__name jstest-product-name-${matchingProduct.id}">${matchingProduct.name}</div>
                         <div class="cart__price">$${formatMoneys(matchingProduct.priceCents)}</div>
                         <div class="cart__quantity">
                             <div class ='cart__quantity-box jstest-product-quantity-${matchingProduct.id}'>
@@ -94,9 +94,9 @@ export function renderOrderSummary(test) {
             //console.log(cartItem);
             //console.log(priceString); //*complete it works
             html += `<div class="delivery-option" >
-                        <input type="radio" ${cartItem.deliveryOptionId === deliveryOption.id ? "checked" : ""}  class="delivery-option__check" name="delivery-option-${matchingProduct.id}" data-product-id = '${
+                        <input type="radio" ${cartItem.deliveryOptionId === deliveryOption.id ? "checked" : ""}  class="delivery-option__check" name="delivery-option-${
                 matchingProduct.id
-            }' data-delivery-option-id = '${deliveryOption.id}' >
+            }" data-product-id = '${matchingProduct.id}' data-delivery-option-id = '${deliveryOption.id}' >
                         <div class ='delivery-option__content'>
                             <div class="delivery-option__date">
                                 ${dateString}

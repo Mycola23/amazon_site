@@ -37,21 +37,32 @@ describe("test suite : renderOrderSummary", () => {
     });
     it("displays the cart", () => {
         // test for 1 product
+
         expect(document.querySelectorAll(".order__cart").length).toEqual(2);
-        expect(document.querySelector(`.jstest-product-quantity-${productId1}`).innerText).toContain("Quantity: 1");
+        expect(document.querySelector(`.jstest-product-quantity-${productId1}`).innerText).toContain("Quantity: 1"); //jstest-product-name-${matchingProduct.id}
+
+        expect(document.querySelector(`.jstest-product-name-${productId1}`).innerText).toContain("Gravel");
         // test for 2 product
+
+        expect(document.querySelector(`.jstest-product-name-${productId2}`).innerText).toContain("Basketball ball");
         expect(document.querySelector(`.jstest-product-quantity-${productId2}`).innerText).toContain("Quantity: 6");
-        document.querySelector(".js-test-container").innerHTML = ``;
     });
     it("removes the product", () => {
         //console.log("hi you hi");
+
         document.querySelector(`.jstest-btn-delete-${productId1}`).click(); // todo it not work,but it need start in small scale in other project to check
         //console.log(document.querySelector(`.jstest-btn-delete-${productId1}`)); // it not works
         expect(document.querySelectorAll(".order__cart").length).toEqual(1);
         expect(document.querySelector(`.jstest-btn-delete-${productId1}`)).toEqual(null);
         expect(document.querySelector(`.jstest-btn-delete-${productId2}`)).not.toEqual(null);
+
         //expect(cart[0].productId).toEqual(productId2); // todo не можливо перевірити оскільки eventListener стоїть на на кнопці, а на всьому головному блокові і ми рендероме не функціональну сторінку
-        //document.querySelector(".js-test-container").innerHTML = ``;
+
         /*коррче  в мене викликається .click() , але після цього 0 реакції на цей виклик , оскільки в початковому коді AddEventLisytener присваюється до блоку а не докжної окремої кнопки тому маємо такі трабли  */
+    });
+
+    // clean dom
+    afterEach(() => {
+        document.querySelector(".js-test-container").innerHTML = ``;
     });
 });
