@@ -54,7 +54,7 @@ export function renderPaymentSummary(test) {
     } else {
         //let orderPaymentContainer = document.createElement("div");
         //orderPaymentContainer.innerHTML = paymentSummaryHtml;      // ? нащо мені ті строчки коду, з'ясувати
-        orderPayment.innerHTML = paymentSummaryHtml;
+        orderPayment.innerHTML = paymentSummaryHtml; //!return
     }
 
     //console.log(orderPayment);

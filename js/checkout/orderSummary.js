@@ -38,7 +38,7 @@ export function renderOrderSummary(test) {
                     </div>
                     <div class="cart__info">
                         <div class="cart__name jstest-product-name-${matchingProduct.id}">${matchingProduct.name}</div>
-                        <div class="cart__price">$${formatMoneys(matchingProduct.priceCents)}</div>
+                        <div class="cart__price jstest-product-price-${matchingProduct.id}">$${formatMoneys(matchingProduct.priceCents)}</div>
                         <div class="cart__quantity">
                             <div class ='cart__quantity-box jstest-product-quantity-${matchingProduct.id}'>
                                 <span>Quantity:</span>
@@ -62,9 +62,9 @@ export function renderOrderSummary(test) {
             document.querySelector(".checkout__order").innerHTML = itemHTML;
         } else {
             cartItems.innerHTML = itemHTML;
-            console.log(cartItems);
-            console.log(contentBox);
-            contentBox.prepend(cartItems);
+            // console.log(cartItems);
+            // console.log(contentBox);
+            contentBox.prepend(cartItems); // !   not comment  this code
         }
         //*complete коли ми на глав сторінці , інших не існує ==>   ми отримуємо null in contentBox we need to deal with it
     });
@@ -78,25 +78,30 @@ export function renderOrderSummary(test) {
             const deliveryDate = today.add(deliveryOption.deliveryDays, "days");
             const dateString = deliveryDate.format("dddd, MMMM D");
             const priceString = deliveryOption.priceCents === 0 ? "Free" : `$${formatMoneys(deliveryOption.priceCents)} -`;
-            /*let attributeChecked;
-            if (isChecked) {
-                attributeChecked = "checked";
-            } else {
-                attributeChecked = "";
-            }*/
-            // *complete add to input  ${cartItem.deliveryOptionId === deliveryOption.id ? 'checked' : ''}
-            /*  const element = document.getElementById('your-element-id');                        // Replace 'your-element-id' with the actual ID of your element
-                element.checked = false; 
+            /* 
+                let attributeChecked;
+                if (isChecked) {
+                    attributeChecked = "checked";
+                } else {
+                    attributeChecked = "";
+                }
+                // *complete add to input  ${cartItem.deliveryOptionId === deliveryOption.id ? 'checked' : ''}
+                const element = document.getElementById('your-element-id');                        // Replace 'your-element-id' with the actual ID of your element
+                    element.checked = false; 
+                    
+                    ${cartItem.deliveryOptionId === deliveryOption.id ? "checked" : ""}  //* i`ve restored this functional - yess  -\ * .. * /
+                    ${attributeChecked}
                 
-                ${cartItem.deliveryOptionId === deliveryOption.id ? "checked" : ""}  //* i`ve restored this functional - yess  -\ * .. * /
-                ${attributeChecked}
+                //console.log(cartItem);
+                //console.log(priceString); //*complete it works
             */
-            //console.log(cartItem);
-            //console.log(priceString); //*complete it works
+
             html += `<div class="delivery-option" >
                         <input type="radio" ${cartItem.deliveryOptionId === deliveryOption.id ? "checked" : ""}  class="delivery-option__check" name="delivery-option-${
                 matchingProduct.id
-            }" data-product-id = '${matchingProduct.id}' data-delivery-option-id = '${deliveryOption.id}' >
+            }" data-jstest-delivery-product-${matchingProduct.id} = '${matchingProduct.id}' data-jstest-delivery-option-${matchingProduct.id} = '${
+                deliveryOption.id
+            }' data-product-id = '${matchingProduct.id}' data-delivery-option-id = '${deliveryOption.id}' >
                         <div class ='delivery-option__content'>
                             <div class="delivery-option__date">
                                 ${dateString}
@@ -190,10 +195,10 @@ export function renderOrderSummary(test) {
                 const { productId, deliveryOptionId } = target.dataset; //*complete  це практично працює, залишилось щоб одна помилка не вискакувала і все
                 //console.log(productId, deliveryOptionId);
                 updateDeliveryOption(productId, deliveryOptionId);
-                console.log(target);
-                renderPaymentSummary(); //*complete оця штук енція ламає мені весь тест,зараза така
-                renderOrderSummary();
-                console.log(JSON.parse(localStorage.getItem("cart")));
+                //console.log(target);
+                renderPaymentSummary(1); //*complete оця штук енція ламає мені весь тест,зараза така
+                renderOrderSummary(1);
+                //console.log(JSON.parse(localStorage.getItem("cart")));
             }
         });
     } else {
@@ -209,10 +214,10 @@ export function renderOrderSummary(test) {
                 const { productId, deliveryOptionId } = target.dataset;
                 //console.log(productId, deliveryOptionId);
                 updateDeliveryOption(productId, deliveryOptionId);
-                console.log(target);
-                renderPaymentSummary(1);
+                // console.log(target);
+                renderPaymentSummary();
                 renderOrderSummary();
-                console.log(JSON.parse(localStorage.getItem("cart")));
+                //console.log(JSON.parse(localStorage.getItem("cart")));
             }
         });
     }

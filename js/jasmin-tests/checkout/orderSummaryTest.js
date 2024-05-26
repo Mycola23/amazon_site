@@ -36,14 +36,13 @@ describe("test suite : renderOrderSummary", () => {
         renderOrderSummary(1);
     });
     it("displays the cart", () => {
-        // test for 1 product
-
         expect(document.querySelectorAll(".order__cart").length).toEqual(2);
+        // test for 1 product
         expect(document.querySelector(`.jstest-product-quantity-${productId1}`).innerText).toContain("Quantity: 1"); //jstest-product-name-${matchingProduct.id}
-
         expect(document.querySelector(`.jstest-product-name-${productId1}`).innerText).toContain("Gravel");
+        expect(document.querySelector(`.jstest-product-price-${productId1}`).innerText).toContain("$677.90");
         // test for 2 product
-
+        expect(document.querySelector(`.jstest-product-price-${productId2}`).innerText).toContain("$50.35");
         expect(document.querySelector(`.jstest-product-name-${productId2}`).innerText).toContain("Basketball ball");
         expect(document.querySelector(`.jstest-product-quantity-${productId2}`).innerText).toContain("Quantity: 6");
     });
@@ -60,7 +59,18 @@ describe("test suite : renderOrderSummary", () => {
 
         /*коррче  в мене викликається .click() , але після цього 0 реакції на цей виклик , оскільки в початковому коді AddEventLisytener присваюється до блоку а не докжної окремої кнопки тому маємо такі трабли  */
     });
-
+    it("updating deliveryOptions", () => {
+        let radioBtn = document.querySelector(".delivery-options > .delivery-option:nth-of-type(3) > input");
+        console.log(radioBtn);
+        radioBtn.click();
+        expect(radioBtn.checked).toEqual(true);
+        expect(cart.length).toEqual(2);
+        console.log(radioBtn.getAttribute(`data-jstest-delivery-option-${productId1}`));
+        expect(radioBtn.getAttribute(`data-jstest-delivery-product-${productId1}`)).toEqual(productId1);
+        expect(radioBtn.getAttribute(`data-jstest-delivery-option-${productId1}`)).toEqual("3");
+        //document.querySelector("cart>delivery");
+        //console.log(document.querySelector(".delivery-options > .delivery-option:nth-of-type(3)"));
+    });
     // clean dom
     afterEach(() => {
         document.querySelector(".js-test-container").innerHTML = ``;
