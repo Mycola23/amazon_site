@@ -60,14 +60,21 @@ describe("test suite : renderOrderSummary", () => {
         /*коррче  в мене викликається .click() , але після цього 0 реакції на цей виклик , оскільки в початковому коді AddEventLisytener присваюється до блоку а не докжної окремої кнопки тому маємо такі трабли  */
     });
     it("updating deliveryOptions", () => {
-        let radioBtn = document.querySelector(".delivery-options > .delivery-option:nth-of-type(3) > input");
+        const radioBtn = document.querySelector(".delivery-options > .delivery-option:nth-of-type(3) > input");
         console.log(radioBtn);
         radioBtn.click();
+
         expect(radioBtn.checked).toEqual(true);
         expect(cart.length).toEqual(2);
         console.log(radioBtn.getAttribute(`data-jstest-delivery-option-${productId1}`));
         expect(radioBtn.getAttribute(`data-jstest-delivery-product-${productId1}`)).toEqual(productId1);
         expect(radioBtn.getAttribute(`data-jstest-delivery-option-${productId1}`)).toEqual("3");
+        const priceOfShippingHanding = document.querySelector(".jstest-orderpayment-shipping-handling").innerText;
+        console.log(priceOfShippingHanding);
+        const OrderTotalPrice = document.querySelector(".jstest-orderpayment-ordertotal").innerText;
+        expect(priceOfShippingHanding).toContain("$9.99");
+        expect(OrderTotalPrice).toContain("$1088.99");
+
         //document.querySelector("cart>delivery");
         //console.log(document.querySelector(".delivery-options > .delivery-option:nth-of-type(3)"));
     });

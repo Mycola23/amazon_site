@@ -32,9 +32,9 @@ export function renderPaymentSummary(test) {
                 <div>items(${JSON.parse(localStorage.getItem("cart-quantity"))})</div>
                 <div class="order-payment__money">$${formatMoneys(productPriceCents)}</div>
             </div>
-            <div class="order-payment__row">
+            <div class="order-payment__row ">
                 <div>Shipping & handling:</div>
-                <div class="order-payment__money">$${formatMoneys(shippingPriceCents)}</div>
+                <div class="order-payment__money jstest-orderpayment-shipping-handling">$${formatMoneys(shippingPriceCents)}</div>
             </div>
             <div class="order-payment__row">
                 <div>Total before tax:</div>
@@ -44,9 +44,9 @@ export function renderPaymentSummary(test) {
                 <div>Estimated tax (10%):</div>
                 <div class="order-payment__money">$${formatMoneys(taxCents)}</div>
             </div>
-            <div class="order-payment__row">
+            <div class="order-payment__row ">
                 <div>Order total</div>
-                <div class="order-payment__money">$${formatMoneys(totalCents)}</div>
+                <div class="order-payment__money jstest-orderpayment-ordertotal">$${formatMoneys(totalCents)}</div>
             </div>
         `;
     if (test === 1) {
