@@ -11,10 +11,8 @@ describe("test suite : renderOrderSummary", () => {
                 <div class ="order-payment__info"></div>
             </div>
         `;
-        let cartItems = document.querySelector(".checkout__order");
-        let contentBox = document.querySelector(".checkout__content");
-        //console.log(cartItems);
-        //console.log(contentBox);
+        // let cartItems = document.querySelector(".checkout__order");
+        // let contentBox = document.querySelector(".checkout__content");
         spyOn(localStorage, "setItem");
         spyOn(localStorage, "getItem").and.callFake(() => {
             return JSON.stringify([

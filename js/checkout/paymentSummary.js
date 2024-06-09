@@ -5,7 +5,7 @@ import { formatMoneys } from "../utils/money.js";
 import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
 import { deliveryOptions, getDeliveryOption } from "../../data/deliveryOptions.js";
 
-const orderPayment = document.querySelector(".order-payment__info");
+let orderPayment = document.querySelector(".order-payment__info");
 
 export function renderPaymentSummary(test) {
     let productPriceCents = 0;
@@ -30,7 +30,7 @@ export function renderPaymentSummary(test) {
             <h3 class="order-payment__title">Order Summary</h3>
             <div class="order-payment__row">
                 <div>items(${JSON.parse(localStorage.getItem("cart-quantity"))})</div>
-                <div class="order-payment__money">$${formatMoneys(productPriceCents)}</div>
+                <div class="order-payment__money jstest-orderpayment-price">$${formatMoneys(productPriceCents)}</div>
             </div>
             <div class="order-payment__row ">
                 <div>Shipping & handling:</div>
@@ -42,7 +42,7 @@ export function renderPaymentSummary(test) {
             </div>
             <div class="order-payment__row">
                 <div>Estimated tax (10%):</div>
-                <div class="order-payment__money">$${formatMoneys(taxCents)}</div>
+                <div class="order-payment__money jstest-orderpayment-tax">$${formatMoneys(taxCents)}</div>
             </div>
             <div class="order-payment__row ">
                 <div>Order total</div>
