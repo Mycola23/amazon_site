@@ -1,9 +1,9 @@
 "use strict";
 class Cart {
     cartItems;
-    localStorageKey;
-    loadFromStorage() {
-        this.cartItems = JSON.parse(localStorage.getItem(this.localStorageKey)) || [
+    #localStorageKey; //* private proprery thta we have access only in the class
+    #loadFromStorage() {
+        this.cartItems = JSON.parse(localStorage.getItem(this.#localStorageKey)) || [
             {
                 productId: "e47638ce-6aa0-4b85-b27f-e1d07eb671d1",
                 quantity: 1,
@@ -25,7 +25,7 @@ class Cart {
         ];
     }
     saveToStorage() {
-        localStorage.setItem(this.localStorageKey, JSON.stringify(this.cartItems));
+        localStorage.setItem(this.#localStorageKey, JSON.stringify(this.cartItems));
     }
     addToCart(productId, productPrice) {
         // check id -------------------------------------------------
@@ -85,7 +85,7 @@ class Cart {
     }
     constructor(localStorageKey) {
         this.localStorageKey = localStorageKey;
-        this.loadFromStorage();
+        this.#loadFromStorage();
     }
 }
 
