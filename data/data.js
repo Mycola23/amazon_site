@@ -10,6 +10,36 @@ export function getProduct(productId) {
     return matchingProduct;
 }
 
+class Product {
+    id;
+    img;
+    name;
+    rating;
+    priceCents;
+    constructor(productDetails) {
+        this.id = productDetails.id;
+        this.img = productDetails.img;
+        this.name = productDetails.name;
+        this.rating = productDetails.rating;
+        this.priceCents = productDetails.priceCents;
+    }
+
+    getStarUrl() {
+        return `img/icons/star.svg`; //todo make functon that will create stars because asiat`s method won`t work in my websie
+    }
+}
+const someProduct = new Product({
+    id: "e47638ce-6aa0-4b85-b27f-e1d07eb671d2",
+    img: "https://images.unsplash.com/photo-1595861021888-e8192a7f774e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+    name: "Basketball ball",
+    rating: {
+        stars: 4.5,
+        count: 56,
+    },
+    priceCents: 5035, // can delete this code
+});
+//console.log(someProduct);
+
 export const products = [
     {
         id: "e47638ce-6aa0-4b85-b27f-e1d07eb671d2",
@@ -542,4 +572,7 @@ export const products = [
         priceCents: 2400,
         keywords: ["sweaters", "hoodies", "apparel", "mens"],
     },
-];
+].map((productDetails) => {
+    return new Product(productDetails);
+});
+console.log(products);
