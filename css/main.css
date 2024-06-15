@@ -94,8 +94,8 @@ body {
 }
 
 [class*=main__container] {
-  padding-left: calc(15px + 25 * (100vw-320px) / 1120);
-  padding-right: calc(15px + 25 * (100vw-320px) / 1120);
+  padding-left: calc(15px + 25 * calc(100vw - (320px)) / 1120);
+  padding-right: calc(15px + 25 * calc(100vw - (320px)) / 1120);
 }
 
 /* containers
@@ -217,14 +217,14 @@ body {
   justify-content: space-between;
 }
 .location__icon {
-  width: calc(18px + 7 * (100vw-320px) / 1120);
+  width: calc(18px + 7 * calc(100vw - (320px)) / 1120);
   margin-right: 5px;
 }
 .location__text {
   display: flex;
   flex-direction: column;
   max-width: 120px;
-  font-size: calc(14px + 4 * (100vw-320px) / 1120);
+  font-size: calc(14px + 4 * calc(100vw - (320px)) / 1120);
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -244,7 +244,7 @@ body {
   flex: 1 1 auto;
   padding: 10px;
   border-radius: 4px 0 0 4px;
-  font-size: calc(16px + 4 * (100vw-320px) / 1120);
+  font-size: calc(16px + 4 * calc(100vw - (320px)) / 1120);
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -269,11 +269,14 @@ body {
   flex: 0 1 25%;
 }
 
+.link {
+  display: block;
+}
 .link__sprite {
   position: relative;
 }
 .link__sprite img {
-  width: calc(38px + 12 * (100vw-320px) / 1120);
+  width: calc(38px + 12 * calc(100vw - (320px)) / 1120);
 }
 .link__counter {
   position: absolute;
@@ -282,10 +285,10 @@ body {
   transform: translateX(-50%);
   font-weight: 700;
   color: #ff9900;
-  font-size: calc(16px + 4 * (100vw-320px) / 1120);
+  font-size: calc(16px + 4 * calc(100vw - (320px)) / 1120);
 }
 .link__text {
-  font-size: calc(14px + 4 * (100vw-320px) / 1120);
+  font-size: calc(14px + 4 * calc(100vw - (320px)) / 1120);
   font-style: normal;
   line-height: 15px;
   font-weight: 700;
@@ -386,7 +389,7 @@ body {
   font-weight: 600;
 }
 .card__price {
-  font-size: calc(16px + 6 * (100vw-320px) / 1120);
+  font-size: calc(16px + 6 * calc(100vw - (320px)) / 1120);
   font-weight: 700;
   line-height: normal;
   margin-bottom: 10px;
@@ -428,7 +431,7 @@ body {
   width: 100%;
   padding: 8px;
   border-radius: 50px;
-  font-size: calc(16px + 4 * (100vw-320px) / 1120);
+  font-size: calc(16px + 4 * calc(100vw - (320px)) / 1120);
   color: rgb(33, 33, 33);
   background-color: rgb(255, 216, 20);
   border: 1px solid rgb(252, 210, 0);
@@ -460,7 +463,7 @@ body {
   padding: 15px 0;
   line-height: 19px;
   font-size: 14px;
-  font-size: calc(16px + 2 * (100vw-320px) / 1120);
+  font-size: calc(16px + 2 * calc(100vw - (320px)) / 1120);
   margin-bottom: 40px;
 }
 .footer__btn:hover {
@@ -475,8 +478,8 @@ body {
   -moz-column-gap: 80px;
        column-gap: 80px;
   margin-bottom: 40px;
-  padding-left: calc(40px + 40 * (100vw-320px) / 1120);
-  padding-right: calc(40px + 40 * (100vw-320px) / 1120);
+  padding-left: calc(40px + 40 * calc(100vw - (320px)) / 1120);
+  padding-right: calc(40px + 40 * calc(100vw - (320px)) / 1120);
 }
 .footer__logo_box {
   position: relative;
@@ -539,8 +542,8 @@ body {
 
 .checkout__container {
   min-height: 50vh;
-  padding-left: calc(15px + 85 * (100vw-320px) / 1120);
-  padding-right: calc(15px + 85 * (100vw-320px) / 1120);
+  padding-left: calc(15px + 85 * calc(100vw - (320px)) / 1120);
+  padding-right: calc(15px + 85 * calc(100vw - (320px)) / 1120);
 }
 
 .checkout__title {
@@ -553,7 +556,7 @@ body {
   grid-template: 1fr/1fr 28.5%;
   justify-content: space-between;
   align-items: center;
-  font-size: calc(14px + 4 * (100vw-320px) / 1120);
+  font-size: calc(14px + 4 * calc(100vw - (320px)) / 1120);
 }
 .order {
   display: flex;
@@ -609,8 +612,8 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-size: calc(20px + 5 * (100vw-320px) / 1120);
-  line-height: calc(25px + 10 * (100vw-320px) / 1120);
+  font-size: calc(20px + 5 * calc(100vw - (320px)) / 1120);
+  line-height: calc(25px + 10 * calc(100vw - (320px)) / 1120);
   max-width: 100%;
   margin-bottom: 8px;
   color: #0f1111;
@@ -647,12 +650,12 @@ body {
   background: #f2c200;
   color: #000;
   font-weight: 700;
-  font-size: calc(14px + 4 * (100vw-320px) / 1120);
-  line-height: calc(18px + 2 * (100vw-320px) / 1120);
+  font-size: calc(14px + 4 * calc(100vw - (320px)) / 1120);
+  line-height: calc(18px + 2 * calc(100vw - (320px)) / 1120);
   cursor: pointer;
 }
 .cart__btn {
-  font-size: calc(16px + 2 * (100vw-320px) / 1120);
+  font-size: calc(16px + 2 * calc(100vw - (320px)) / 1120);
   background: transparent;
   color: rgb(0, 113, 133);
   font-weight: 650;
@@ -694,7 +697,7 @@ body {
   color: rgb(0, 113, 133);
   font-weight: 600;
   margin-bottom: 5px;
-  line-height: calc(18px + 6 * (100vw-320px) / 1120);
+  line-height: calc(18px + 6 * calc(100vw - (320px)) / 1120);
 }
 .delivery-option__price {
   color: rgb(120, 120, 120);

@@ -31,8 +31,12 @@ $resposiveType: 1;
 @mixin adaptive-value($property, $minSize, $maxSize, $min-screen, $max-screen) {
     $addsize: $maxSize - $minSize;
     $screen-width: $max-screen - $min-screen;
-    $screen-range: 100vw - #{$min-screen + "px"};
-    $valueSize: calc(#{$minSize + px} + #{$addsize} * ((#{$screen-range}) / #{$screen-width}));
+    $screen-range: calc(
+        100vw - (#{$min-screen + "px"})
+    ); //* it works only when i`ve added calc fuction to $screen-range
+    $valueSize: calc(
+        #{$minSize + px} + #{$addsize} * #{$screen-range} / #{$screen-width}
+    ); //* complete todo you need to complete problem with this mixin to no have problems in the future
     #{$property}: $valueSize;
 }
 
@@ -85,7 +89,7 @@ body {
     position: fixed;
     //height: 60px;
     width: 100%;
-    background-color: #141920;
+    background-color: #141920; //#141920b8
     display: grid;
     grid-template-rows: 1fr;
     padding-top: 2px;
@@ -246,6 +250,7 @@ body {
     flex: 0 1 25%;
 }
 .link {
+    display: block;
     &__sprite {
         position: relative;
         img {
@@ -869,7 +874,7 @@ body {
 @media (max-width: 767.777px) {
     .header {
         height: 160px;
-
+        //background-color: #141920b8 ;//todo make a function in js that will get scpecial class when header over some cards
         &__container {
             flex-direction: column;
             flex: 1 1 auto;

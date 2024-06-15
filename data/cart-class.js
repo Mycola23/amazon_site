@@ -1,6 +1,6 @@
 "use strict";
 class Cart {
-    cartItems;
+    cartItems; // the same that  cartItems = undefined
     #localStorageKey; //* private proprery thta we have access only in the class
     #loadFromStorage() {
         this.cartItems = JSON.parse(localStorage.getItem(this.#localStorageKey)) || [

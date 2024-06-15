@@ -41,7 +41,7 @@ function renderProductsHtml(products) {
         if (e.target.closest(".search__input")) {
             searchInput.parentElement.classList.add("__active");
         } else if (e.target.closest(".footer__btn")) {
-            backToTop();// можна винести у окремий файл і тоді б можно було використовувати по всьому сайту
+            backToTop(); // можна винести у окремий файл і тоді б можно було використовувати по всьому сайту
         } else if (e.target.closest(".search__btn")) {
             console.log(e.target);
             e.preventDefault();
@@ -68,11 +68,12 @@ function renderProductsHtml(products) {
                     </div>
                     <div class="card__rating rating">
                         <div class="rating__stars">
+
                             <li class="rating__star">
                                 ${product.rating.stars}
                             </li>
                             <li class="rating__star">
-                                <img src="img/icons/star.svg" alt="">
+                                <img src= " ${product.getStarUrl()}" alt="">
                             </li>
                         </div>
                         <div class="rating__votes">
@@ -95,6 +96,18 @@ function renderProductsHtml(products) {
                 <button class="card__btn" data-product-name ="${product.name}" data-product-id ="${product.id}" data-product-price = "${product.priceCents}"> Add to list</button>
             </div>`;
     });
+
+    /*
+    <div class="rating__stars">                  
+        <li class="rating__star">
+            ${product.rating.stars}
+        </li>
+        <li class="rating__star">
+            <img src="img/icons/star.svg" alt="">
+        </li>
+    </div>
+    
+    */
     //if (productsHtml) {
     item.innerHTML = productsHtml;
     mainContainer.append(item);
