@@ -1,3 +1,6 @@
+'use strict'
+import {formatMoneys} from '../js/utils/money.js';
+
 export function getProduct(productId) {
     let matchingProduct;
     products.forEach((product) => {
@@ -27,17 +30,20 @@ class Product {
     getStarUrl() {
         return `img/icons/star.svg`; //todo make functon that will create stars because asiat`s method won`t work in my websie
     }
+    getPrice(){
+        return `$${formatMoneys(this.priceCents)}`
+    }
 }
-const someProduct = new Product({
-    id: "e47638ce-6aa0-4b85-b27f-e1d07eb671d2",
-    img: "https://images.unsplash.com/photo-1595861021888-e8192a7f774e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-    name: "Basketball ball",
-    rating: {
-        stars: 4.5,
-        count: 56,
-    },
-    priceCents: 5035, // can delete this code
-});
+// const someProduct = new Product({
+//     id: "e47638ce-6aa0-4b85-b27f-e1d07eb671d2",
+//     img: "https://images.unsplash.com/photo-1595861021888-e8192a7f774e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+//     name: "Basketball ball",
+//     rating: {
+//         stars: 4.5,
+//         count: 56,
+//     },
+//     priceCents: 5035, // can delete this code
+// });
 //console.log(someProduct);
 
 export const products = [
@@ -575,4 +581,4 @@ export const products = [
 ].map((productDetails) => {
     return new Product(productDetails);
 });
-console.log(products);
+

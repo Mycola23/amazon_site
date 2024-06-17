@@ -80,7 +80,7 @@ function renderProductsHtml(products) {
                             ${product.rating.count}
                         </div>
                     </div>
-                    <div class="card__price">$${formatMoneys(product.priceCents)}</div>
+                    <div class="card__price">${product.getPrice()}</div>
                     <select class="card__quality">
                         <option value="1">1</option>
                         <option value="2">2</option>
