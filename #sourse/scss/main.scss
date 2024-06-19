@@ -364,10 +364,24 @@ body {
                 list-style: none;
             }
             li:first-child {
-                margin-right: 5px;
+                //margin-right: 5px;
             }
             img {
-                height: 25px;
+                max-width: 25px;
+                width: 100%;
+            }
+        }
+        .stars-quantity {
+            margin-right: 7px;
+        }
+        .stars {
+            display: flex;
+            &__star.last-star {
+                width: 16px;
+                overflow: hidden;
+                img {
+                    object-fit: cover;
+                }
             }
         }
         .rating__votes {

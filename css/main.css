@@ -376,11 +376,23 @@ body {
 .card__rating .rating__stars li {
   list-style: none;
 }
-.card__rating .rating__stars li:first-child {
-  margin-right: 5px;
-}
 .card__rating .rating__stars img {
-  height: 25px;
+  max-width: 25px;
+  width: 100%;
+}
+.card__rating .stars-quantity {
+  margin-right: 7px;
+}
+.card__rating .stars {
+  display: flex;
+}
+.card__rating .stars__star.last-star {
+  width: 16px;
+  overflow: hidden;
+}
+.card__rating .stars__star.last-star img {
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .card__rating .rating__votes {
   color: #017cb6;

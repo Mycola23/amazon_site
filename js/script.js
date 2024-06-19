@@ -68,13 +68,12 @@ function renderProductsHtml(products) {
                     </div>
                     <div class="card__rating rating">
                         <div class="rating__stars">
-
-                            <li class="rating__star">
+                            <span class="rating__star stars-quantity">
                                 ${product.rating.stars}
-                            </li>
-                            <li class="rating__star">
-                                <img src= " ${product.getStarUrl()}" alt="">
-                            </li>
+                            </span>
+                            <ul class="rating__star stars">
+                                ${product.createStars()}
+                            </ul>
                         </div>
                         <div class="rating__votes">
                             ${product.rating.count}
