@@ -38,6 +38,7 @@ class Product {
         return "";
     }
 }
+
 class Clothing extends Product {
     sizeChartLink;
     constructor(productDetails) {
@@ -50,6 +51,12 @@ class Clothing extends Product {
         `;
     }
 }
+
+// const bggg = {
+//     bg: "bggg",
+//     ag: this,
+// };
+// console.log(bggg.ag);
 
 /* const tshirt = new Clothing({
 //     id: "83d4ca15-0f35-48f5-b7a3-1ea210004f2e",

@@ -24,7 +24,7 @@ export function renderPaymentSummary(test) {
     const totalBeforeTaxCents = productPriceCents + shippingPriceCents;
     const taxCents = totalBeforeTaxCents * 0.1;
     const totalCents = totalBeforeTaxCents + taxCents;
-    console.log(productPriceCents, shippingPriceCents);
+    //console.log(productPriceCents, shippingPriceCents);
 
     const paymentSummaryHtml = `
             <h3 class="order-payment__title">Order Summary</h3>

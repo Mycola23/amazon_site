@@ -92,5 +92,5 @@ const businessCart = CreateCart("cart-business");
 cart.loadFromStorage();
 cart.addToCart("e47638ce-6aa0-4b85-b27f-e1d07eb678c7");
 businessCart.loadFromStorage();
-console.log(cart);
-console.log(businessCart);
+//console.log(cart);
+//console.log(businessCart);

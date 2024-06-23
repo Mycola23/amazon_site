@@ -212,8 +212,8 @@ function searchingItem(item, removefunc) {
     });
     page.removeEventListener("click", removefunc);
     renderProductsHtml(newProductsList); // повинно лише перезавантажити сторінку  і перегенурувати HTML а воно визиває всю
-    console.log(searchingItem);
-    console.log(newProductsList);
+    //console.log(searchingItem);
+    //console.log(newProductsList);
 
     // todo cycle foreach for products аюи порівняти наше слово з зі словом із списком
 }
