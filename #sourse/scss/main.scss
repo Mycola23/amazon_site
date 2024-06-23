@@ -104,7 +104,7 @@ body {
     }
 
     &__logo {
-        padding: 10px;
+        padding: 5px;
         margin-right: 20px;
         //max-width: 100px;
         cursor: pointer;
@@ -147,7 +147,7 @@ body {
         flex-direction: column;
         margin-right: 5px;
 
-        padding: 15px;
+        padding: 13px;
 
         .link__text-light {
             font-weight: 400;
@@ -416,6 +416,31 @@ body {
     &__quality:hover {
         background: #fff;
     }
+    &__link {
+        display: inline-block;
+        @include adaptive-value(font-size, 16, 18, $minWidth, $maxWidth);
+        font-weight: 600;
+        a {
+            color: #ff9900;
+        }
+        @media (hover: hover) {
+            &:hover {
+                a {
+                    color: #1c1f25;
+                }
+                text-decoration: underline #ff9900;
+            }
+        }
+        @media (hover: none) {
+            &:active {
+                a {
+                    color: #1c1f25;
+                }
+                text-decoration: underline #ff9900;
+            }
+        }
+    }
+
     &__message {
         display: flex;
         align-items: center;
@@ -447,11 +472,19 @@ body {
         cursor: pointer;
         box-shadow: 0 2px 5px rgba(213, 217, 217, 0.5);
     }
-
-    &__btn:hover {
-        background: #333;
-        border: 1px solid rgb(33, 33, 33);
-        color: rgb(255, 216, 20);
+    @media (hover: hover) {
+        &__btn:hover {
+            background: #333;
+            border: 1px solid rgb(33, 33, 33);
+            color: rgb(255, 216, 20);
+        }
+    }
+    @media (hover: none) {
+        &__btn:active {
+            background: #333;
+            border: 1px solid rgb(33, 33, 33);
+            color: rgb(255, 216, 20);
+        }
     }
 }
 .card.show {

@@ -34,7 +34,40 @@ class Product {
     getPrice() {
         return `$${formatMoneys(this.priceCents)}`;
     }
+    extroInfoHtml() {
+        return "";
+    }
 }
+class Clothing extends Product {
+    sizeChartLink;
+    constructor(productDetails) {
+        super(productDetails);
+        this.sizeChartLink = productDetails.sizeChartLink;
+    }
+    extroInfoHtml() {
+        return `
+        <a href="${this.sizeChartLink}" target ="_blank"> sizeChartLink</a>
+        `;
+    }
+}
+
+/* const tshirt = new Clothing({
+//     id: "83d4ca15-0f35-48f5-b7a3-1ea210004f2e",
+//     img: "https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
+//     name: "Adults Plain Cotton T-Shirt - 2 Pack",
+//     rating: {
+//         stars: 4.5,
+//         count: 56,
+//     },
+//     priceCents: 799,
+//     keywords: ["tshirts", "apparel", "mens"],
+//     type: "clothing",
+//     sizeChartLink: "#",
+// });
+// console.log(tshirt);
+// console.log(tshirt.getPrice());
+*/
+/*
 // const someProduct = new Product({
 //     id: "e47638ce-6aa0-4b85-b27f-e1d07eb671d2",
 //     img: "https://images.unsplash.com/photo-1595861021888-e8192a7f774e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
@@ -46,7 +79,7 @@ class Product {
 //     priceCents: 5035, // can delete this code
 // });
 //console.log(someProduct);
-
+*/
 export const products = [
     {
         id: "e47638ce-6aa0-4b85-b27f-e1d07eb671d2",
@@ -142,7 +175,7 @@ export const products = [
         priceCents: 799,
         keywords: ["tshirts", "apparel", "mens"],
         type: "clothing",
-        sizeChartLink: "#",
+        sizeChartLink: "/img/clothing-size-chart.png",
     },
     {
         id: "54e0eccd-8f36-462b-b68a-8182611d9add",
@@ -187,6 +220,8 @@ export const products = [
         },
         priceCents: 2400,
         keywords: ["hoodies", "sweaters", "apparel"],
+        type: "clothing",
+        sizeChartLink: "/img/clothing-size-chart.png",
     },
     {
         id: "77919bbe-0e56-475b-adde-4f24dfed3a04",
@@ -232,7 +267,7 @@ export const products = [
         priceCents: 2070,
         keywords: ["robe", "swimsuit", "swimming", "bathing", "apparel"],
         type: "clothing",
-        sizeChartLink: "#",
+        sizeChartLink: "/img/clothing-size-chart.png",
     },
     {
         id: "aad29d11-ea98-41ee-9285-b916638cac4a",
@@ -368,7 +403,7 @@ export const products = [
         priceCents: 1599,
         keywords: ["tshirts", "shirts", "apparel", "mens"],
         type: "clothing",
-        sizeChartLink: "#",
+        sizeChartLink: "/img/clothing-size-chart.png",
     },
     {
         id: "b86ddc8b-3501-4b17-9889-a3bad6fb585f",
@@ -580,6 +615,9 @@ export const products = [
         keywords: ["sweaters", "hoodies", "apparel", "mens"],
     },
 ].map((productDetails) => {
+    if (productDetails.type === `clothing`) {
+        return new Clothing(productDetails); //todo  add stylse to link
+    }
     return new Product(productDetails);
 });
 

@@ -141,7 +141,7 @@ body {
   align-items: center;
 }
 .header__logo {
-  padding: 10px;
+  padding: 5px;
   margin-right: 20px;
   cursor: pointer;
 }
@@ -179,7 +179,7 @@ body {
   flex: 0 1 50%;
   flex-direction: column;
   margin-right: 5px;
-  padding: 15px;
+  padding: 13px;
 }
 .header__link:first-child .link__text-light {
   font-weight: 400;
@@ -422,6 +422,32 @@ body {
 .card__quality:hover {
   background: #fff;
 }
+.card__link {
+  display: inline-block;
+  font-size: calc(16px + 2 * calc(100vw - (320px)) / 1120);
+  font-weight: 600;
+}
+.card__link a {
+  color: #ff9900;
+}
+@media (hover: hover) {
+  .card__link:hover {
+    -webkit-text-decoration: underline #ff9900;
+            text-decoration: underline #ff9900;
+  }
+  .card__link:hover a {
+    color: #1c1f25;
+  }
+}
+@media (hover: none) {
+  .card__link:active {
+    -webkit-text-decoration: underline #ff9900;
+            text-decoration: underline #ff9900;
+  }
+  .card__link:active a {
+    color: #1c1f25;
+  }
+}
 .card__message {
   display: flex;
   align-items: center;
@@ -451,10 +477,19 @@ body {
   cursor: pointer;
   box-shadow: 0 2px 5px rgba(213, 217, 217, 0.5);
 }
-.card__btn:hover {
-  background: #333;
-  border: 1px solid rgb(33, 33, 33);
-  color: rgb(255, 216, 20);
+@media (hover: hover) {
+  .card__btn:hover {
+    background: #333;
+    border: 1px solid rgb(33, 33, 33);
+    color: rgb(255, 216, 20);
+  }
+}
+@media (hover: none) {
+  .card__btn:active {
+    background: #333;
+    border: 1px solid rgb(33, 33, 33);
+    color: rgb(255, 216, 20);
+  }
 }
 
 .card.show {

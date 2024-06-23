@@ -87,6 +87,9 @@ function renderProductsHtml(products) {
                         <option value="4">4</option>
                         <option value="5">5</option>
                     </select>
+                    <div class="card__link ">
+                            ${product.extroInfoHtml()}
+                        </div>
                     <div class="card__message">
                         <img src="img/icons/complete.svg" alt="">
                         <span>Added</span>
@@ -203,7 +206,7 @@ function searchingItem(item, removefunc) {
 
     products.forEach((product) => {
         if (product.name.toLowerCase().includes(searchingItem.toLowerCase())) {
-            console.log(product.name.toLowerCase());
+            // console.log(product.name.toLowerCase());
             newProductsList.push(product);
         }
     });
