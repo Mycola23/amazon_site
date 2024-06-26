@@ -306,11 +306,10 @@ body {
     opacity: 0;
 
     &__img {
-        flex: 1 1 auto; /* 234/659 */
-        height: 50%;
+        flex: 0 1 50%; /* 234/659 */
+        //width: 100%;
         // position: relative;//
         margin-bottom: 20px;
-
         img {
             /*
             position: absolute;//
@@ -322,8 +321,14 @@ body {
             object-position: center;
             object-fit: cover;
             border-radius: 5px;
+            max-width: 100%;
+            @include adaptive-value(height, 180, 250, $minWidth, $maxWidth);
+            //height: 100%;
             width: 100%;
-            height: 100%;
+            //height: 100%;
+            //* it works
+            //height: 250px;
+            //width: 100%;
         }
     }
 
@@ -331,8 +336,7 @@ body {
         display: flex;
         flex-direction: column;
         margin-bottom: 10px;
-        flex: 0 1 25%; /* 155/659 */
-        justify-content: flex-end;
+        flex: 0 1 50%; /* 155/659 */
     }
 
     &__text {
@@ -363,11 +367,8 @@ body {
             li {
                 list-style: none;
             }
-            li:first-child {
-                //margin-right: 5px;
-            }
             img {
-                max-width: 25px;
+                max-width: 20px;
                 width: 100%;
             }
         }
@@ -416,19 +417,32 @@ body {
     &__quality:hover {
         background: #fff;
     }
+
     &__link {
-        display: inline-block;
+        //display: inline-block;
         @include adaptive-value(font-size, 16, 18, $minWidth, $maxWidth);
         font-weight: 600;
+        margin-bottom: 5px;
+        display: flex;
+        flex-wrap: wrap;
+        li {
+            margin-bottom: 10px;
+            margin-right: 8px;
+        }
+        li:last-child {
+            margin-bottom: 0;
+            margin-right: 0;
+        }
         a {
             color: #ff9900;
         }
+
         @media (hover: hover) {
-            &:hover {
-                a {
+            & {
+                a:hover {
                     color: #1c1f25;
+                    text-decoration: underline #ff9900;
                 }
-                text-decoration: underline #ff9900;
             }
         }
         @media (hover: none) {

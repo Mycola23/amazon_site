@@ -87,9 +87,9 @@ function renderProductsHtml(products) {
                         <option value="4">4</option>
                         <option value="5">5</option>
                     </select>
-                    <div class="card__link ">
+                    <ul class="card__link ">
                             ${product.extroInfoHtml()}
-                        </div>
+                    </ul>
                     <div class="card__message">
                         <img src="img/icons/complete.svg" alt="">
                         <span>Added</span>
