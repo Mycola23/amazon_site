@@ -3,7 +3,10 @@
 export let cart;
 loadFromStorage();
 export function loadFromStorage() {
-    cart = JSON.parse(localStorage.getItem("cart")) || [
+    cart =
+        JSON.parse(localStorage.getItem("cart")) ||
+        [
+            /*
         {
             productId: "e47638ce-6aa0-4b85-b27f-e1d07eb671d1",
             quantity: 1,
@@ -21,8 +24,9 @@ export function loadFromStorage() {
             quantity: 3,
             price: 999,
             deliveryOptionId: "1",
-        },
-    ];
+        },*/
+            // it`s not necessary code
+        ];
 }
 export function addToCart(productId, productPrice) {
     // check id -------------------------------------------------
