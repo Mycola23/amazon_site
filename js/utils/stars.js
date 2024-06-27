@@ -16,21 +16,12 @@ function createStarsHtml(starQuantity, starsHtml, lastStarWidth) {
         if (lastStarWidth !== 0) {
             if (i === starQuantity - 1) {
                 // no sence because i can`t get data-attribute from html to css
-                starsHtml += `
-                <li class="stars__star last-star data-with =${Math.round(lastStarWidth * 100) / 100}">
-                    <img src="img/icons/star22.svg" alt = 'star'>  
-                </li>`;
+                starsHtml += `<li class = "stars__star last-star data-with = "${Math.round(lastStarWidth * 100) / 100}"><img src = "img/icons/star22.svg" alt = "star"></li>`;
             } else {
-                starsHtml += `
-                <li class="stars__star">
-                    <img src="img/icons/star22.svg" alt = 'star'>
-                </li>`;
+                starsHtml += `<li class = "stars__star"><img src = "img/icons/star22.svg" alt = "star"></li>`;
             }
         } else {
-            starsHtml += `
-                <li class="stars__star">
-                    <img src="img/icons/star22.svg" alt = 'star'>
-                </li>`;
+            starsHtml += `<li class = "stars__star"><img src = "img/icons/star22.svg" alt = "star"></li>`;
         }
     }
     return starsHtml;
