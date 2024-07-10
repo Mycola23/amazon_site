@@ -1,9 +1,15 @@
 import { renderOrderSummary } from "../../../js/checkout/orderSummary.js";
 import { cart, loadFromStorage } from "../../../data/cart.js";
 import { renderPaymentSummary } from "../../checkout/paymentSummary.js";
+import { loadProducts } from "../../../data/data.js";
 describe("test suite : renderOrderSummary", () => {
     const productId1 = "e47638ce-6aa0-4b85-b27f-e1d07eb671d1";
     const productId2 = "e47638ce-6aa0-4b85-b27f-e1d07eb671d2";
+    beforeAll((done) => {
+        loadProducts(() => {
+            done();
+        });
+    });
     beforeEach(() => {
         document.querySelector(".js-test-container").innerHTML = `
             <div class ="checkout__content">
