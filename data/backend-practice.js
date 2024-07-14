@@ -103,10 +103,16 @@
 
 // ? цей supersimplebackend return data witrhout type appliance => what need  i do to return this string in my small amazon (as varaiant create frankeschtein function that will give some this type and special properties)
 //? or do nothing with it or return to previous version of code(the worst variant)
-
+//! fix the server to connect with it and get data
 function loadTestdata() {
-    fetch("https://cors-anywhere.herokuapp.com/https://databse-amazon-5vjj0rm0t-d-ds-projects-64e3b4df.vercel.app/js/data").then((response) => {
-        console.log(response);
-    });
+    fetch("https://databse-amazon.vercel.app/js/data")
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then((data) => console.log(data))
+        .catch((error) => console.error("Fetch error:", error));
 }
-loadTestdata();
+//loadTestdata(); // * ITss WORK YA YA YA \|||4||||0||||||4||||- unbelievable

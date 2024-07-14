@@ -1,7 +1,7 @@
 "use strict";
 // import
 import { cart, addToCart } from "../data/cart.js";
-import { products, loadProducts } from "../data/data.js";
+import { products, loadProductsFetch } from "../data/data.js";
 //import {addToOrder,contentBox} from './checkout.js';
 import { formatMoneys } from "./utils/money.js";
 export const counter = document.querySelector(".link__counter");
@@ -32,7 +32,9 @@ burgerMenu.addEventListener("click", () => {
     menu.classList.toggle("__active");
 });
 //--------------------------------------------------------
-loadProducts(renderProductsHtml);
+loadProductsFetch().then(() => {
+    renderProductsHtml(products);
+});
 // renderProductsHtml
 //renderProductsHtml(products);
 function renderProductsHtml(products) {
