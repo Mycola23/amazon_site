@@ -105,7 +105,7 @@
 //? or do nothing with it or return to previous version of code(the worst variant)
 
 function loadTestdata() {
-    fetch("https://databse-amazon-5vjj0rm0t-d-ds-projects-64e3b4df.vercel.app/js/data").then((response) => {
+    fetch("https://cors-anywhere.herokuapp.com/https://databse-amazon-5vjj0rm0t-d-ds-projects-64e3b4df.vercel.app/js/data").then((response) => {
         console.log(response);
     });
 }

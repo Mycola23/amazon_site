@@ -42,10 +42,10 @@ describe("test suite  : renderPaymentSummary", () => {
         const ShippingAndHanding = document.querySelector(".jstest-orderpayment-shipping-handling");
         const tax = document.querySelector(".jstest-orderpayment-tax");
         const totalSum = document.querySelector(".jstest-orderpayment-ordertotal");
-        expect(productsonlyPrice.innerText).toContain("$980.00");
+        expect(productsonlyPrice.innerText).toContain("$136.60");
         expect(ShippingAndHanding.innerText).toContain("$14.98");
-        expect(tax.innerText).toContain("$99.50");
-        expect(totalSum.innerText).toContain("$1094.48");
+        expect(tax.innerText).toContain("$15.16");
+        expect(totalSum.innerText).toContain("$166.74");
     });
     afterEach(() => {
         document.querySelector(".js-test-container").innerHTML = ``;

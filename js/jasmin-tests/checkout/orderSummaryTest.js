@@ -3,8 +3,8 @@ import { cart, loadFromStorage } from "../../../data/cart.js";
 import { renderPaymentSummary } from "../../checkout/paymentSummary.js";
 import { loadProducts } from "../../../data/data.js";
 describe("test suite : renderOrderSummary", () => {
-    const productId1 = "e47638ce-6aa0-4b85-b27f-e1d07eb671d1";
-    const productId2 = "e47638ce-6aa0-4b85-b27f-e1d07eb671d2";
+    const productId1 = "e43638ce-6aa0-4b85-b27f-e1d07eb678c6";
+    const productId2 = "15b6fc6f-327a-4ec4-896f-486349e85a3d";
     beforeAll((done) => {
         loadProducts(() => {
             done();
@@ -25,13 +25,11 @@ describe("test suite : renderOrderSummary", () => {
                 {
                     productId: productId1,
                     quantity: 1,
-                    price: 999,
                     deliveryOptionId: "1",
                 },
                 {
                     productId: productId2,
                     quantity: 6,
-                    price: 999,
                     deliveryOptionId: "1",
                 },
             ]);
@@ -43,11 +41,11 @@ describe("test suite : renderOrderSummary", () => {
         expect(document.querySelectorAll(".order__cart").length).toEqual(2);
         // test for 1 product
         expect(document.querySelector(`.jstest-product-quantity-${productId1}`).innerText).toContain("Quantity: 1"); //jstest-product-name-${matchingProduct.id}
-        expect(document.querySelector(`.jstest-product-name-${productId1}`).innerText).toContain("Gravel");
-        expect(document.querySelector(`.jstest-product-price-${productId1}`).innerText).toContain("$677.90");
+        expect(document.querySelector(`.jstest-product-name-${productId1}`).innerText).toContain("Black and Gray Athletic Cotton Socks - 6 Pairs");
+        expect(document.querySelector(`.jstest-product-price-${productId1}`).innerText).toContain("$10.90");
         // test for 2 product
-        expect(document.querySelector(`.jstest-product-price-${productId2}`).innerText).toContain("$50.35");
-        expect(document.querySelector(`.jstest-product-name-${productId2}`).innerText).toContain("Basketball ball");
+        expect(document.querySelector(`.jstest-product-price-${productId2}`).innerText).toContain("$20.95");
+        expect(document.querySelector(`.jstest-product-name-${productId2}`).innerText).toContain("Intermediate Size Basketball");
         expect(document.querySelector(`.jstest-product-quantity-${productId2}`).innerText).toContain("Quantity: 6");
     });
     it("removes the product", () => {
@@ -77,7 +75,7 @@ describe("test suite : renderOrderSummary", () => {
         console.log(priceOfShippingHanding);
         const OrderTotalPrice = document.querySelector(".jstest-orderpayment-ordertotal").innerText;
         expect(priceOfShippingHanding).toContain("$9.99");
-        expect(OrderTotalPrice).toContain("$1088.99");
+        expect(OrderTotalPrice).toContain("$161.25");
 
         //document.querySelector("cart>delivery");
         //console.log(document.querySelector(".delivery-options > .delivery-option:nth-of-type(3)"));
