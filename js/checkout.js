@@ -6,10 +6,19 @@ import { loadProducts } from "../data/data.js";
 //import "../data/cart-class.js";
 //import "../data/car.js";
 import "../data/backend-practice.js";
-loadProducts(() => {
+
+new Promise((resolve) => {
+    loadProducts(() => {
+        resolve();
+    });
+}).then(() => {
     renderOrderSummary();
     renderPaymentSummary();
 });
+// loadProducts(() => {
+//     renderOrderSummary();
+//     renderPaymentSummary();
+// });
 
 /* MVC = model view controller first we get data, next we use this data to display it to user,
   next we use controllers like addEventListeners to change our data and again show it to user
