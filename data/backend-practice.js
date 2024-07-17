@@ -104,7 +104,7 @@
 // ? цей supersimplebackend return data witrhout type appliance => what need  i do to return this string in my small amazon (as varaiant create frankeschtein function that will give some this type and special properties)
 //? or do nothing with it or return to previous version of code(the worst variant)
 //! fix the server to connect with it and get data
-function loadTestdata() {
+/*function loadTestdata() {
     fetch("https://databse-amazon.vercel.app/js/data")
         .then((response) => {
             if (!response.ok) {
@@ -114,5 +114,121 @@ function loadTestdata() {
         })
         .then((data) => console.log(data))
         .catch((error) => console.error("Fetch error:", error));
-}
+}*/
 //loadTestdata(); // * ITss WORK YA YA YA \|||4||||0||||||4||||- unbelievable
+
+//*18a complete
+/*
+function loadGreeting() {
+    const xhr = new XMLHttpRequest();
+    xhr.addEventListener("load", () => {
+        console.log(xhr.response);
+    });
+    xhr.open("GET", "https://supersimplebackend.dev/greeting"), xhr.send();
+}
+loadGreeting();
+
+function loadSomeData(urlBase) {
+    const xhr = new XMLHttpRequest();
+    xhr.addEventListener("load", () => {
+        const data = xhr.response;
+        console.log(data);
+    });
+    xhr.open("GET", `${urlBase}`);
+    xhr.send();
+}
+loadSomeData("https://supersimplebackend.dev/cart");
+*/
+//*complete 18b using fetch  instead XMLHttpRequest
+/*function loadGreetingFetch() {
+    fetch("https://supersimplebackend.dev/greeting")
+        .then((response) => {
+            return response.text();
+        })
+        .then((text) => {
+            console.log(text);
+        });
+}
+loadGreetingFetch();*/
+
+//*complete 18c  async await
+/* 
+async function loadGreetingFetchA() {
+    await fetch("https://supersimplebackend.dev/greeting")
+        .then((res) => {
+            return res.text();
+        })
+        .then((text) => {
+            console.log(text);
+        });
+    console.log("Finish loading text");
+}
+
+loadGreetingFetchA(); */
+//! shift + alt + a to comment code in this way /* */
+//*complete 18d request to database with POST
+/* function postRequest() {
+    fetch("https://supersimplebackend.dev/greeting", {
+        method: "POST",
+        body: JSON.stringify({ name: "Tom" }),
+        headers: {
+            "Content-Type": "application/json",
+        },
+    })
+        .then((res) => {
+            return res.text();
+        })
+        .then((data) => {
+            console.log(data);
+        });
+}
+postRequest(); */
+//*complete 18e try to request to real amazon => result CORS error
+/* function requestToAmazon() {
+    fetch("https://amazon.com")
+        .then((res) => {
+            return res.json();
+        })
+        .then((data) => {
+            console.log(data);
+        });
+}
+requestToAmazon(); */
+
+//*18f complete
+/* async function requestToAmazon() {
+    try {
+        await fetch("https://amazon.com")
+            .then((res) => {
+                return res.json();
+            })
+            .then((data) => {
+                //console.log(data);
+            });
+    } catch (error) {
+        console.log("unexpected error ");
+    }
+}
+requestToAmazon(); */
+//*18g //video stop 21.28.56 // complete erorr handing with try catch
+/* async function loadGreetingFetchEr() {
+    try {
+        await fetch(`https://supersimplebackend.dev/greeting`, { method: "POST" })
+            .then((res) => {
+                if (res.status >= 400) {
+                    throw res;
+                }
+                return res.text();
+            })
+            .then((data) => {
+                console.log(data);
+            });
+    } catch (error) {
+        if (error.status === 400) {
+            const erorMessage = await error.json();
+            console.log(erorMessage);
+            console.log("Network error . try again later ");
+        }
+    }
+}
+loadGreetingFetchEr(); */
