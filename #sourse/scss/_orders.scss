@@ -1,0 +1,129 @@
+.main {
+    &__container {
+    }
+}
+.page {
+    &__title {
+        font-weight: 700;
+        @include adaptive-value(font-size, 20, 35, $minWidth, $maxWidth);
+
+        margin-bottom: 20px;
+    }
+}
+.orders {
+    &__order {
+        background-color: #f1f1f152;
+        border-radius: 15px;
+        padding: 10px 15px;
+        border-bottom: 5px solid #5f5f5f38;
+        border-right: 8px solid #5f5f5f38;
+        box-shadow: 7px 7px 20px 0px #b5b5b5;
+    }
+}
+.order {
+    &__title-body {
+        /* display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-wrap: wrap; */
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+        padding: 0 10px;
+        row-gap: 10px;
+        column-gap: 15px;
+    }
+
+    &__details {
+    }
+}
+.order {
+    &__total {
+    }
+
+    &__id {
+    }
+    &__date-block {
+        margin-right: 10%;
+    }
+}
+.title-body {
+    &__left {
+        display: flex;
+        flex: 1 1 auto;
+        align-items: center;
+
+        //margin-right: 35px;
+    }
+
+    &__right {
+    }
+}
+.date-block {
+    &__label {
+        margin-bottom: 5px;
+    }
+
+    &__date {
+    }
+}
+.ord-label {
+    font-weight: 500;
+    @include adaptive-value(font-size, 18, 22, $minWidth, $maxWidth);
+}
+.ord-text {
+    @include adaptive-value(font-size, 16, 18, $minWidth, $maxWidth);
+    margin-left: 10px;
+    background-color: #7a7878cb;
+    padding: 5px 50px;
+    border: 1px dashed #fff;
+    color: #fff;
+}
+.total {
+    &__label {
+        margin-bottom: 5px;
+    }
+    &__sum {
+    }
+}
+.id {
+    &__label {
+        margin-bottom: 5px;
+    }
+
+    &__number {
+    }
+}
+
+.product {
+    &__img {
+    }
+
+    &__details {
+    }
+
+    &__name {
+    }
+
+    &__delivery-date {
+    }
+
+    &__quantity {
+    }
+
+    &__buy-again-btn {
+    }
+
+    &__actions {
+    }
+}
+.btn {
+}
+.buy-again-btn {
+    &__icon {
+    }
+
+    &__text {
+    }
+}
+.track-package-btn {
+}

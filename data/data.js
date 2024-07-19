@@ -185,7 +185,7 @@ export function loadProductsFetch() {
         .then((productsData) => {
             products = productsData.map((productDetails) => {
                 if (productDetails.type === `clothing`) {
-                    // productDetails.sizeChartLink = "/img/clothing-size-chart.png";
+                    productDetails.sizeChartLink = "/img/clothing-size-chart.png";
                     return new Clothing(productDetails); //*complete todo  add stylse to link
                 } else if (productDetails.type === `appliance`) {
                     //productDetails.warrantyLink = "/img/appliance-warranty.png";

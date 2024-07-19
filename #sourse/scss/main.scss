@@ -446,7 +446,7 @@ body {
             }
         }
         @media (hover: none) {
-            &:active {
+            & li:active {
                 a {
                     color: #1c1f25;
                 }
@@ -757,6 +757,7 @@ body {
         color: rgb(0, 113, 133);
         font-weight: 650;
         line-height: 24px;
+        padding: 5px;
         &_up {
         }
 
@@ -877,7 +878,9 @@ body {
     &__check {
     }
 }
-
+// ------ orders -----
+@import "_orders";
+// -------------------
 @media (max-width: 1024px) {
     .checkout {
         &__content {

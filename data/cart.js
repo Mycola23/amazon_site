@@ -6,7 +6,7 @@ export function loadFromStorage() {
     cart =
         JSON.parse(localStorage.getItem("cart")) ||
         [
-            /*
+            /* we more no need the code below 
         {
             productId: "e47638ce-6aa0-4b85-b27f-e1d07eb671d1",
             quantity: 1,

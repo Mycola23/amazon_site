@@ -128,7 +128,7 @@ export function renderOrderSummary(test) {
         //*complete if newQuantity = 0 , we`ll delete this card of product from cart
         let newQuantity = Number(updateInput.value);
         //console.log(newQuantity);
-        if (newQuantity === 0) {
+        if (newQuantity <= 0) {
             functionalOfDelete(productId);
         } else {
             updateQuantity(productId, newQuantity);

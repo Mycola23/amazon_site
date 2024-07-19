@@ -4,10 +4,8 @@ import { loadProductsFetch } from "../../../data/data.js";
 describe("test suite  : renderPaymentSummary", () => {
     const productId1 = "e43638ce-6aa0-4b85-b27f-e1d07eb678c6"; //e47638ce-6aa0-4b85-b27f-e1d07eb671d1 not exist yet
     const productId2 = "15b6fc6f-327a-4ec4-896f-486349e85a3d"; //todo  e47638ce-6aa0-4b85-b27f-e1d07eb671d2 not exist yet i need to  connect my own server with it
-    beforeAll((done) => {
-        loadProductsFetch().then(() => {
-            done();
-        });
+    beforeAll(async () => {
+        await loadProductsFetch(); // it`s used instead of done()
     });
     beforeEach(() => {
         document.querySelector(".js-test-container").innerHTML = `
