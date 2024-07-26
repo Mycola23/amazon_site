@@ -937,9 +937,9 @@ body {
 //
 @media (max-width: 767.777px) {
     .header {
-        height: 160px;
+        height: 75px;
         //background-color: #141920b8 ;//todo make a function in js that will get scpecial class when header over some cards
-        &__container {
+        /* &__container {
             flex-direction: column;
             flex: 1 1 auto;
             padding-top: 5px;
@@ -955,14 +955,59 @@ body {
             }
         }
 
+ */
+        &__container {
+            .nav-header-left {
+                //width: 30px;
+                margin-right: 5px;
+                a {
+                    //display: inline-block;
+                    width: 100px;
+                    img {
+                        content: url("/img/amzon-short-logo.png");
+                        //background-color: #0f1111;
+                        //width: 30px;
+                        object-fit: cover;
+                        //overflow: hidden;
+                        color: #fff;
+
+                        @include adaptive-value(height, 45, 46, $minWidth, 768);
+                    }
+                }
+            }
+            .nav-header-centr {
+                width: 85%;
+                form {
+                    max-width: 85%;
+                }
+            }
+        }
+
+        .location {
+            //display: flex;
+            //justify-content: center;
+            &__text {
+                display: none;
+            }
+            &__icon {
+                width: 100%;
+                margin-right: 0;
+                img {
+                    @include adaptive-value(height, 25, 40, $minWidth, 768);
+                }
+            }
+        }
+
         &__logo {
             margin-right: 0;
+            @include adaptive-value("padding", 0, 8, $minWidth, 768);
+            //padding: 8px;
         }
 
         &__burger {
             transition: all 0.3s ease 0s;
             position: absolute;
-            top: 20%;
+            top: 34%;
             right: 15px;
             display: block;
             width: 30px;
@@ -1001,7 +1046,7 @@ body {
             transition: all 1s ease 0s;
             transform: translateX(-100vw);
             position: fixed;
-            top: 100px;
+            top: 0px;
             left: 0;
         }
         .nav-header-right.__active {
@@ -1010,7 +1055,7 @@ body {
             position: fixed;
             background: #141920d0;
             transform: translateX(0%);
-            top: 160px;
+            top: 75px;
             left: 0;
             width: 100%;
             z-index: 55;
@@ -1066,8 +1111,22 @@ body {
         }
     }
 }
-@media (max-width: 374.444px) {
-    .location {
-        display: none;
+@media (max-width: 377.777px) {
+    .header {
+        height: 110px;
+        &__container {
+            justify-content: center;
+            flex-direction: column;
+            .nav-header-centr {
+                margin-right: 0;
+            }
+            .nav-header-right.__active {
+                top: 110px;
+            }
+        }
+
+        .location {
+            display: none;
+        }
     }
 }

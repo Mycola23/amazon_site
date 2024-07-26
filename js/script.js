@@ -4,13 +4,14 @@ import { cart, addToCart } from "../data/cart.js";
 import { products, loadProductsFetch } from "../data/data.js";
 //import {addToOrder,contentBox} from './checkout.js';
 import { formatMoneys } from "./utils/money.js";
+import { ObserveBurgerMenu, backToTop } from "../js/utils/linkfunc.js";
 export const counter = document.querySelector(".link__counter");
 let item = document.createElement("div");
 item.className = "cards";
 
 //top
 const searchInput = document.querySelector(".search__input");
-const burgerMenu = document.querySelector(".header__burger");
+
 const menu = document.querySelector(".nav-header-right");
 
 const linkCart = document.querySelector(".link-cart");
@@ -26,11 +27,10 @@ const back = document.querySelector(".footer__btn"); // maybe not need us
 
 //* Don`t forget repair my code and learn  writing tests for js
 
-//---------  add eventlistener to Burgermenu --------------------------
-burgerMenu.addEventListener("click", () => {
-    burgerMenu.classList.toggle("__active");
-    menu.classList.toggle("__active");
-});
+//---------  add eventlistener to Burgermenu& footer__btn --------------------------
+ObserveBurgerMenu();
+backToTop();
+
 //--------------------------------------------------------
 loadProductsFetch().then(() => {
     renderProductsHtml(products);
@@ -42,8 +42,6 @@ function renderProductsHtml(products) {
     document.addEventListener("click", (e) => {
         if (e.target.closest(".search__input")) {
             searchInput.parentElement.classList.add("__active");
-        } else if (e.target.closest(".footer__btn")) {
-            backToTop(); // можна винести у окремий файл і тоді б можно було використовувати по всьому сайту
         } else if (e.target.closest(".search__btn")) {
             console.log(e.target);
             e.preventDefault();
@@ -161,14 +159,6 @@ function renderProductsHtml(products) {
         behavior: "smooth",
     });
 });*/
-
-    function backToTop() {
-        window.scrollTo({
-            top: 0,
-            left: 0,
-            behavior: "smooth",
-        });
-    }
 
     // tests
 

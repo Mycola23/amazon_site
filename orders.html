@@ -66,6 +66,8 @@
                 <div class="main__container">
                     <h2 class="page__title">Your Orders</h2>
                     <div class="orders">
+                        <!--todo use this container to append order genereted by js from orders.js-->
+                        <!-- todo make func back to top that allow use btn with the same name in footer, add it to linkfunc.js-->
                         <div class="orders__order order">
                             <div class="order__title-body title-body">
                                 <!-- title-body__left-->
@@ -89,7 +91,9 @@
                             </div>
                             <div class="order__details product">
                                 <div class="product__img">
-                                    <img src="img/icons/complete.svg" />
+                                    <img
+                                        src="https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
+                                    />
                                 </div>
 
                                 <div class="product__details">
@@ -97,7 +101,120 @@
                                     <div class="product__delivery-date">Arriving on: August 15</div>
                                     <div class="product__quantity">Quantity: 1</div>
                                     <button class="product__buy-again-btn btn buy-again-btn">
-                                        <img class="buy-again-btn__icon" src="#" />
+                                        <img class="buy-again-btn__icon" src="img/buy-again-icon.svg" />
+                                        <span class="buy-again-btn__text">Buy it again</span>
+                                    </button>
+                                </div>
+
+                                <div class="product__actions">
+                                    <a href="tracking.html?orderId=123&productId=456">
+                                        <button class="track-package-btn btn">Track package</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="orders__order order">
+                            <div class="order__title-body title-body">
+                                <!-- title-body__left-->
+                                <div class="title-body__left">
+                                    <div class="order__date-block date-block">
+                                        <h3 class="date-block__label ord-label">Order Placed:</h3>
+                                        <div class="date-block__date ord-text">August 12</div>
+                                    </div>
+                                    <div class="order__total total">
+                                        <h3 class="total__label ord-label">Total:</h3>
+                                        <div class="total__sum ord-text">$35.06</div>
+                                    </div>
+                                </div>
+                                <!-- title-body__right-->
+                                <div class="title-body__right">
+                                    <div class="order__id id">
+                                        <h3 class="id__label ord-label">Order ID:</h3>
+                                        <div class="id__number ord-text">27cba69d-4c3d-4098-b42d-ac7fa62b7664</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="order__details product">
+                                <div class="product__img">
+                                    <img
+                                        src="https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
+                                    />
+                                </div>
+
+                                <div class="product__details">
+                                    <div class="product__name">Black and Gray Athletic Cotton Socks - 6 Pairs</div>
+                                    <div class="product__delivery-date">Arriving on: August 15</div>
+                                    <div class="product__quantity">Quantity: 1</div>
+                                    <button class="product__buy-again-btn btn buy-again-btn">
+                                        <img class="buy-again-btn__icon" src="img/buy-again-icon.svg" />
+                                        <span class="buy-again-btn__text">Buy it again</span>
+                                    </button>
+                                </div>
+
+                                <div class="product__actions">
+                                    <a href="tracking.html?orderId=123&productId=456">
+                                        <button class="track-package-btn btn">Track package</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="orders__order order">
+                            <div class="order__title-body title-body">
+                                <!-- title-body__left-->
+                                <div class="title-body__left">
+                                    <div class="order__date-block date-block">
+                                        <h3 class="date-block__label ord-label">Order Placed:</h3>
+                                        <div class="date-block__date ord-text">August 12</div>
+                                    </div>
+                                    <div class="order__total total">
+                                        <h3 class="total__label ord-label">Total:</h3>
+                                        <div class="total__sum ord-text">$35.06</div>
+                                    </div>
+                                </div>
+                                <!-- title-body__right-->
+                                <div class="title-body__right">
+                                    <div class="order__id id">
+                                        <h3 class="id__label ord-label">Order ID:</h3>
+                                        <div class="id__number ord-text">27cba69d-4c3d-4098-b42d-ac7fa62b7664</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="order__details product">
+                                <div class="product__img">
+                                    <img
+                                        src="https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
+                                    />
+                                </div>
+
+                                <div class="product__details">
+                                    <div class="product__name">Black and Gray Athletic Cotton Socks - 6 Pairs</div>
+                                    <div class="product__delivery-date">Arriving on: August 15</div>
+                                    <div class="product__quantity">Quantity: 1</div>
+                                    <button class="product__buy-again-btn btn buy-again-btn">
+                                        <img class="buy-again-btn__icon" src="img/buy-again-icon.svg" />
+                                        <span class="buy-again-btn__text">Buy it again</span>
+                                    </button>
+                                </div>
+
+                                <div class="product__actions">
+                                    <a href="tracking.html?orderId=123&productId=456">
+                                        <button class="track-package-btn btn">Track package</button>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="order__details product">
+                                <div class="product__img">
+                                    <img
+                                        src="https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
+                                    />
+                                </div>
+
+                                <div class="product__details">
+                                    <div class="product__name">Black and Gray Athletic Cotton Socks - 6 Pairs</div>
+                                    <div class="product__delivery-date">Arriving on: August 15</div>
+                                    <div class="product__quantity">Quantity: 1</div>
+                                    <button class="product__buy-again-btn btn buy-again-btn">
+                                        <img class="buy-again-btn__icon" src="img/buy-again-icon.svg" />
                                         <span class="buy-again-btn__text">Buy it again</span>
                                     </button>
                                 </div>

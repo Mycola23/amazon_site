@@ -4,9 +4,9 @@ import { products, getProduct } from "../../data/data.js";
 import { formatMoneys } from "../utils/money.js";
 import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
 import { deliveryOptions, getDeliveryOption } from "../../data/deliveryOptions.js";
-
+import { addOrder } from "../orders.js";
 let orderPayment = document.querySelector(".order-payment__info");
-
+const orderPaymentBtn = document.querySelector(".order-payment__btn");
 export function renderPaymentSummary(test) {
     let productPriceCents = 0;
     let shippingPriceCents = 0;
@@ -59,6 +59,23 @@ export function renderPaymentSummary(test) {
 
     //console.log(orderPayment);
 }
+orderPaymentBtn.addEventListener("click", async () => {
+    console.log(cart);
+    const response = await fetch("https://supersimplebackend.dev/orders", {
+        //! it doesnt work correct in absolute only with his products but no with mine => make post on own server
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            cart: cart,
+        }),
+    });
+    const order = await response.json();
+    addOrder(order);
+    console.log(order);
+});
+
 /* old not work code of renderPaymentSummary
 function countOrderSum(cart) {
     const tax = 10;
