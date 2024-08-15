@@ -147,7 +147,7 @@ body {
         flex-direction: column;
         margin-right: 5px;
 
-        padding: 13px;
+        padding: 13px 13px 15px 13px;
 
         .link__text-light {
             font-weight: 400;
@@ -160,7 +160,7 @@ body {
         align-items: flex-end;
         display: flex;
         text-align: center;
-        padding: 8px;
+        padding: 12px 8px 15px 8px;
         justify-content: center;
     }
     &__burger {
@@ -260,8 +260,8 @@ body {
 
     &__counter {
         position: absolute;
-        top: 0px;
-        left: calc(50% + 2px);
+        top: -8px;
+        left: calc(50% + 9px);
         transform: translateX(-50%);
         font-weight: 700;
         color: #ff9900;

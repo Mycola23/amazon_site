@@ -4,9 +4,11 @@ import { products, getProduct } from "../../data/data.js";
 import { formatMoneys } from "../utils/money.js";
 import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
 import { deliveryOptions, getDeliveryOption } from "../../data/deliveryOptions.js";
-import { addOrder } from "../orders.js";
+import { addOrder, orders } from "../orders.js";
+
 let orderPayment = document.querySelector(".order-payment__info");
 const orderPaymentBtn = document.querySelector(".order-payment__btn");
+//export const orderHtml = "";
 export function renderPaymentSummary(test) {
     let productPriceCents = 0;
     let shippingPriceCents = 0;
@@ -59,9 +61,11 @@ export function renderPaymentSummary(test) {
 
     //console.log(orderPayment);
 }
+
 orderPaymentBtn.addEventListener("click", async () => {
     console.log(cart);
-    const response = await fetch("https://supersimplebackend.dev/orders", {
+    //try {
+    let response = await fetch("https://databse-amazon.vercel.app/orders", {
         //! it doesnt work correct in absolute only with his products but no with mine => make post on own server
         method: "POST",
         headers: {
@@ -73,7 +77,11 @@ orderPaymentBtn.addEventListener("click", async () => {
     });
     const order = await response.json();
     addOrder(order);
-    console.log(order);
+
+    //orderHtml = createOrderHtml(orders);
+    //sessionStorage.setItem("orderHtml", orderHtml);
+    sessionStorage.setItem("orders", JSON.stringify(orders));
+    window.location.href = "orders.html";
 });
 
 /* old not work code of renderPaymentSummary

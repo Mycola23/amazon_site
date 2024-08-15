@@ -4,8 +4,8 @@ import { cart, addToCart } from "../data/cart.js";
 import { products, loadProductsFetch } from "../data/data.js";
 //import {addToOrder,contentBox} from './checkout.js';
 import { formatMoneys } from "./utils/money.js";
-import { ObserveBurgerMenu, backToTop } from "../js/utils/linkfunc.js";
-export const counter = document.querySelector(".link__counter");
+import { basicSettings, counter } from "../js/utils/linkfunc.js";
+
 let item = document.createElement("div");
 item.className = "cards";
 
@@ -28,8 +28,6 @@ const back = document.querySelector(".footer__btn"); // maybe not need us
 //* Don`t forget repair my code and learn  writing tests for js
 
 //---------  add eventlistener to Burgermenu& footer__btn --------------------------
-ObserveBurgerMenu();
-backToTop();
 
 //--------------------------------------------------------
 loadProductsFetch().then(() => {
@@ -51,7 +49,7 @@ function renderProductsHtml(products) {
         }
     });
 
-    counter.innerHTML = `${JSON.parse(localStorage.getItem("cart-quantity")) || 0}`; // todo create file with function save quantity of cart щоб обійти перевірку файлу scripts.js
+    basicSettings(); // todo create file with function save quantity of cart щоб обійти перевірку файлу scripts.js
 
     // main page
 

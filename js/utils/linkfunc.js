@@ -19,4 +19,16 @@ export function backToTop() {
         });
     });
 }
+
+export const counter = document.querySelector(".link__counter");
+export function ShowCounterNum() {
+    counter.innerHTML = `${JSON.parse(localStorage.getItem("cart-quantity")) || 0}`;
+}
 // todo make that this code work on each file where  i will import it
+export function basicSettings() {
+    ObserveBurgerMenu();
+    backToTop();
+    if (counter) {
+        ShowCounterNum();
+    }
+}
