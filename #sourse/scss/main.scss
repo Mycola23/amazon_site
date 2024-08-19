@@ -964,14 +964,14 @@ body {
                     //display: inline-block;
                     width: 100px;
                     img {
-                        content: url("img/amzon-short-logo.png");
+                        //content: url("/img/amzon-short-logo.png"); //for github "img/amzon-short-logo.png"
                         //background-color: #0f1111;
                         //width: 30px;
                         object-fit: cover;
                         //overflow: hidden;
                         color: #fff;
 
-                        @include adaptive-value(height, 45, 46, $minWidth, 768);
+                        @include adaptive-value(height, 50, 55, $minWidth, 768);
                     }
                 }
             }

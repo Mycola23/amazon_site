@@ -1048,11 +1048,10 @@ body {
     width: 100px;
   }
   .header__container .nav-header-left a img {
-    content: url("img/amzon-short-logo.png");
     -o-object-fit: cover;
        object-fit: cover;
     color: #fff;
-    height: calc(45px + 1 * calc(100vw - (320px)) / 448);
+    height: calc(50px + 5 * calc(100vw - (320px)) / 448);
   }
   .header__container .nav-header-centr {
     width: 85%;
