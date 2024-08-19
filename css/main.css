@@ -1048,7 +1048,7 @@ body {
     width: 100px;
   }
   .header__container .nav-header-left a img {
-    content: url("/img/amzon-short-logo.png");
+    content: url("img/amzon-short-logo.png");
     -o-object-fit: cover;
        object-fit: cover;
     color: #fff;
