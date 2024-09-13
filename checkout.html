@@ -12,7 +12,7 @@
     </head>
     <body>
         <div class="wrapper" id="top">
-            <header class="header header-checkout">
+            <header class="header">
                 <div class="header__container nav-header">
                     <div class="nav-header-left">
                         <div class="header__logo">
@@ -36,12 +36,26 @@
                             </div>
                         </div>
                     </div>
-                    <div class="nav-header-centr"></div>
+                    <div class="nav-header-centr">
+                        <form class="header__search search">
+                            <input class="search__input" type="text" />
+                            <button class="search__btn">
+                                <img src="img/icons/search-icon.svg" alt="search-icon" />
+                            </button>
+                        </form>
+                    </div>
                     <div class="nav-header-right">
                         <nav class="header__links">
                             <a href="orders.html" class="header__link">
                                 <span class="link__text link__text-light">Returns</span>
                                 <span class="link__text">& Orders</span>
+                            </a>
+                            <a href="checkout.html" class="header__link link link-cart">
+                                <div class="link__sprite">
+                                    <div class="link__counter">0</div>
+                                    <img src="img/icons/cart.svg" alt="" />
+                                </div>
+                                <div class="link__text">Cart</div>
                             </a>
                         </nav>
                     </div>
@@ -114,7 +128,9 @@
                     </div>
                     <div class="footer__logo_box">
                         <div class="footer__logo">
-                            <img src="img/icons/logo.png" alt="logo" />
+                            <a href="index.html">
+                                <img src="img/icons/logo.png" alt="logo" />
+                            </a>
                         </div>
                     </div>
                     <div class="footer__text">

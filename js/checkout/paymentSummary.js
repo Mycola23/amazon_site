@@ -81,6 +81,7 @@ orderPaymentBtn.addEventListener("click", async () => {
     //orderHtml = createOrderHtml(orders);
     //sessionStorage.setItem("orderHtml", orderHtml);
     sessionStorage.setItem("orders", JSON.stringify(orders));
+    //console.log(JSON.parse(sessionStorage.getItem("orders")));
     window.location.href = "orders.html";
 });
 
